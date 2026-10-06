@@ -107,7 +107,8 @@ The response is `{"token": "...", "persona": {...}}`; protected endpoints (the d
 
 - Unit (offline, no MongoDB needed): `python -m pytest tests/unit -q` — validation, cart, sign-in/lockout/token/role rules, the order-lifecycle guard, and the checkout/order routes; the shared fixture refuses any network socket so the suite fails if it ever touches a database. This is also the default `python -m pytest -q` target (`pytest.ini`).
 - Functional (real MongoDB, guarded `skipq_test` database): `python -m pytest tests/functional -q` — the full order lifecycle, cross-account 403s, stale-checkout refusals, the sequential replay/conflict pair, the two-thread same-key checkout against the real unique index, and snapshot persistence. Fixtures refuse the development database name, delete exactly their own records (including route-created carts and orders), and release the MongoEngine alias after every app, so the suite can run twice against the same database with no manual reset.
-- Browser and load suites follow in the build plan (Playwright against `skipq_system_test`, Locust under `q6-performance/`).
+- Browser system test (Playwright against the real running app, guarded `skipq_system_test` database): `python -m pytest tests/playwright -q` — `tests/playwright/test_order_lifecycle.py` signs the diner and the vendor in through the UI in two isolated browser contexts, then walks one fresh order through the whole lifecycle: the diner clears any leftover cart lines, adds one item and checks out with the checkout key the screen mints; the vendor accepts, readies and collects that captured queue number; both screens' displayed state is asserted at every stage with `expect` condition waits (no sleeps, no token injection, no mocked API). Prerequisites: Chromium installed (`python -m playwright install chromium`), MongoDB running, the guarded database seeded (`MONGODB_DB=skipq_system_test python -m db_seed.seed`), the API running against **that** database in its own process (`MONGODB_DB=skipq_system_test python -m flask --app app:create_app run --host 127.0.0.1 --port 5001`), and the frontend on `http://127.0.0.1:5173`. The fixtures refuse every other database name, verify both servers and the seed state before the first persona step, delete only the run's order and the test diner's cart lines, and release the MongoEngine alias on teardown — so the suite runs twice against the same seeded database with no manual reset between runs. Per-state screenshots land in `docs/evidence/screenshots/` as `task11-*`.
+- Load suite: Locust under `q6-performance/` (Task 12 of the plan).
 
 ## API routes so far
 
@@ -122,7 +123,7 @@ All of them require the Bearer token, refuse the wrong persona with 403, look up
 
 ## Remaining build
 
-The assessed functional/Playwright/Locust suites, the US10 diner screens, and the report evidence remain in the [plan](docs/superpowers/plans/2026-10-06-skipq-tma.md). Add the measured q6 artifacts and narrated q7 recording link here when they exist.
+The assessed unit, functional and browser suites are in place; the diner (Tasks 8 and 10) and vendor (Task 9) screens are complete. Remaining in the [plan](docs/superpowers/plans/2026-10-06-skipq-tma.md): the Locust load suite with measured `q6-performance/` artifacts (Task 12) and the report/screencast evidence and final handover (Task 13). Add the measured q6 artifacts and narrated q7 recording link here when they exist.
 
 ## Lab adaptation
 
