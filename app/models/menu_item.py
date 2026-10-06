@@ -9,6 +9,7 @@ valid menu reference.
 import re
 from decimal import Decimal
 
+from bson.errors import InvalidId
 from mongoengine import (
     BooleanField,
     DateTimeField,
@@ -17,6 +18,7 @@ from mongoengine import (
     ReferenceField,
     StringField,
 )
+from mongoengine import ValidationError as MongoValidationError
 
 from app.errors import Forbidden, ValidationError
 from app.models.common import as_utc, document_id, iso_utc, utcnow
@@ -153,8 +155,11 @@ class MenuItem(Document):
 
     @classmethod
     def get(cls, item_id):
-        """Persistence seam: fetch one item by id."""
-        return cls.objects.with_id(item_id).first()
+        """Persistence seam: fetch one item by id; malformed ids count as missing."""
+        try:
+            return cls.objects.with_id(item_id)
+        except (InvalidId, MongoValidationError, TypeError):
+            return None
 
     @classmethod
     def create_for_vendor(cls, actor, values) -> "MenuItem":

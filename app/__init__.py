@@ -7,6 +7,8 @@ from flask import Flask
 
 from app.config import settings_from_environment
 from app.controllers.auth import auth_bp
+from app.controllers.diner import diner_bp
+from app.controllers.vendor import vendor_bp
 from app.errors import register_error_handlers
 from app.extensions import init_extensions
 
@@ -33,4 +35,6 @@ def create_app(config: dict | None = None) -> Flask:
     init_extensions(app)
     register_error_handlers(app)
     app.register_blueprint(auth_bp)
+    app.register_blueprint(diner_bp)
+    app.register_blueprint(vendor_bp)
     return app

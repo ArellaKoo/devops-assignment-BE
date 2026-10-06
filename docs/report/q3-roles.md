@@ -52,8 +52,9 @@ to that actor.
   `login_locked`) then removed; a live-issued token verified through the
   real `User.find_by_id` seam to the right account, and refused when the
   injected clock was placed past the TTL.
-- Remaining live items (no protected persona route exists yet): 401 on a
-  protected request without/with an invalid or expired token, and 403 for
-  the wrong persona, verified over HTTP when the diner/vendor routes land
-  in Task 4, with cross-stall/diner scope exercised through the real API
-  in Task 6.
+- Protected-route live checks (Task 4, dev API on 5001): no token 401
+  `authentication_required`, garbage token 401, a 3,601-second-old token
+  401, vendor token on a diner route 403, diner token on a vendor route
+  403, and cross-stall item edits 403 — all through real HTTP against
+  `skipq_dev` (`.local/verification/live_persona_check.py`). Cross-diner
+  scope through the real API is exercised in Task 6.

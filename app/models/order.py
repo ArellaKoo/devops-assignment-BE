@@ -18,6 +18,7 @@ import logging
 import uuid
 from datetime import timedelta
 
+from bson.errors import InvalidId
 from mongoengine import (
     DateTimeField,
     Document,
@@ -28,6 +29,7 @@ from mongoengine import (
     ReferenceField,
     StringField,
 )
+from mongoengine import ValidationError as MongoValidationError
 from pymongo.errors import DuplicateKeyError
 
 from app.errors import (
@@ -316,8 +318,11 @@ class Order(Document):
 
     @classmethod
     def get(cls, order_id):
-        """Persistence seam: fetch one order by id."""
-        return cls.objects.with_id(order_id).first()
+        """Persistence seam: fetch one order by id; malformed ids count as missing."""
+        try:
+            return cls.objects.with_id(order_id)
+        except (InvalidId, MongoValidationError, TypeError):
+            return None
 
     @classmethod
     def get_for_diner(cls, diner, order_id) -> "Order":

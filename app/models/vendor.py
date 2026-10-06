@@ -5,7 +5,9 @@ reference the same stall, and vendor authorisation is always through that
 stall relationship, never through one particular account.
 """
 
+from bson.errors import InvalidId
 from mongoengine import BooleanField, DateTimeField, Document, StringField
+from mongoengine import ValidationError as MongoValidationError
 
 from app.errors import Forbidden, ValidationError
 from app.models.common import iso_utc, same_document, utcnow
@@ -26,8 +28,11 @@ class Vendor(Document):
 
     @classmethod
     def get(cls, vendor_id):
-        """Persistence seam: fetch one stall by id."""
-        return cls.objects.with_id(vendor_id).first()
+        """Persistence seam: fetch one stall by id; malformed ids count as missing."""
+        try:
+            return cls.objects.with_id(vendor_id)
+        except (InvalidId, MongoValidationError, TypeError):
+            return None
 
     def authorizes(self, actor) -> bool:
         """Scope check: does this vendor account manage this stall?"""

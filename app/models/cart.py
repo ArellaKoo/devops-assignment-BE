@@ -111,7 +111,7 @@ class Cart(Document):
     def clear_carts_owned_by_test(cls, diner_ids) -> int:
         """Test maintenance helper: drop carts belonging to listed diners."""
         ids = [ObjectId(str(d)) for d in diner_ids]
-        return cls.objects(diner__in=ids).delete().count
+        return cls.objects(diner__in=ids).delete()
 
     def set_item(self, diner, item, quantity) -> "Cart":
         """Add or update a line after re-checking current records.

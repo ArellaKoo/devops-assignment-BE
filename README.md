@@ -108,9 +108,20 @@ The response is `{"token": "...", "persona": {...}}`; protected endpoints (the d
 - Unit (offline, no MongoDB needed): `python -m pytest tests/unit -q` — validation, cart, and sign-in/lockout/token/role rules; the shared fixture refuses any network socket so the suite fails if it ever touches a database.
 - Functional, browser, and load suites follow in the build plan (`skipq_test`, Playwright, Locust under `q6-performance/`).
 
+## API routes so far
+
+With the token from above, the diner and vendor persona routes are available:
+
+| Persona | Endpoint |
+|---|---|
+| Diner | `GET /api/diner/stalls`, `GET /api/diner/stalls/<id>/menu`, `GET /api/diner/cart`, `POST /api/diner/cart/items`, `PATCH`/`DELETE /api/diner/cart/items/<id>` |
+| Vendor | `GET`/`PATCH /api/vendor/stall`, `GET`/`POST /api/vendor/menu`, `PATCH`/`DELETE /api/vendor/menu/<id>` |
+
+All of them require the Bearer token, refuse the wrong persona with 403, look up ids through the models (404 when missing or malformed), and scope every mutation to the actor's own records. Money is integer cents; the cart response carries the server-computed total and a checkout freshness fingerprint.
+
 ## Remaining build
 
-Diner/vendor persona routes, checkout and the guarded order lifecycle, the assessed functional/Playwright/Locust suites, and the report evidence remain in the [plan](docs/superpowers/plans/2026-10-06-skipq-tma.md). Add the measured q6 artifacts and narrated q7 recording link here when they exist.
+Checkout (`POST /api/diner/orders`), the guarded order lifecycle routes, the assessed functional/Playwright/Locust suites, and the report evidence remain in the [plan](docs/superpowers/plans/2026-10-06-skipq-tma.md). Add the measured q6 artifacts and narrated q7 recording link here when they exist.
 
 ## Lab adaptation
 
