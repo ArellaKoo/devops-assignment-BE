@@ -1,0 +1,196 @@
+{
+  "demo_password": "SkipQDemo2026!",
+  "vendors": [
+    {"seed_key": "S1", "name": "Charcoal Grill", "is_open": true},
+    {"seed_key": "S2", "name": "Noodle Bar", "is_open": false}
+  ],
+  "users": [
+    {"seed_key": "D1", "email": "diner.one@skipq.test", "role": "diner"},
+    {"seed_key": "D2", "email": "diner.two@skipq.test", "role": "diner"},
+    {"seed_key": "D0", "email": "diner.empty@skipq.test", "role": "diner"},
+    {"seed_key": "V1", "email": "vendor.one@skipq.test", "role": "vendor", "vendor_seed_key": "S1"},
+    {"seed_key": "V1B", "email": "vendor.one.backup@skipq.test", "role": "vendor", "vendor_seed_key": "S1"},
+    {"seed_key": "V2", "email": "vendor.two@skipq.test", "role": "vendor", "vendor_seed_key": "S2"}
+  ],
+  "menu_items": [
+    {
+      "seed_key": "M1",
+      "vendor_seed_key": "S1",
+      "name": "Charcoal Chicken Rice",
+      "description": "Rice served over charcoal-grilled chicken.",
+      "image_url": "http://127.0.0.1:5001/static/images/skipq-m1.png",
+      "price_cents": 650,
+      "is_available": true,
+      "is_active": true
+    },
+    {
+      "seed_key": "M2",
+      "vendor_seed_key": "S1",
+      "name": "Mango Sago",
+      "description": "Mango slices over sago pearls.",
+      "image_url": "http://127.0.0.1:5001/static/images/skipq-m2.png",
+      "price_cents": 250,
+      "is_available": true,
+      "is_active": true
+    },
+    {
+      "seed_key": "M3",
+      "vendor_seed_key": "S1",
+      "name": "Pineapple Tart",
+      "description": "Crisp shell with pineapple filling.",
+      "image_url": "http://127.0.0.1:5001/static/images/skipq-m3.png",
+      "price_cents": 400,
+      "is_available": false,
+      "is_active": true
+    },
+    {
+      "seed_key": "M4",
+      "vendor_seed_key": "S1",
+      "name": "Special Kaya Toast",
+      "description": "Removed from the menu; kept for purchase history.",
+      "image_url": "http://127.0.0.1:5001/static/images/skipq-m4.png",
+      "price_cents": 300,
+      "is_available": true,
+      "is_active": false
+    },
+    {
+      "seed_key": "M5",
+      "vendor_seed_key": "S2",
+      "name": "Hokkien Mee",
+      "description": "Stir-fried prawn noodles.",
+      "image_url": "http://127.0.0.1:5001/static/images/skipq-m5.png",
+      "price_cents": 550,
+      "is_available": true,
+      "is_active": true
+    }
+  ],
+  "carts": [
+    {
+      "diner_seed_key": "D1",
+      "vendor_seed_key": "S1",
+      "lines": [
+        {"item_seed_key": "M1", "quantity": 2},
+        {"item_seed_key": "M2", "quantity": 1}
+      ]
+    },
+    {
+      "diner_seed_key": "D2",
+      "vendor_seed_key": "S2",
+      "lines": [
+        {"item_seed_key": "M5", "quantity": 1}
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "seed_key": "O-P",
+      "queue_number": "Q-seed-0001",
+      "diner_seed_key": "D1",
+      "vendor_seed_key": "S1",
+      "status": "Pending",
+      "payment": {"method": "PayNow", "status": "Paid"},
+      "created_offset_minutes": -30,
+      "lines": [{"item_seed_key": "M1", "quantity": 2}]
+    },
+    {
+      "seed_key": "O-PR",
+      "queue_number": "Q-seed-0002",
+      "diner_seed_key": "D1",
+      "vendor_seed_key": "S1",
+      "status": "Preparing",
+      "payment": {"method": "Card", "status": "Paid"},
+      "created_offset_minutes": -25,
+      "lines": [
+        {"item_seed_key": "M1", "quantity": 1},
+        {"item_seed_key": "M2", "quantity": 1}
+      ]
+    },
+    {
+      "seed_key": "O-R",
+      "queue_number": "Q-seed-0003",
+      "diner_seed_key": "D1",
+      "vendor_seed_key": "S1",
+      "status": "Ready",
+      "payment": {"method": "Cashless", "status": "Paid"},
+      "created_offset_minutes": -20,
+      "ready_offset_minutes": -5,
+      "lines": [{"item_seed_key": "M2", "quantity": 2}]
+    },
+    {
+      "seed_key": "O-RO",
+      "queue_number": "Q-seed-0004",
+      "diner_seed_key": "D1",
+      "vendor_seed_key": "S1",
+      "status": "Ready",
+      "payment": {"method": "PayNow", "status": "Paid"},
+      "created_offset_minutes": -40,
+      "ready_offset_minutes": -35,
+      "lines": [
+        {"item_seed_key": "M1", "quantity": 1},
+        {"item_seed_key": "M2", "quantity": 1}
+      ]
+    },
+    {
+      "seed_key": "O-C",
+      "queue_number": "Q-seed-0005",
+      "diner_seed_key": "D1",
+      "vendor_seed_key": "S1",
+      "status": "Collected",
+      "payment": {"method": "Card", "status": "Paid"},
+      "created_offset_minutes": -4320,
+      "lines": [
+        {
+          "item_seed_key": "M1",
+          "quantity": 1,
+          "name_snapshot": "Grilled Chicken Rice",
+          "price_cents_snapshot": 600
+        }
+      ]
+    },
+    {
+      "seed_key": "O-X",
+      "queue_number": "Q-seed-0006",
+      "diner_seed_key": "D1",
+      "vendor_seed_key": "S1",
+      "status": "Cancelled",
+      "payment": {"method": "PayNow", "status": "Refunded"},
+      "created_offset_minutes": -2880,
+      "refunded_offset_minutes": -2870,
+      "lines": [{"item_seed_key": "M2", "quantity": 1}]
+    },
+    {
+      "seed_key": "O-N",
+      "queue_number": "Q-seed-0007",
+      "diner_seed_key": "D1",
+      "vendor_seed_key": "S1",
+      "status": "NoShow",
+      "payment": {"method": "Cashless", "status": "Paid"},
+      "created_offset_minutes": -300,
+      "ready_offset_minutes": -240,
+      "lines": [
+        {"item_seed_key": "M1", "quantity": 1},
+        {"item_seed_key": "M2", "quantity": 1}
+      ]
+    },
+    {
+      "seed_key": "O-F",
+      "queue_number": "Q-seed-0008",
+      "diner_seed_key": "D2",
+      "vendor_seed_key": "S1",
+      "status": "Collected",
+      "payment": {"method": "Card", "status": "Paid"},
+      "created_offset_minutes": -8640,
+      "lines": [{"item_seed_key": "M2", "quantity": 2}]
+    },
+    {
+      "seed_key": "O-S2",
+      "queue_number": "Q-seed-0009",
+      "diner_seed_key": "D1",
+      "vendor_seed_key": "S2",
+      "status": "Pending",
+      "payment": {"method": "PayNow", "status": "Paid"},
+      "created_offset_minutes": -15,
+      "lines": [{"item_seed_key": "M5", "quantity": 2}]
+    }
+  ]
+}

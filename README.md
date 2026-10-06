@@ -2,7 +2,7 @@
 
 Backend repository: [devops-assignment-BE](https://github.com/ArellaKoo/devops-assignment-BE). Frontend: [devops-assignment-FE](https://github.com/ArellaKoo/devops-assignment-FE).
 
-This is the Flask/MongoEngine startup foundation for the ICT381 SkipQ TMA, adapted from StaycationX. **Domain models, seeded accounts, persona endpoints and assessed tests are the next build tasks; they are not implemented in this foundation.** Read the [complete plan](ASSIGNMENT_PLAN.md), [workspace setup guide](docs/assessment/setup-guide.md), [verified startup checks](docs/assessment/foundation-verification.md) and [actual lab reuse](docs/report/provenance.md).
+This is the Flask/MongoEngine backend for the ICT381 SkipQ TMA, adapted from StaycationX. It implements the SkipQ domain documents (users, stalls, menu items, carts, paid orders with embedded simulated payment), the repeatable demo seed, and — as the build continues — persona API routes and the assessed test suites. Read the [complete plan](ASSIGNMENT_PLAN.md), [workspace setup guide](docs/assessment/setup-guide.md), [verified startup checks](docs/assessment/foundation-verification.md) and [actual lab reuse](docs/report/provenance.md).
 
 For Qwen Code, [QWEN.md](QWEN.md) supplies persistent project instructions; [the readiness record](docs/assessment/qwen-readiness.md) lists installed skills, verified helper tools and how to start the implementation handoff.
 
@@ -51,6 +51,36 @@ curl -i http://127.0.0.1:5001/api/nonexistent
 ```
 
 Expected: HTTP 404 with `error.code` equal to `not_found`. This is a foundation smoke check, not the required Q4 test suite.
+
+## Seed data and demo accounts
+
+After installing and starting your local MongoDB, seed the configured database (default `skipq_dev`) with the repeatable demo data:
+
+```bash
+source .venv/bin/activate
+python -m db_seed.seed
+```
+
+The script upserts deterministic demo records by their natural keys and
+refreshes the time-relative fixtures; re-running it never deletes unrelated
+data. The coverage argument (which records put the application in the state
+each acceptance criterion describes, and what a marker must do for states
+seeding alone cannot produce) is in [docs/report/seed-coverage.md](docs/report/seed-coverage.md).
+
+All seeded accounts share the local demo password `SkipQDemo2026!`
+(demonstration accounts only, never personal credentials):
+
+| Role | Email | Stall |
+|---|---|---|
+| Diner | `diner.one@skipq.test` | — (owns current and past orders) |
+| Diner | `diner.two@skipq.test` | — (foreign orders to expose ownership leaks) |
+| Diner | `diner.empty@skipq.test` | — (no orders; empty state) |
+| Vendor | `vendor.one@skipq.test` | Charcoal Grill (open) |
+| Vendor | `vendor.one.backup@skipq.test` | Charcoal Grill (shared-stall account) |
+| Vendor | `vendor.two@skipq.test` | Noodle Bar (closed) |
+
+To point the seed (or the app) at a different database, set `MONGODB_DB`
+in the ignored `.env`. The seed targets the configured database only.
 
 ## Foundation checks
 

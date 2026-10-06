@@ -13,7 +13,12 @@ from app.extensions import init_extensions
 def create_app(config: dict | None = None) -> Flask:
     """Build a local API; use one active MongoEngine DB config per process."""
     load_dotenv(Path(__file__).resolve().parent.parent / ".env")
-    app = Flask(__name__)
+    static_folder = Path(__file__).resolve().parent.parent / "static"
+    app = Flask(
+        __name__,
+        static_folder=str(static_folder) if static_folder.is_dir() else None,
+        static_url_path="/static",
+    )
     app.config.from_mapping(settings_from_environment())
     if config:
         app.config.update(config)
