@@ -36,6 +36,20 @@ persona-identifying ids from the request body: the actor always comes from
 the verified token, and the record always comes from a model query scoped
 to that actor.
 
+## Why the lifecycle guard lives in `Order.transition_to`
+
+The order lifecycle is state, not presentation: any caller — the vendor
+route, the seed script, a future admin tool — must be able to move an
+order, and none of them may carry its own copy of the rules. So the guard
+is a model method, `Order.transition_to`, which re-checks the actor's
+role and stall ownership, the current state, the five permitted edges,
+and the 30-minute NoShow boundary, then persists with an
+expected-current-state update so two racing vendors cannot both apply a
+move; `Order.allowed_actions` reuses the same pure decision, and the
+routes (`PATCH /api/vendor/orders/<id>/status`, the order reads, and
+checkout via `Order.place_from_cart`) only translate the request into the
+call and map the model's `DomainError` codes to the JSON error contract.
+
 ## Verified so far (actual results, 7 October 2026)
 
 - Unit, offline (MongoDB stopped, socket sentinel active): 120 passed,
@@ -58,3 +72,16 @@ to that actor.
   403, and cross-stall item edits 403 — all through real HTTP against
   `skipq_dev` (`.local/verification/live_persona_check.py`). Cross-diner
   scope through the real API is exercised in Task 6.
+- Lifecycle guard and routes (Task 5): offline 75 guard cases in
+  `tests/unit/test_order_guard.py` (all 36 state pairs plus an unknown
+  target, the 29:59/30:00/30:01 NoShow boundary with an injected clock,
+  actor/scope refusals, expected-state update semantics, and the
+  `place_from_cart` allow/refuse matrix including replay, conflict,
+  stale price, failed payment and the duplicate-key race) and 38 route
+  cases in `tests/unit/test_order_routes.py`; live, a full
+  Pending→Preparing→Ready→Collected walk with separately signed diner and
+  vendor tokens, matching replay 200 / conflicting key 409, failed
+  payment 409 with the cart intact, the diner's All/Current/Past views,
+  and — the item deferred from Task 4 — the stall's paid queue staying
+  processable while the stall is closed (`.local/verification/live_order_check.py`,
+  63/63 checks on the dev API).

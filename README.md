@@ -105,7 +105,7 @@ The response is `{"token": "...", "persona": {...}}`; protected endpoints (the d
 
 ## Test suites
 
-- Unit (offline, no MongoDB needed): `python -m pytest tests/unit -q` — validation, cart, and sign-in/lockout/token/role rules; the shared fixture refuses any network socket so the suite fails if it ever touches a database.
+- Unit (offline, no MongoDB needed): `python -m pytest tests/unit -q` — validation, cart, sign-in/lockout/token/role rules, the order-lifecycle guard, and the checkout/order routes; the shared fixture refuses any network socket so the suite fails if it ever touches a database.
 - Functional, browser, and load suites follow in the build plan (`skipq_test`, Playwright, Locust under `q6-performance/`).
 
 ## API routes so far
@@ -114,14 +114,14 @@ With the token from above, the diner and vendor persona routes are available:
 
 | Persona | Endpoint |
 |---|---|
-| Diner | `GET /api/diner/stalls`, `GET /api/diner/stalls/<id>/menu`, `GET /api/diner/cart`, `POST /api/diner/cart/items`, `PATCH`/`DELETE /api/diner/cart/items/<id>` |
-| Vendor | `GET`/`PATCH /api/vendor/stall`, `GET`/`POST /api/vendor/menu`, `PATCH`/`DELETE /api/vendor/menu/<id>` |
+| Diner | `GET /api/diner/stalls`, `GET /api/diner/stalls/<id>/menu`, `GET /api/diner/cart`, `POST /api/diner/cart/items`, `PATCH`/`DELETE /api/diner/cart/items/<id>`, `POST /api/diner/orders`, `GET /api/diner/orders?view=all\|current\|history`, `GET /api/diner/orders/<id>` |
+| Vendor | `GET`/`PATCH /api/vendor/stall`, `GET`/`POST /api/vendor/menu`, `PATCH`/`DELETE /api/vendor/menu/<id>`, `GET /api/vendor/orders`, `GET /api/vendor/orders/<id>`, `PATCH /api/vendor/orders/<id>/status` |
 
-All of them require the Bearer token, refuse the wrong persona with 403, look up ids through the models (404 when missing or malformed), and scope every mutation to the actor's own records. Money is integer cents; the cart response carries the server-computed total and a checkout freshness fingerprint.
+All of them require the Bearer token, refuse the wrong persona with 403, look up ids through the models (404 when missing or malformed), and scope every mutation to the actor's own records. Money is integer cents; the cart response carries the server-computed total and a checkout freshness fingerprint. Checkout stores one paid order per unique `(diner, checkout_key)` pair — a matching retry returns the stored order (200), a conflicting reuse is refused (409) — and the vendor's status changes go through the model's guarded lifecycle (terminal orders and the 30-minute no-show boundary included); the stall's paid queue stays processable while the stall is closed.
 
 ## Remaining build
 
-Checkout (`POST /api/diner/orders`), the guarded order lifecycle routes, the assessed functional/Playwright/Locust suites, and the report evidence remain in the [plan](docs/superpowers/plans/2026-10-06-skipq-tma.md). Add the measured q6 artifacts and narrated q7 recording link here when they exist.
+The assessed functional/Playwright/Locust suites, the US10 diner screens, and the report evidence remain in the [plan](docs/superpowers/plans/2026-10-06-skipq-tma.md). Add the measured q6 artifacts and narrated q7 recording link here when they exist.
 
 ## Lab adaptation
 
