@@ -91,6 +91,22 @@ i just synced it only. can you double check to see if there is anything new that
 
 Verification: fetched all four origins and inspected the new workspace lab folders. Local lab clones were clean and matched their current public `main` commits. Backend advanced from `153ce9004ceb6fde84c35873b53b4957c76062a3` to `7d509dbcdeac18020a47677b79107805cd0f31cb`; only `DockerfileMongo` changed, pinning `mongo:7`. Flask app code, requirements, tests, README and seed files were unchanged. Frontend remained at `bc3367629ff31b920634dc3c046684f8c3877059`. Both assignment remotes still had no published branches. The excluded Docker change requires no local app change; provenance records the newer inspected commit while retaining the actual adaptation baseline.
 
+### P10 — Q1–Q7: remaining work summary
+
+```text
+so what is neede to be done?
+```
+
+Output used: a summary of the remaining implementation, tests, report/demo and handover tasks, with Task 2 models/seed data as the next step. Verification: checked the completed foundation against the remaining plan; no additional application implementation or assessment evidence was claimed.
+
+### P11 — Q1–Q7: Qwen implementation handoff prompt
+
+```text
+give me a prompt that will ask my qwen agent to do it all following the complete plan perfectly
+```
+
+Output used: the prospective [Qwen handoff prompt](qwen-handoff-prompt.md), also saved at workspace `QWEN_HANDOFF_PROMPT.md`, plus a short instruction to load it. It explicitly adopts US10 and the documented corrections for the future Qwen execution, continues Tasks 2–13, and requires actual implementation, testing, evidence, report drafting and honest handover. Verification: reread the current plan, setup completion, acceptance checklist and original-document paths; obtained independent read-only handoff advice and incorporated the test-design-only, repeated-suite, narrated-video, word-budget and evidence constraints. Authoring this prompt does not mean Qwen has executed it or that any remaining application task is complete. When it is used, retain the exact text actually sent to Qwen and subsequent prompts/results.
+
 ## Delegated AI prompts used to review the plan
 
 The two planning requests below generated/reviewed planning text only. Subsequent lab inspection, foundation review and setup-document requests are retained exactly in [delegated prompts](delegated-prompts.md), including their original scope, source paths and follow-up inputs. The foundations were verified by root commands rather than relying on the reviewers' conclusions alone.
