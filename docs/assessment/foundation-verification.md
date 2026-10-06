@@ -2,6 +2,8 @@
 
 Scope: startup foundation for Task 1. The plan, report/testing worksheets and lab provenance are prepared. Domain models, seeded accounts, sign-in, persona screens, ordering rules and assessed feature/lifecycle/performance tests are not implemented yet.
 
+Local foundation commits on `setup/lab-adaptation`: backend `67cd54e` and frontend `a10607d`. Both working trees were clean after those commits. Setup-completion documentation is recorded in a subsequent backend documentation commit. Nothing is pushed to the assignment origins or submitted to the course.
+
 ## Verified environment
 
 Python 3.12.15, Node 22.17.0/npm 10.9.2, local MongoDB Community 8.0.32 on `127.0.0.1:27017`. Backend is Flask 3.1.3 with MongoEngine 0.29.3; frontend retains CRA with `react-scripts` 5.0.1 and JavaScript application code. The actual versions are pinned in requirement files, `.nvmrc` and the npm lockfile.

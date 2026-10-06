@@ -25,4 +25,6 @@ Estimated work: roughly 45–55 focused hours. Prioritize functioning persona fl
 
 The source choice is settled: [StaycationX_Backend](https://github.com/ArellaKoo/StaycationX_Backend) at `153ce9004ceb6fde84c35873b53b4957c76062a3` and [StaycationX_Frontend](https://github.com/ArellaKoo/StaycationX_Frontend) at `bc3367629ff31b920634dc3c046684f8c3877059`. The setup guide records the compatibility changes and commands. Next implementation task is typed models and repeatable seed data. US10 and the canonical lifecycle `Pending → Preparing → Ready → Collected` plus rejection/refund/no-show remain proposed business decisions for review. Seeded sign-in and simulated payment follow the TMA; no registration or real gateway is needed.
 
+Task 1 is verified and committed locally in both repositories. A fresh check of the user's synced lab sources found only an excluded Docker image pin in backend commit `7d509db`; the frontend and all backend application/dependency/test/seed files match the adaptation baselines. Local work has not been pushed or submitted.
+
 This plan maps every published marking requirement to a deliverable and verification step. It does not promise a grade or substitute for the working application and actual evidence.

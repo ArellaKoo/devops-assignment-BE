@@ -158,4 +158,6 @@ Assessed unit tests must run without MongoDB. Functional tests use `skipq_test`;
 
 Use `git -C backend ...` and `git -C frontend ...`, or work from inside the corresponding directory. Both starter branches are `setup/lab-adaptation`. Each clone had no initial commit, so this foundation uses a branch rather than a worktree. Commit each real completed increment and push to its matching origin when publishing is authorized. Both READMEs must eventually cross-link each other and the screencast. Track lockfiles/examples; ignore `.env`, `.venv`, node_modules, caches, and normal builds. Keep required measured `q6-performance/` and `q7-screencast/` artifacts tracked.
 
+Task 1 foundation commits are local: backend `67cd54e`, frontend `a10607d`. The plan and verification records are stored in backend `docs/` and `ASSIGNMENT_PLAN.md`, with workspace copies for convenience. No push or course submission has been performed.
+
 Before submitting, fresh-clone both repositories into temporary folders and follow README alone. Verify marker access, demo credentials, install/config/seed/run/token/test instructions, and all recording links. That final application rehearsal remains planned; it has not yet been executed.
