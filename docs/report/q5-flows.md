@@ -1,8 +1,8 @@
-# Q5(b) — Flow evidence (working note, Tasks 8–9)
+# Q5(b) — Flow evidence (working note, Tasks 8–10)
 
-**Status: the diner baseline flow (Task 8) and the vendor baseline flow
-(Task 9) are complete and were verified live; the US10 list filters are
-Task 10. This note is condensed into the report at Task 13.**
+**Status: the diner baseline flow (Task 8), the vendor baseline flow
+(Task 9) and the US10 order-list filters (Task 10) are complete and were
+verified live. This note is condensed into the report at Task 13.**
 
 ## The flow as built
 
@@ -160,6 +160,49 @@ does not offer — it now loads the menu list and selects its item,
 reporting an off-menu item as removed. The earlier mount-load and
 field-name defects are recorded under the diner run.
 
+## The US10 order-list filters as built (Task 10)
+
+**All / Current / Past on the existing Order List — no new history page.**
+The two reused screens are the Order List (`/diner/orders`) and the Order
+Detail (`/diner/orders/:orderId`): the list gains a three-button filter
+group mapping All/Current/Past to the server's `view=all|current|history`
+(All is the default), and the detail screen already renders terminal
+orders read-only with their notices, so a past order simply re-uses the
+tracking screen in its terminal form. All and Current keep the 3-second
+polling (vendor moves can appear at any time; the server recomputes the
+lists from current statuses); **Past never polls** — terminal orders
+cannot change — and the explicit Refresh re-loads whichever view is
+selected. Empty states are per-view: "You have no orders yet." (All, with
+the Browse open stalls link), "No orders in progress right now."
+(Current) and "No past orders yet." (Past).
+
+## Live verification — US10 run (7 October 2026)
+
+`task10_ui_check.py` (Playwright, two logged-in UI contexts — diner.one
+with the seeded mixed statuses across both stalls, and diner.empty with
+no orders at all; a vendor API call reprices M1 under an open order detail
+to prove snapshot stability; the script re-seeds at start and ends with
+cleanup-independent reseed + invariant check) passed **all 15 checks on
+two consecutive runs**, each ending with `invariant: True False 650 True
+True 9 2 2`. The run covered: All listing exactly the 8 own orders across
+all six statuses while another diner's order stayed out of the list;
+newest-first ordering (Q-seed-0009 before Q-seed-0003); Current showing
+only the 5 live orders; a windowed request count proving Current keeps
+polling (2+ requests in 8 s) while Past does not (exactly 1 in 8 s — the
+measurement uses a timed window, a deliberate measurement rather than a
+condition wait); a past Collected order read-only with its stale
+snapshot ("Grilled Chicken Rice" at $6.00); a past Cancelled order still
+showing its $2.50 refund; an in-progress order keeping its $13.00
+snapshot total after the menu item was live-repriced to $7.00; the
+explicit Refresh re-requesting the selected view; and the three friendly
+empty states on the order-free diner.
+
+This verification found and fixed one genuine UI defect: switching the
+filter to Past left the Current list on screen (the polling hook returns
+early for the non-polling view, so the switch had no load); a one-shot
+effect now loads the Past view when the filter moves there, and one load
+per filter transition holds in both directions.
+
 ## Screenshot ledger
 
 All in `docs/evidence/screenshots/` (1280×720, authentic headless-Chromium
@@ -217,3 +260,16 @@ Task 9 (vendor flow, two logged-in contexts):
 | task9-25-diner-cancelled.png | The diner's cancellation notice with the refunded $13.00 amount |
 | task9-26-vendor-noshow.png | Mark no-show accepted past the 30-minute boundary: NoShow badge, stays-paid notice |
 | task9-27-diner-noshow.png | The diner's no-show notice ("The payment stays paid.") |
+
+Task 10 (US10 order-list filters):
+
+| File | What it shows |
+|---|---|
+| task10-01-orders-all.png | All (default): the diner's 8 own orders across all six statuses, newest-first, another diner's order absent |
+| task10-02-orders-current.png | Current filter: only the 5 Pending/Preparing/Ready orders |
+| task10-03-orders-past.png | Past filter: exactly the 3 terminal orders, newest-first (this view never polls) |
+| task10-04-past-collected-snapshot.png | Read-only past detail: Collected notice, stale snapshot (Grilled Chicken Rice $6.00) |
+| task10-05-past-cancelled-refund.png | Read-only past detail: Cancelled notice with the refunded $2.50 and time |
+| task10-06-current-snapshot-after-reprice.png | An in-progress order keeping its $13.00 snapshot total after the menu item was live-repriced |
+| task10-07-empty-diner-all.png | An order-free diner: "You have no orders yet." with the Browse open stalls link |
+| task10-08-empty-diner-past.png | The same diner on Past: "No past orders yet." |
