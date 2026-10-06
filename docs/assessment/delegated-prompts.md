@@ -47,3 +47,31 @@ Final read-only review of completed Qwen setup. Read workspace QWEN.md, backend/
 ```
 
 Verification of review findings: no material issues reported; root independently verified native skill/context loading in the workspace and both repository directories, DOCX validation, browser launch and tool smoke outputs. Model invocation, Word visual export and the assessed deliverables remain unverified/pending.
+
+## Overnight and CLI guidance: retained plaintext requests
+
+Copied from the visible conversation spanning 6–7 October 2026. These reviews were read-only and did not start model execution or assignment implementation.
+
+### qwen_skill_audit / followup_task — overnight feasibility
+
+```text
+Read-only overnight-run feasibility check. User asks whether the pasted wrapper prompt can make Qwen finish Tasks 2–13 unsupervised while they sleep. Do NOT start implementation or a model call. Inspect installed Qwen Code 0.25.0 CLI help and bundled goal/loop skill or command help/source for approval mode and continuation/turn-limit behavior relevant to an overnight run. Avoid printing credentials or whole minified source. Return practical verified advice and limits; distinguish VS Code vs CLI, and report whether a plain prompt alone persists after an ordinary agent final response. We need no global configuration changes or paid invocation.
+```
+
+### qwen_skill_audit / send_message — UI support
+
+```text
+Official docs confirm /goal set auto-continues across turns; Auto approval handles routine actions but can fall back to manual. Please focus your installed-code check on whether /goal set is supported in the VS Code chat (not just terminal/Web Shell), and native command availability. We should give the user an interface that actually keeps continuing. Their Mac currently uses battery and sleep=1; we'll advise plug in and caffeinate, without changing settings or launching a model run.
+```
+
+### qwen_skill_audit / send_message — scope of inspection
+
+```text
+Root also found installed VS Code dist/chunks/chunk-JVUHXM4D.js and chunk-FJIACSKD.js containing sessionGoalControl plus goalState handling. Please wrap up with whether UI invocation is wired; no need exhaustive implementation audit. We can advise /goal in chat with terminal fallback if UI command absent.
+```
+
+### qwen_skill_audit / followup_task — standalone CLI guidance
+
+```text
+User explicitly asks to install standalone Qwen CLI for overnight work. Root will install official @qwen-code/qwen-code globally under existing nvm Node22.17 without replacing Node20 default, then add a pinned-node qwen launcher if necessary. Independently read current official authentication/Goals/headless docs and determine minimal next steps for reusing existing ~/.qwen skills/settings without printing or changing credentials. Do not install packages, alter configuration, run a model call or start assignment work. Focus on actual session trust/auth and reliable bounded overnight invocation, plus any conflict with VS Code co-running the same repos.
+```

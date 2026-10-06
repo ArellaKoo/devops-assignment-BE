@@ -115,6 +115,36 @@ can you ensure my qwencode has all the ncessairy skills to complete this project
 
 Output used: six reviewed personal Qwen skills, persistent workspace/backend/frontend QWEN.md briefings, isolated document/video helper dependencies, an updated implementation handoff and a [readiness record](qwen-readiness.md). Verification: inspected installed Qwen Code 0.25.0 and its actual native skill loader without a model call; checked six installed skill bodies and parsing; launched Playwright Chromium against the startup UI; read the original PDF/DOCX, created/read DOCX and created/rendered PDF smoke artifacts, validated DOCX structure and exercised 720p MP4 encoding. These are tool-readiness checks, not the assessed business suites or narrated video. Authentication/model invocation remains to be checked in the user's Qwen chat. Independent review found generic skill conflicts and a missing DOCX validator dependency; project instructions and the isolated dependency installation address them. The encrypted historical delegated-prompt records were relabelled accurately; missing originals remain a disclosure gap.
 
+### P13 — Q1–Q7 support: overnight autonomous execution advice
+
+```text
+SO I CAN JUST USE THIS PROMPT FOR MY QWEN AGENT NOW TO DO ALL UNTIL IT COMPLETE THE WHOLE PROJECT UNSUPERVISED? i want to let it run during my sleep.
+
+Work in /Users/arellakoo/Documents/DevOpsAss.
+
+Read QWEN_HANDOFF_PROMPT.md completely, then execute the assignment work it describes using the referenced design, implementation plan, assessment worksheets and original documents.
+
+I approve US10 and the documented design/lifecycle corrections. Task 1 is complete; start with Task 2 and continue through Tasks 2–13.
+
+Complete the application, meaningful tests, actual performance measurements, screenshots, evidence-backed report draft and demonstration preparation. Verify every requirement before checking it off. Preserve existing work and make local commits in both assignment repositories.
+
+Continue beyond planning and individual milestones. Never fabricate evidence or claim unrun tests passed. Finish all independent work before reporting genuine blockers or required human actions.
+
+Follow the handoff’s publishing and submission boundaries. Finish with exact verification results, artifact paths, commit IDs and remaining human actions.
+
+Begin now by inspecting the workspace and implementing the models and repeatable seed data.
+```
+
+Output used: a persistent Qwen /goal wrapper, approval-mode guidance and Mac awake instructions. Verification: current official Goals/approval/headless documentation, installed CLI help and independent read-only inspection of the VS Code ACP goal runtime. The pasted implementation prompt was reviewed as a proposed Qwen instruction; this advice did not start assignment implementation or a goal. Automatic continuation can stop for errors, quotas, approvals or limits. Human-only requirements remain pending.
+
+### P14 — Q1–Q7 support: install standalone Qwen CLI
+
+```text
+i think for goal, i will need to install the cli instead of using the qwen extension in vscode. can you help me install cli
+```
+
+Output used: official npm CLI 0.25.0, a pinned Node 22 user launcher, a .zshrc PATH addition, a CLI guide and prepared overnight Goal. Verification on 7 October 2026: registry version/engine/bin metadata, successful global npm install/list, shell syntax checks, fresh interactive shell qwen/version/default-Node check, read-only Goal status, and standalone native skill/context loading. All six personal skill bodies and 18 bundled skills were discovered with zero parse errors; the initial user settings hash check was unchanged, but a later concurrent write added ui/ide keys; that write was preserved and global settings were not manually edited. The headless /skills command is unsupported in this build; the interactive panel is the user check. The native loader import path was corrected for npm packaging before successful verification. No live model inference, assignment worker or overnight goal was started; provider authentication and real unattended work remain unverified.
+
 ## Delegated AI prompts used to review the plan
 
 The two planning requests below generated/reviewed planning text only. Subsequent request metadata and the available current plaintext requests are in [delegated prompts](delegated-prompts.md). The prior version incorrectly called encrypted historical records exact prompt text; those original messages are unavailable in the inspected records. A01/A02 below remain retained readable copies, and historical disclosure gaps remain open. The foundations were verified by root commands rather than relying on the reviewers' conclusions alone.

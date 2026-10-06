@@ -26,7 +26,7 @@ The GitHub skills were installed with the Codex skill-installer helper's explici
 | docx | `8017469ea95fb7d28225c62daf8e2f3492a7b516fc64c18c28977cbf8980b7fe` |
 | webapp-testing | `51b7349e77ec63b7744a6f63647e7566a0b4d2e301121cc10e8c2113af6556a2` |
 
-The Qwen VS Code extension is `qwenlm.qwen-code-vscode-ide-companion-0.25.0-darwin-arm64`. Its bundled CLI returned `0.25.0` under Node 22.17.0. A separate `qwen` shell command is not installed on PATH; use the existing VS Code extension. The loader check used a read-only configuration stub with normal skill discovery; it proves discovery/parsing/body loading, not automatic selection by a particular model or an interactive session's permission decisions.
+The Qwen VS Code extension is `qwenlm.qwen-code-vscode-ide-companion-0.25.0-darwin-arm64`. Its bundled CLI returned `0.25.0` under Node 22.17.0. At the initial skill check, a separate `qwen` shell command was not installed. The subsequent CLI installation below makes it available in new interactive terminals. Loader checks use a read-only configuration stub; they prove discovery/parsing/body loading, not automatic selection by a particular model or an interactive session's permission decisions.
 
 ## Project context
 
@@ -64,6 +64,8 @@ Use PyMuPDF for PDF page rendering, so Poppler is unnecessary for this workflow.
 Local smoke artifacts, the frozen document dependency list and native loader JSON are under workspace `.local/qwen-tools/`, outside the assignment Git repositories. Personal skills are installed on this computer, not bundled into the two submissions; reinstall them on another computer as needed.
 
 ## Start the implementation session
+
+**CLI installation verified on 7 October:** official npm CLI 0.25.0 is installed under existing Node 22.17.0, with a pinned-runtime launcher at `~/.local/bin/qwen`. A fresh interactive terminal resolves it, while the default Node remains 20.20.1. Its native loader verified all six user skill bodies, 18 bundled skills, zero parse errors and the imported project briefing. The read-only Goal status command passed without starting work. See [CLI/overnight instructions](qwen-cli-guide.md) and [the prepared Goal](qwen-overnight-goal.txt). Live model authentication remains untested.
 
 1. Open `/Users/arellakoo/Documents/DevOpsAss` in VS Code and start a new Qwen Code chat, keeping both repositories accessible.
 2. Run `/skills` and confirm the six personal skills are visible. `/memory` should list the workspace QWEN.md. Normal Qwen sessions discover personal skills automatically; [official skills documentation](https://qwenlm.github.io/qwen-code-docs/en/users/features/skills/) and [memory documentation](https://qwenlm.github.io/qwen-code-docs/en/users/features/memory/) describe these interfaces.
