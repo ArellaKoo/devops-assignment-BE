@@ -1,0 +1,16 @@
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.superpowers/
+.worktrees/
+.local/
+.DS_Store
+playwright-report/
+test-results/
