@@ -1,8 +1,8 @@
-# Q5(b) — Diner flow evidence (working note, Task 8)
+# Q5(b) — Flow evidence (working note, Tasks 8–9)
 
-**Status: the diner baseline flow is complete and was verified live; the
-vendor flow is Task 9 and the US10 list filters are Task 10. This note is
-condensed into the report at Task 13.**
+**Status: the diner baseline flow (Task 8) and the vendor baseline flow
+(Task 9) are complete and were verified live; the US10 list filters are
+Task 10. This note is condensed into the report at Task 13.**
 
 ## The flow as built
 
@@ -75,6 +75,91 @@ measured — each state change was observed within one 3-second polling
 period in the runs above, but no timing measurement is asserted before the
 Task 12 evidence exists.
 
+## The vendor flow as built (Task 9)
+
+**Login → Menu → (item form) / Orders → Order detail**, all under the
+protected vendor layout from Task 7.
+
+1. **Menu** — the own-stall name with an Open/Closed badge and a
+   trading-state switch (`PATCH /api/vendor/stall`); the switch state is
+   echoed in a label and, while closed, in a closure banner that states
+   new orders are refused while the paid queue stays accessible. Each item
+   row carries its image, description, cents price, updated time, a
+   Sold-out badge when unavailable, a sold-out/restock toggle
+   (`PATCH /api/vendor/menu/<id>` with `is_available`), an Edit link and a
+   confirm-gated Remove (soft delete). The screen loads on mount, after
+   every mutation and on Refresh — the vendor is this screen's actor, so
+   it does not poll; the paid queue does.
+2. **Item form** — one screen for create (`/vendor/menu/new`) and edit
+   (`/vendor/menu/:itemId/edit`): name (1–80), price (decimal string
+   above 0 and below 9999, at most two decimals), description (≤500),
+   image URL (http(s) JPG/JPEG/PNG) and an available-now checkbox. The
+   rules are stated on the screen, and a refused save shows the backend's
+   own 400 message verbatim; the server remains the final validator. The
+   edit screen loads the stall's menu list and picks out its item (the API
+   has no single-item read), reporting an item that left the menu as
+   removed.
+3. **Paid queue** — the stall's stored orders, newest first, with queue
+   number, status badge, item count, total and placed time. It polls every
+   3 s while any order is still active (a second account on the shared
+   stall can move one) and stops once every order is terminal; explicit
+   Refresh always works. While the stall is closed it carries the closure
+   banner but every order and Manage control stays available — the queue
+   is a fulfillment obligation, not a trading surface.
+4. **Order detail** — queue number, status badge, item quantities with the
+   snapshotted names/prices, total, placement/ready times and the payment
+   line (method, state, amount, refunded time when present). The action
+   row is rendered **strictly from the response's `allowed_actions`**:
+   Pending offers Accept order / Reject order, Preparing offers only
+   Mark ready (rejection stops once preparation has started — the
+   canonical lifecycle has no Preparing→Cancelled edge), Ready offers
+   Mark collected and, only after `ready_at` + 30 minutes, Mark no-show,
+   and terminal orders offer nothing at all, showing instead their notice
+   (Collected = complete; Cancelled = refunded with time; NoShow =
+   payment stays paid). The 30-minute rule is therefore visible in the UI,
+   not only enforced by the backend; destructive moves (Reject,
+   NoShow) ask for confirmation.
+
+## Live verification — vendor run (7 October 2026)
+
+`task9_ui_check.py` (Playwright, **two logged-in UI contexts** — vendor.one
+on Charcoal Grill and diner.one; both personas sign in through the login
+screen) passed **all 37 checks on two consecutive runs**, each starting
+from a reseed and ending with the dev database re-seeded to its seed
+invariants (`invariant: True False 650 True True 9 2 2`). The run covered:
+the menu listing the three active items while hiding the soft-deleted one;
+the switch closing the stall (badge, banner, a diner cart add refused
+`409 stall_closed`, and the diner's direct-link view of the closed stall
+with every Add control disabled) and reopening it; the create form
+showing the backend's own 400 price message; a valid create, an edit
+(pre-filled, renamed, repriced) and a removal; a sold-out toggle and
+restock on a seeded item; the queue listing the stall's eight paid orders
+newest-first with the other stall's order absent; the exact control sets
+on Pending (Accept/Reject only), Preparing (Mark ready only), Ready +5 min
+(Mark collected only — NoShow still hidden) and Ready +35 min (Collected
+plus NoShow); all three terminal orders read-only, including the seeded
+refunded cancellation, the seeded no-show (payment stays paid) and the
+stale purchase snapshot ("Grilled Chicken Rice" at $6.00, old name and
+price); another stall's order refused in the UI with the 403 screen and,
+at the API level, a premature NoShow refused `409 no_show_too_early`; the
+closed stall keeping its whole paid queue accessible; and — the same new
+order in both contexts — the diner paying the seeded cart ($15.50, 2× M1 +
+1× M2) through the checkout screen while the vendor's polling queue
+surfaced it, accepted it, marked it ready (the diner's Ready banner
+appeared on the diner's tracking page without a manual refresh) and
+collected it; seeded Q-seed-0001 was then rejected (Cancelled, refunded,
+the diner seeing the $13.00 refund notice) and seeded Q-seed-0004 was
+marked no-show past the 30-minute boundary (the diner seeing the
+stays-paid notice); finally a diner account was routed out of the vendor
+area to its own home.
+
+This verification found and fixed two genuine UI defects: the vendor menu
+screen had no mount-time load (it sat on "Loading…" until a manual
+Refresh), and the item form initially requested a single-item read the API
+does not offer — it now loads the menu list and selects its item,
+reporting an off-menu item as removed. The earlier mount-load and
+field-name defects are recorded under the diner run.
+
 ## Screenshot ledger
 
 All in `docs/evidence/screenshots/` (1280×720, authentic headless-Chromium
@@ -100,3 +185,35 @@ captures of the running app on `127.0.0.1:5173` against the dev API):
 | task8-16-after-removal-paid.png | Remaining line paid out after the sold-out line was removed |
 | task8-17-cross-stall-refused.png | Cross-stall add refusal naming the stall already in the cart |
 | task8-18-forged-token-sign-in.png | Forged-token 401: session cleared, sign-in presented |
+
+Task 9 (vendor flow, two logged-in contexts):
+
+| File | What it shows |
+|---|---|
+| task9-01-vendor-menu-open.png | Vendor login lands on the own menu: stall name, Open badge, 3 active items, seeded Pineapple Tart badged Sold out |
+| task9-02-closed-banner.png | After the switch: Closed badge and the closure banner (new orders refused, paid queue stays accessible) |
+| task9-03-diner-closed-stall.png | The diner's direct-link view of the closed stall: closure notice, every Add control disabled |
+| task9-04-form-rejection.png | The create form showing the backend's own 400 message for a malformed price |
+| task9-05-item-created.png | The run-created item listed with its $9.99 price and the success banner |
+| task9-06-item-edited.png | The renamed/repriced item ($10.50) after the edit form saved |
+| task9-07-m2-sold-out.png | A seeded item marked sold out from its row control (badge + success banner) |
+| task9-08-orders-queue.png | The paid queue: 8 own-stall orders newest-first, other-stall order absent, status badges |
+| task9-09-pending-controls.png | A Pending order: exactly Accept order / Reject order |
+| task9-10-preparing-controls.png | A Preparing order: exactly Mark ready (rejection no longer offered) |
+| task9-11-ready-no-noshow.png | Ready +5 min: Mark collected only — the NoShow control is still hidden |
+| task9-12-ready-with-noshow.png | Ready +35 min: both Mark collected and Mark no-show are offered |
+| task9-13-terminal-cancelled.png | Cancelled order: read-only, "This order is final", refund shown with time |
+| task9-14-terminal-noshow.png | NoShow order: read-only, payment-stays-paid notice |
+| task9-15-terminal-collected-snapshot.png | Collected order: read-only, stale purchase snapshot (Grilled Chicken Rice $6.00) |
+| task9-16-forbidden-order.png | Another stall's order: the 403 screen, no order data rendered |
+| task9-17-closed-queue-accessible.png | While the stall is closed: closure banner plus the full paid queue with every Manage control enabled |
+| task9-18-diner-checkout-success.png | The diner context: the seeded cart ($15.50) paid, fresh queue number shown |
+| task9-19-vendor-accepted.png | The vendor detail of the same order after Accept: Preparing badge, success notice |
+| task9-20-diner-preparing.png | The diner's tracking page observing Preparing (polling, no manual refresh) |
+| task9-21-diner-ready-banner.png | The Ready-for-collection banner on the diner's tracking page after Mark ready |
+| task9-22-vendor-collected.png | The vendor detail after Mark collected: terminal, read-only notice |
+| task9-23-diner-collected.png | The diner's terminal Collected notice for the same order |
+| task9-24-cancel-refund.png | The vendor rejecting the seeded Pending order: Cancelled badge, refund shown |
+| task9-25-diner-cancelled.png | The diner's cancellation notice with the refunded $13.00 amount |
+| task9-26-vendor-noshow.png | Mark no-show accepted past the 30-minute boundary: NoShow badge, stays-paid notice |
+| task9-27-diner-noshow.png | The diner's no-show notice ("The payment stays paid.") |
