@@ -1,6 +1,6 @@
 # AI disclosure starter — ICT381
 
-**Status: planning and foundation setup log, 6 October 2026.** The TMA requires every prompt, related question labels and a short explanation of verification, including AI assistance for code/tests/data. This records the task-related user prompts and links exact delegated requests recovered from the local session records. Export the conversation as an appendix if useful, and keep adding exact future prompts; this file is not a finished disclosure for the full application.
+**Status: planning and foundation setup log, 6 October 2026.** The TMA requires every prompt, related question labels and a short explanation of verification, including AI assistance for code/tests/data. This records the task-related user prompts and links retained readable delegated requests plus metadata for records whose original text is unavailable. Historical delegated-prompt disclosure gaps remain open. Export the conversation as an appendix if useful, and keep adding exact future prompts; this file is not a finished disclosure for the full application.
 
 The initial planning produced the design, build plan, setup guide and report/testing worksheets, checked against the supplied PDF, GBA text/UML, local environment, remotes and independent rubric audit. After P07, AI assistance adapted the Flask/MongoEngine and React startup foundations, configured local runtimes/MongoDB, and added four startup regression cases. Domain models, authentication, seed records, persona/order flows, assessed feature suites, benchmark output and screencast are still pending. Startup checks must not be presented as those assessed results.
 
@@ -107,9 +107,17 @@ give me a prompt that will ask my qwen agent to do it all following the complete
 
 Output used: the prospective [Qwen handoff prompt](qwen-handoff-prompt.md), also saved at workspace `QWEN_HANDOFF_PROMPT.md`, plus a short instruction to load it. It explicitly adopts US10 and the documented corrections for the future Qwen execution, continues Tasks 2–13, and requires actual implementation, testing, evidence, report drafting and honest handover. Verification: reread the current plan, setup completion, acceptance checklist and original-document paths; obtained independent read-only handoff advice and incorporated the test-design-only, repeated-suite, narrated-video, word-budget and evidence constraints. Authoring this prompt does not mean Qwen has executed it or that any remaining application task is complete. When it is used, retain the exact text actually sent to Qwen and subsequent prompts/results.
 
+### P12 — Q1–Q7 supporting setup: Qwen skills readiness
+
+```text
+can you ensure my qwencode has all the ncessairy skills to complete this project?
+```
+
+Output used: six reviewed personal Qwen skills, persistent workspace/backend/frontend QWEN.md briefings, isolated document/video helper dependencies, an updated implementation handoff and a [readiness record](qwen-readiness.md). Verification: inspected installed Qwen Code 0.25.0 and its actual native skill loader without a model call; checked six installed skill bodies and parsing; launched Playwright Chromium against the startup UI; read the original PDF/DOCX, created/read DOCX and created/rendered PDF smoke artifacts, validated DOCX structure and exercised 720p MP4 encoding. These are tool-readiness checks, not the assessed business suites or narrated video. Authentication/model invocation remains to be checked in the user's Qwen chat. Independent review found generic skill conflicts and a missing DOCX validator dependency; project instructions and the isolated dependency installation address them. The encrypted historical delegated-prompt records were relabelled accurately; missing originals remain a disclosure gap.
+
 ## Delegated AI prompts used to review the plan
 
-The two planning requests below generated/reviewed planning text only. Subsequent lab inspection, foundation review and setup-document requests are retained exactly in [delegated prompts](delegated-prompts.md), including their original scope, source paths and follow-up inputs. The foundations were verified by root commands rather than relying on the reviewers' conclusions alone.
+The two planning requests below generated/reviewed planning text only. Subsequent request metadata and the available current plaintext requests are in [delegated prompts](delegated-prompts.md). The prior version incorrectly called encrypted historical records exact prompt text; those original messages are unavailable in the inspected records. A01/A02 below remain retained readable copies, and historical disclosure gaps remain open. The foundations were verified by root commands rather than relying on the reviewers' conclusions alone.
 
 ### A01 — Q1–Q7: independent rubric audit
 

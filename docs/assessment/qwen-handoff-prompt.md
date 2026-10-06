@@ -4,6 +4,7 @@ Complete my ICT381 SkipQ assignment implementation and evidence package by execu
 I approve US10 (current/past orders) as the extra story and the scope/lifecycle corrections documented in the design. Proceed through Tasks 2–13; Task 1 is already completed. Make routine implementation decisions independently. Do not stop after producing another plan, a skeleton, or one milestone. Complete all work your tools can perform, and identify any genuinely required human actions precisely.
 
 Read these before editing, with paths relative to the workspace:
+- QWEN.md and backend/docs/assessment/qwen-readiness.md
 - backend/ASSIGNMENT_PLAN.md
 - backend/docs/superpowers/specs/2026-10-06-skipq-design.md
 - backend/docs/superpowers/plans/2026-10-06-skipq-tma.md
@@ -29,6 +30,8 @@ Current foundation:
 - The latest backend lab change only pins its excluded Docker Mongo image; relevant application code is unchanged. See provenance for exact commits.
 
 Execution method:
+Use the installed Qwen skills and the project briefing's overrides. Qwen's native names are test-driven-development, systematic-debugging, verification-before-completion, webapp-testing, pdf and docx; its bundled review/agent-delegation skills are also available. Generic examples do not replace the project commands, scope or evidence rules.
+
 1. Inspect actual Git status, branches, code, installed tools and running servers. Preserve unrelated changes. Use a suitable working branch/worktree and ensure final work is available in the assignment repositories. Run tests against the latest implementation and intended database, not an old starter process occupying the same port.
 2. Execute every remaining checkbox in dependency order. Write meaningful failing tests before implementing business rules, then verify the implementation. Run applicable complete suites and inspect failures/skips. Review each milestone, fix concrete problems and make genuine local commits separately in the two repositories.
 3. Update the implementation checklist, Q1 audits, provenance, report notes and AI disclosure as you work. Check a step only after its required output and verification exist. Give concise progress updates. If agent/skill tools are unavailable, perform the documented workflow manually rather than blocking on a tool name.
@@ -59,6 +62,7 @@ Required report and demonstration:
 - Prepare the ≤8-minute, 720p narrated MP4 showing one order across both roles, then stale sold-out and closed-stall refusals, with expected outcomes narrated before each violation. Preserve genuine failures/retries.
 - Capture real footage if the tools permit. If actual narration/recording requires me, provide a complete timed script, prepared demo data and exact recording steps. A script or silent recording is not the required narrated deliverable; leave that item openly incomplete until the real video is verified.
 - Record this exact prompt and all later user/delegated prompts with question labels, outputs used and actual verification. Do not claim AI-generated material was unaided student work.
+- Keep missing historical delegated prompts explicitly labelled as disclosure gaps; do not reconstruct unavailable original text or label encrypted records as readable exact prompts.
 - Do not invent my PI number, personal details or submission status. Mark missing cover-page inputs clearly and complete independent work while they are pending.
 
 Final handover:

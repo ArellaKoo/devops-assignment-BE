@@ -4,6 +4,8 @@ Backend repository: [devops-assignment-BE](https://github.com/ArellaKoo/devops-a
 
 This is the Flask/MongoEngine startup foundation for the ICT381 SkipQ TMA, adapted from StaycationX. **Domain models, seeded accounts, persona endpoints and assessed tests are the next build tasks; they are not implemented in this foundation.** Read the [complete plan](ASSIGNMENT_PLAN.md), [workspace setup guide](docs/assessment/setup-guide.md), [verified startup checks](docs/assessment/foundation-verification.md) and [actual lab reuse](docs/report/provenance.md).
 
+For Qwen Code, [QWEN.md](QWEN.md) supplies persistent project instructions; [the readiness record](docs/assessment/qwen-readiness.md) lists installed skills, verified helper tools and how to start the implementation handoff.
+
 ## Prerequisites and install
 
 - Python 3.12 (setup verified with 3.12.15).
