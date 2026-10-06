@@ -105,8 +105,35 @@ Updated after every milestone. Records completed work, verification results, com
 - Guard check: `SKIPQ_FUNCTIONAL_DB=skipq_dev` → 10 errors at fixture setup (`Refusing to run the functional suite against the development database name`), no connection to the dev database; `SKIPQ_FUNCTIONAL_DB=skipq_test_extra` → 10 passed with its own cleaned state.
 - Unit suite with MongoDB **stopped** (socket sentinel active): **287 passed**, re-run after the duplicate-key fix landed.
 
-**Commit**: `5750854` — `test: prove lifecycle authorization and checkout persistence` on `setup/lab-adaptation`.
+**Commit**: `e307971` — `test: prove lifecycle authorization and checkout persistence` on `setup/lab-adaptation` (amended once to fold in this hash record; the pre-amend hash was `5750854`).
 
-**Remaining tasks**: 7 (frontend shared architecture), 8 (diner flow + screenshots), 9 (vendor flow + screenshots), 10 (US10 screens + Q4(c) design table), 11 (Playwright ×2), 12 (Locust + `q6-performance/`), 13 (report, screencast preparation, READMEs, clean-checkout rehearsal, final handover).
+## Task 7 — Shared frontend architecture (complete)
 
-**Next action**: Task 7 — frontend shared architecture: `config.js`, `api/client.js`, `AuthContext` + `RequireRole`, `FeedbackContext`/`Banner`, `AsyncButton`, persona layouts, `App` routes, `LoginPage`; `npm run build`; `docs/report/frontend-architecture.md` (Q5(a) route table + five-decision argument); commit `feat: share frontend authentication requests and navigation`.
+**Completed work**
+
+- `src/config.js`: `API_BASE_URL` from `REACT_APP_API_BASE_URL` (documented local value `http://127.0.0.1:5001` in `.env`/`.env.example`), the one value the whole app reads.
+- `src/api/client.js`: the single fetch path — resolves the base URL, attaches the Bearer token, parses JSON, and throws `ApiError(status, code, message)` from the backend's `{"error": {"code", "message"}}` contract, with `expired` true only for `401 authentication_required` and a typed `network_error` when the API is unreachable.
+- `src/auth/AuthContext.jsx`: `{user, token}` session in `sessionStorage` (per-tab, so one browser can hold both personas); `login` via the real `POST /api/user/gettoken`, `logout`, and a bound `request` that clears the session on an `authentication_required` 401.
+- `src/auth/RequireRole.jsx`: unauthenticated → `/login` (remembering the intended path); wrong persona → that persona's own home; explicitly documented as a UX gate, not a security boundary.
+- `src/context/FeedbackContext.jsx` + `src/components/FeedbackBanner.jsx`: shared actionable-refusal queue rendered inside both persona layouts and the login screen, so the backend's own message reaches the screen that caused the request.
+- `src/components/AsyncButton.jsx` (+ `useAsyncAction` hook): the shared request-in-flight control — disabled + progress text while the wrapped request runs; a second click cannot start a duplicate request. Documented as UI-side control for this tab's own clicks only, distinct from the database's `(diner, checkout_key)` idempotency.
+- `src/layouts/DinerLayout.jsx` / `VendorLayout.jsx`: persona navigation, account label, sign-out, shared banner, nested `<Outlet/>`.
+- `src/pages/LoginPage.jsx`: seeded-account sign-in with the demo-account hint card and the refusal banner; role-appropriate redirect after sign-in.
+- `src/App.js` + `src/index.js`: routes exactly as the design table — `/login`, six diner routes nested under `RequireRole(role="diner")` + `DinerLayout`, five vendor routes nested under `RequireRole(role="vendor")` + `VendorLayout`, reachable `*` not-found; no registration/user-admin/OneMap routes. Persona screens are live stubs over the existing API contracts (correct field names, including `is_open` and the `{"order"}`/`{"items"}` wrappers) so Tasks 8–10 replace content, not structure; stub placeholders mark the checkout flow and the menu-item form.
+- `src/format.js`: integer-cents and UTC-ISO display helpers.
+- Docs: `docs/report/frontend-architecture.md` (Q5(a) route table + five decisions as module/alternative/why/does-not-provide, decision 5 distinguishing the in-flight control from database idempotency, token-state rules, verification log); frontend README (intro, install/configure, shared-module listing); plan Task 7 boxes closed with dated evidence.
+
+**Verification (actual results this session)**
+
+- `npm run build` on Node 22.17.0: **Compiled successfully, no ESLint warnings** (rebuilt after the final field-name fix; `build/` refreshed).
+- Manual two-persona UI verification against the live dev API (5001, Task-5 code) and the CRA dev server (5173), script `.local/verification/task7_ui_check.py` (Playwright, two isolated browser contexts, UI logins, screenshots in `.local/verification/task7-shots/`) — **all 10 checks passed on two runs**: unauthenticated diner visit → `/login`; wrong-password refusal banner; diner login → stall list with Charcoal Grill marked Open; cart and orders load under the token; diner at `/vendor/menu` redirected client-side **and** `GET /api/vendor/menu` with the diner token refused `403 forbidden` by the backend; forged token → 401 clears the session and presents sign-in; unknown path → not-found; vendor login → menu screen; vendor paid queue loads the seeded orders.
+- The first run's screenshot review caught a real UI bug: the trading-state badge read `stall.open` while the API field is `is_open`, so an open stall rendered "Closed"; fixed in `StallsPage`/`VendorMenuPage`, the check now asserts the green "Open" badge, and the second run passed.
+- No frontend unit/component suite was created (the TMA does not require one); the assessed browser suite remains Task 11's Playwright test.
+
+**Commit**: `65fc987` — `feat: share frontend authentication requests and navigation` on `setup/lab-adaptation` (frontend repository; 25 files: the shared modules, layouts, login/not-found, the ten persona screens, `App.js`/`index.js`, README).
+
+**Backend docs commit**: `docs: record the shared frontend architecture` on `setup/lab-adaptation` — the commit immediately after `e307971` in the log; it carries this record plus the Task 6 hash-line correction above.
+
+**Remaining tasks**: 8 (diner flow + screenshots), 9 (vendor flow + screenshots), 10 (US10 screens + Q4(c) design table), 11 (Playwright ×2), 12 (Locust + `q6-performance/`), 13 (report, screencast preparation, READMEs, clean-checkout rehearsal, final handover).
+
+**Next action**: Task 8 — diner baseline flow: full StallList/Menu/Cart/Checkout/OrderDetail screens (add-to-cart with sold-out and closed-stall handling, cart editing, checkout with the one retained checkout key + re-entry guard, simulated payment result, 3-second polling with cleanup and explicit Refresh, Ready banner, stale-cart refusal screen, empty states); screenshots to `docs/evidence/screenshots/`; `npm run build`; commit `feat: let diners place and track orders`.
