@@ -30,6 +30,7 @@ from mongoengine import (
     StringField,
 )
 from mongoengine import ValidationError as MongoValidationError
+from mongoengine.errors import NotUniqueError
 from pymongo.errors import DuplicateKeyError
 
 from app.errors import (
@@ -295,9 +296,11 @@ class Order(Document):
         )
         try:
             order.save()
-        except DuplicateKeyError:
+        except (DuplicateKeyError, NotUniqueError):
             # A concurrent matching request won the race: return its order
-            # instead of leaking the database exception.
+            # instead of leaking the database exception. MongoEngine's
+            # save() re-raises the pymongo duplicate-key error as its own
+            # NotUniqueError, so both are caught.
             winner = cls.find_by_checkout_key(diner, checkout_key)
             if winner is not None and winner.checkout_fingerprint == expected_fingerprint:
                 return winner, False

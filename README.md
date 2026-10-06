@@ -105,8 +105,9 @@ The response is `{"token": "...", "persona": {...}}`; protected endpoints (the d
 
 ## Test suites
 
-- Unit (offline, no MongoDB needed): `python -m pytest tests/unit -q` — validation, cart, sign-in/lockout/token/role rules, the order-lifecycle guard, and the checkout/order routes; the shared fixture refuses any network socket so the suite fails if it ever touches a database.
-- Functional, browser, and load suites follow in the build plan (`skipq_test`, Playwright, Locust under `q6-performance/`).
+- Unit (offline, no MongoDB needed): `python -m pytest tests/unit -q` — validation, cart, sign-in/lockout/token/role rules, the order-lifecycle guard, and the checkout/order routes; the shared fixture refuses any network socket so the suite fails if it ever touches a database. This is also the default `python -m pytest -q` target (`pytest.ini`).
+- Functional (real MongoDB, guarded `skipq_test` database): `python -m pytest tests/functional -q` — the full order lifecycle, cross-account 403s, stale-checkout refusals, the sequential replay/conflict pair, the two-thread same-key checkout against the real unique index, and snapshot persistence. Fixtures refuse the development database name, delete exactly their own records (including route-created carts and orders), and release the MongoEngine alias after every app, so the suite can run twice against the same database with no manual reset.
+- Browser and load suites follow in the build plan (Playwright against `skipq_system_test`, Locust under `q6-performance/`).
 
 ## API routes so far
 
