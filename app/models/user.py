@@ -9,6 +9,9 @@ resets; a successful sign-in always resets it.
 
 from datetime import timedelta
 
+from bson import ObjectId
+from bson.errors import InvalidId
+
 from mongoengine import DateTimeField, Document, IntField, ReferenceField, StringField
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -42,6 +45,14 @@ class User(Document):
     def find_by_email(cls, email):
         """Persistence seam: look up an account by its normalised email."""
         return cls.objects(email=cls.normalize_email(email)).first()
+
+    @classmethod
+    def find_by_id(cls, user_id):
+        """Persistence seam: look up an account by its stored ObjectId string."""
+        try:
+            return cls.objects(id=ObjectId(user_id)).first()
+        except (InvalidId, TypeError, ValueError):
+            return None
 
     @classmethod
     def create(cls, email, password, role, vendor=None, seed_key=None):

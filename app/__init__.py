@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from flask import Flask
 
 from app.config import settings_from_environment
+from app.controllers.auth import auth_bp
 from app.errors import register_error_handlers
 from app.extensions import init_extensions
 
@@ -31,4 +32,5 @@ def create_app(config: dict | None = None) -> Flask:
     app.config["SECRET_KEY"] = app.config["TOKEN_SECRET"]
     init_extensions(app)
     register_error_handlers(app)
+    app.register_blueprint(auth_bp)
     return app

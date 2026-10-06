@@ -89,11 +89,28 @@ python -m pip check
 python -m pytest -q
 ```
 
-The four startup regression cases preserve HTTP `Allow`/`Retry-After` headers in JSON errors and release the MongoEngine alias between sequential test apps. They run without database access. They do not implement the required domain allow/refuse or lifecycle tests; those remain in the build plan.
+The four startup regression cases preserve HTTP `Allow`/`Retry-After` headers in JSON errors and release the MongoEngine alias between sequential test apps; the validation, cart and sign-in/lockout/token/role suites add the domain allow/refuse rules. All of them run without database access. The required real-database lifecycle and browser/load suites remain in the build plan.
 
-## Next assessed deliverables
+## Sign in and use a token
 
-Implement `app/models/`, `app/controllers/`, `db_seed/`, and the unit/functional/Playwright/Locust suites following the plan. As they are completed, replace this section with verified seed credentials, token/protected-endpoint examples and actual test commands. Add the measured q6 artifacts and narrated q7 recording link. No seed or token command is claimed to work yet.
+With the API running and the database seeded, `POST /api/user/gettoken` exchanges a seeded account's email and password for a signed Bearer token that is valid for 3,600 seconds:
+
+```bash
+curl -s -X POST http://127.0.0.1:5001/api/user/gettoken \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"diner.one@skipq.test","password":"SkipQDemo2026!"}'
+```
+
+The response is `{"token": "...", "persona": {...}}`; protected endpoints (the diner and vendor routes, as they land) expect `Authorization: Bearer <token>`. Missing/invalid/expired tokens are refused `401`, a wrong persona is refused `403`, and five failed sign-ins lock an account for 15 minutes with `429`. The token key is your local `TOKEN_SECRET`.
+
+## Test suites
+
+- Unit (offline, no MongoDB needed): `python -m pytest tests/unit -q` — validation, cart, and sign-in/lockout/token/role rules; the shared fixture refuses any network socket so the suite fails if it ever touches a database.
+- Functional, browser, and load suites follow in the build plan (`skipq_test`, Playwright, Locust under `q6-performance/`).
+
+## Remaining build
+
+Diner/vendor persona routes, checkout and the guarded order lifecycle, the assessed functional/Playwright/Locust suites, and the report evidence remain in the [plan](docs/superpowers/plans/2026-10-06-skipq-tma.md). Add the measured q6 artifacts and narrated q7 recording link here when they exist.
 
 ## Lab adaptation
 
