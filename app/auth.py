@@ -52,7 +52,7 @@ def verify_token(token, secret, now=None):
     signer = _InjectableTimestampSigner(secret, now=now)
     try:
         payload = signer.unsign(token.encode("ascii"), max_age=TOKEN_TTL_SECONDS)
-    except BadSignature:
+    except (BadSignature, UnicodeEncodeError):
         return None
     return User.find_by_id(payload.decode("ascii"))
 

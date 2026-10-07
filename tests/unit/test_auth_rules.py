@@ -248,6 +248,15 @@ class TestTokenLifetime:
         assert verify_token(token, SECRET, now=T0) is None
         assert seen == []
 
+    @pytest.mark.parametrize("token", ["é", "not-a-token-é", "令牌"])
+    def test_non_ascii_tokens_are_refused_without_account_lookup(self, token, token_seam):
+        """GIVEN a non-ASCII token WHEN it is verified THEN it is refused before any account lookup."""
+        _, seen = token_seam
+        from app.auth import verify_token
+
+        assert verify_token(token, SECRET, now=T0) is None
+        assert seen == []
+
     def test_signed_but_unknown_account_is_refused(self, token_seam):
         """GIVEN a token whose signature verifies but whose id matches no stored account WHEN it is verified THEN no user is returned."""
         from app.auth import issue_token, verify_token
@@ -258,6 +267,18 @@ class TestTokenLifetime:
 
 
 class TestCurrentUser:
+    def test_non_ascii_bearer_on_protected_route_returns_401(self, app, token_seam):
+        """GIVEN a non-ASCII Bearer token WHEN a protected route is called THEN 401 authentication_required is returned without an account lookup."""
+        _, seen = token_seam
+
+        response = app.test_client().get(
+            "/api/diner/stalls", headers={"Authorization": "Bearer é"}
+        )
+
+        assert response.status_code == 401
+        assert response.get_json()["error"]["code"] == "authentication_required"
+        assert seen == []
+
     def test_missing_authorisation_header_requires_sign_in(self, app):
         """GIVEN a request with no Authorization header WHEN the current user is resolved THEN authentication_required is raised."""
         with app.test_request_context():

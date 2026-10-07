@@ -95,11 +95,11 @@ class _CommandTracker:
             entry["rows"] = len(reply.get("cursor", {}).get("firstBatch", []))
         micros = getattr(event, "duration_micros", None)
         if micros is not None:
-            entry["server_ms"] = round(micros / 1000, 3)
+            entry["command_ms"] = round(micros / 1000, 3)
         else:
-            server_ms = getattr(event, "duration", None)
-            if server_ms is not None:
-                entry["server_ms"] = server_ms
+            command_ms = getattr(event, "duration", None)
+            if command_ms is not None:
+                entry["command_ms"] = command_ms
 
     def command_failed(self, event) -> None:
         name = (getattr(event, "command_name", "") or "").lower()

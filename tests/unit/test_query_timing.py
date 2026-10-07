@@ -108,7 +108,7 @@ def test_tracker_counts_find_rows_and_wall_time():
     assert entry["database"] == "skipq_system_test"
     assert entry["rows"] == 5
     assert entry["wall_ms"] >= 0
-    assert entry["server_ms"] == 1.25
+    assert entry["command_ms"] == 1.25
 
 
 def test_tracker_converts_duration_micros_to_milliseconds():
@@ -119,7 +119,7 @@ def test_tracker_converts_duration_micros_to_milliseconds():
     tracker = _CommandTracker()
     tracker.command_started(event)
     tracker.command_succeeded(event)
-    assert tracker.finds[0]["server_ms"] == 1.5
+    assert tracker.finds[0]["command_ms"] == 1.5
 
 
 def test_tracker_counts_other_commands_separately():
