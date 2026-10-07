@@ -2,14 +2,22 @@
 
 The Q7(a) mark needs a **narrated, ≤8-minute, 720p MP4** of SkipQ in use,
 showing one order followed across *both* personas and two rule violations
-refused on screen. This folder is the preparation and the proof that the
-steps are real; the narrated recording itself is the human step
-(`recording-steps.md`).
+refused on screen. The [completed local MP4](screencast.mp4) is **6:26,
+1280×720, 7.9 MB**, with captions and computer-generated narration. It records
+automated actions in the actual running app, including both sign-ins, the
+same order through collection, both expected outcomes spoken before the
+violations, and the visible refusals. Review it before submission. Publication
+and marker playback/access remain pending.
 
 ## What is here
 
 | File | Role |
 |---|---|
+| `screencast.mp4` | Actual live UI recording, computer-generated voice, burned-in captions; all elapsed waits and the payment failure/retry retained. |
+| `screencast.srt`, `video-chapters.md` | Separate captions and chapter timestamps. |
+| `video-verification.json`, `video-recording.log`, `video-timeline.json` | Exact media verification, genuine UI/cleanup log and recorded scene intervals. |
+| `video-production.md` | Production method, speech disclosure, reproduction commands and access limits. |
+| `video-narration.json`, `record_video.py`, `video_tools.py` | Exact generated narration and live capture/encoding sources. |
 | `script.md` | The timed narration script (~7:20), with the expected outcome of each rule violation stated *before* it happens — the TMA-critical marker. |
 | `demo-data.md` | The seeded accounts, stalls, menu, orders and the exact state the recording must start from (and what it restores). |
 | `recording-steps.md` | The human runbook: the guarded database, both servers, two logged-in personas, recording settings, the take, and the post-take checks (≤8:00, 720p, MP4, <100 MB, link plays for a non-owner). |
@@ -33,9 +41,14 @@ cart lines, and restores the two vendor-side states it changed).
 
 ## Boundaries
 
-- A script, or a silent video, does **not** satisfy Q7(a): the submission
-  recording is the *narrated* MP4 made by the student, and this folder
-  must not be presented as that recording.
+- Scripts, screenshots and silent footage are preparation. `screencast.mp4`
+  is the newly created narrated recording; its voice is synthesized and its
+  UI actions are automated, explicitly disclosed. It must not be described
+  as the student's own recorded voice or manual operation.
+- The first encoder attempt failed while copying protected macOS font
+  metadata. `video-encoding-first-failure.log` retains the failure; the helper
+  now copies font bytes only. The live application take had no capture failure,
+  and the encoder retry did not change or trim its footage.
 - The demo script is evidence that the scripted narration matches the
   running app — not the assessed application's own test suites.
 - All of this runs against the guarded `skipq_system_test` database; it

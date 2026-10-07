@@ -130,8 +130,10 @@ The application and independent verification work are complete. The submission d
 - [Report source](docs/report/report.md)
 - [Final verification and remaining actions](docs/assessment/codex-handover.md)
 - [Narration script](q7-screencast/script.md) and [recording instructions](q7-screencast/recording-steps.md)
+- [Narrated demonstration MP4](q7-screencast/screencast.mp4) — 6:26, 1280×720, 7.9 MB; automated live browser actions with explicitly disclosed computer-generated narration and captions.
+- [Video chapters](q7-screencast/video-chapters.md), [verification](q7-screencast/video-verification.json) and [production notes](q7-screencast/video-production.md)
 
-Still required: the student's narrated ≤8-minute 720p MP4, cover-page details, missing original AI prompt records, publication/access checks and submission. No narrated recording, push or submission is claimed here. Add the actual recording link to both READMEs and the report when verified.
+Still required: review the complete video and choose it or a personally narrated replacement; fill cover-page details; export missing original AI prompt records; publish with authorization, verify marker playback/access and submit. The local MP4 is verified; no push, external access check or submission is claimed.
 
 The historical load measurements are retained. Read the [timing interpretation correction](docs/report/q6-load-verdict.md) with them; `server_ms` in old files is driver-observed command duration. New runs use `command_ms`. Reproduce the paired analysis with `.venv/bin/python scripts/summarize_performance.py`.
 

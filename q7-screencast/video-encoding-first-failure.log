@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/q7-screencast/video_tools.py", line 173, in <module>
+    globals()[parser.parse_args().mode]()
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/q7-screencast/video_tools.py", line 112, in render
+    shutil.copy2(Path("/System/Library/Fonts/Supplemental") / name, fonts / name)
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/shutil.py", line 476, in copy2
+    copystat(src, dst, follow_symlinks=follow_symlinks)
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/shutil.py", line 413, in copystat
+    lookup("chflags")(dst, st.st_flags, follow_symlinks=follow)
+PermissionError: [Errno 1] Operation not permitted: '/Users/arellakoo/Documents/DevOpsAss/.local/demo-video/fonts/Arial.ttf'

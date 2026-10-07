@@ -1,5 +1,10 @@
 # Q7(a) screencast — recording steps (human-only)
 
+An automated live recording with computer-generated narration is now available
+as [screencast.mp4](screencast.mp4), verified at 6:26/720p/7.9 MB. See
+[production notes](video-production.md) for disclosure and reproduction. The
+instructions below remain available for a personally narrated replacement.
+
 The TMA requires a **narrated ≤8-minute, 720p MP4** of the application in
 use. This page is the runbook: what to have running, how to record, and how
 to check the finished file. The narration itself is yours to deliver
@@ -92,12 +97,12 @@ If a take is interrupted, check the current cart, order, item availability and t
   links from `docs/report/report.md` (Q7(a) section) and both READMEs.
 - Verify the link plays from a non-owner account before submission.
 
-## 6. What is *not* in this folder
+## 6. Preparation and the subsequently created recording
 
-- This folder deliberately contains the **scripted, un-narrated
-  verification** (`demo_script.py` + `demo-run-log.md` + screenshots),
-  not the submission MP4. A script or silent video does not satisfy Q7(a);
-  the narrated recording is the human step.
+- `demo_script.py`, `demo-run-log.md` and screenshots are scripted verification,
+  not the video. A script or silent video does not satisfy Q7(a). The later
+  `screencast.mp4` is actual live UI footage with disclosed synthesized speech
+  and automated actions; student review and remote playback/access remain pending.
 - The demo script's screenshots (`demo-screenshots/`) are 1280×720
   headless-Chromium captures of the exact scripted steps; they are
   evidence that the script's expectations match the running app, and they

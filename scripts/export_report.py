@@ -502,7 +502,7 @@ def main():
         print(f"PDF: {pdf_path}")
     print(f"Embedded figures: {sum(b.kind == 'image' for b in blocks)}")
     print(f"Tables: {sum(b.kind == 'table' for b in blocks)}")
-    print("Draft keeps cover/video placeholders and disclosure gaps visible; review before submission.")
+    print("Draft retains outstanding personal/access inputs and disclosure gaps; review before submission.")
 
 
 if __name__ == "__main__":

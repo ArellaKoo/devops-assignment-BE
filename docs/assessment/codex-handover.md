@@ -1,6 +1,6 @@
 # Codex continuation handover — 7 October 2026
 
-User instruction: “could u continue where qwen agent has left off?” Publishing, submission and narrated recording remain outside this continuation's authorized scope.
+User instruction: “could u continue where qwen agent has left off?” Publishing, submission and narrated recording were initially outside that continuation's scope. The later video request authorizes a local recording, documented below.
 
 ## Starting state and findings
 
@@ -76,7 +76,7 @@ Exact output is in `clone-*.log`. After both browser runs, canonical seed data w
 ## Remaining human actions
 
 1. Fill PI number, name and actual submission date in report.md; regenerate the DOCX/PDF.
-2. Record a narrated MP4 of at most eight minutes at 720p following the script. Verify actual duration, resolution, MP4 encoding and file size; a script, screenshots or silent footage is not that deliverable. Add the accessible video link to the report and both READMEs.
+2. Review the completed local MP4, which uses disclosed computer-generated narration and automated live UI actions. Choose it or a personally narrated replacement. Marker playback/access still needs checking after authorized publication; the local video is linked in the report and both READMEs.
 3. Export missing original AI/user/delegated prompt records from the actual conversation history. Existing gaps stay disclosed; no encrypted record or reconstructed prose is presented as an exact original prompt.
 4. Confirm these are the course-intended repositories, authorize/publish both final branches and video, verify marker/non-owner access, then submit by the stated assignment deadline. No submission status or grade is guaranteed.
 
@@ -85,3 +85,9 @@ The working-repository servers were started for verification on 127.0.0.1:5001 (
 ## Subsequent frontend assessment review
 
 The user's frontend quality request is recorded in P17. This review supersedes the earlier final counts above: **313 unit passed; 24 targeted browser checks passed; functional 10 passed twice; assessed browser 1 passed twice; production build and full demo rehearsal passed.** Thirty layouts at 1280/375/320 pixels showed no horizontal overflow or uncaught page errors. Known closed/unavailable cart state, navigation, request guards, read recovery and incoming-queue polling were corrected; the report screenshots and recording sequence were refreshed. See `frontend-quality-review.md` and `docs/evidence/frontend-quality/` for exact proof and measurement limits. This stage changes no product dependency or installation prerequisite; the earlier independent clean-clone installation evidence remains historical, and current app behaviour was verified from the working repositories. Human actions and publishing boundaries remain unchanged.
+
+## Subsequent narrated video production
+
+The user requested a complete video demonstration (P18). `q7-screencast/screencast.mp4` is now a verified **6:26, 1280×720, 7,926,270-byte H.264/AAC MP4**, with burned-in captions and separate SRT. It records actual automated browser actions, with disclosed computer-generated Samantha speech. Thirty chapters cover both sign-ins, the same new order through collection, both expected outcomes spoken before vendor changes, both visible checkout refusals and retained carts, payment failure/retry, history snapshots, vendor CRUD, cancellation/refund and a seeded older Ready order becoming NoShow. The final evidence slides explicitly summarize earlier retained results. No assessed suite was rerun for this video.
+
+All live UI assertions passed. Full audio/video decoding exited zero; rendered previews from all 30 chapters were inspected. Both expectations precede the rule-breaking vendor actions in the actual timeline. No elapsed capture time, error or retry was removed. The first encoder attempt failed on macOS protected font metadata; that failure is retained, and copying font bytes fixed it without re-recording or trimming. Only this take’s guarded fixture changes and created documents were restored/removed; canonical counts are 2/6/5/2/9 and original fixture equality passed. Production sources, narration, timestamp ledger and verification are under `q7-screencast/`. Student review, personal cover inputs, missing historical prompt exports, publication/access and submission remain pending. Nothing was pushed or submitted.

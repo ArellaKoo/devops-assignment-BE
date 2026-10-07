@@ -53,7 +53,7 @@ The flows: diner **Login → Stalls → Menu → Cart → Checkout → Tracking*
 
 ## Q7 — Screencast and product hypotheses
 
-**Q7(a) — the recording.** Preparation for the narrated ≤8-minute 720p MP4 is in `q7-screencast/` (backend repository): a timed narration script with the expected visible outcome stated before each step, the demo-data checklist, the recording steps, and a scripted demo run that executed the exact script headlessly and verified each visible refusal (`q7-screencast/demo-run-log.md`). The narrated recording itself is made by the student: **[RECORDING LINK PENDING — human-only]**.
+**Q7(a) — the recording.** [Narrated demonstration MP4](../../q7-screencast/screencast.mp4): 6:26, 1280×720, 7.9 MB, with captions. It records real UI actions across both signed-in roles, the same order through collection and both announced checkout refusals; payment failure/retry and elapsed waits are retained. Browser actions are automated and narration is computer-generated, disclosed on screen and in [production notes](../../q7-screencast/video-production.md). Full audio/video decoding and live UI checks passed ([verification](../../q7-screencast/video-verification.json)). Student review, authorized publication and outside-owner playback/access checks remain pending.
 
 **Q7(b) — two falsifiable hypotheses from the built MVP (400–500 words).**
 

@@ -1,0 +1,218 @@
+{
+  "duration_seconds": 385.61780520901084,
+  "queue_number": "Q-5142af2c9c1d41dbbcf3e9f9aebe2ef6",
+  "capture_failure": null,
+  "captured_frames": 3053,
+  "scenes": [
+    {
+      "id": "intro",
+      "role": "Diner",
+      "start": 0.026046625018352643,
+      "end": 23.74361829200643,
+      "duration": 22.966583333333332
+    },
+    {
+      "id": "signin",
+      "role": "Diner",
+      "start": 23.74558162500034,
+      "end": 35.228828167018946,
+      "duration": 10.729083333333334
+    },
+    {
+      "id": "empty",
+      "role": "Diner",
+      "start": 35.232000834017526,
+      "end": 44.27611383399926,
+      "duration": 8.289979166666667
+    },
+    {
+      "id": "menu",
+      "role": "Diner",
+      "start": 44.28816270901007,
+      "end": 56.3871685420163,
+      "duration": 11.347854166666666
+    },
+    {
+      "id": "cart",
+      "role": "Diner",
+      "start": 56.40342620899901,
+      "end": 68.5399038750038,
+      "duration": 11.385541666666667
+    },
+    {
+      "id": "paymentfail",
+      "role": "Diner",
+      "start": 68.54273854201892,
+      "end": 84.12943266701768,
+      "duration": 14.835604166666666
+    },
+    {
+      "id": "paid",
+      "role": "Diner",
+      "start": 84.13068950001616,
+      "end": 96.1628740419983,
+      "duration": 11.2810625
+    },
+    {
+      "id": "pending",
+      "role": "Diner",
+      "start": 96.16537525001331,
+      "end": 102.97744479202083,
+      "duration": 6.060875
+    },
+    {
+      "id": "vendorlogin",
+      "role": "Vendor",
+      "start": 102.98016125001595,
+      "end": 112.1310591250076,
+      "duration": 8.400645833333334
+    },
+    {
+      "id": "accept",
+      "role": "Vendor",
+      "start": 112.13232087501092,
+      "end": 121.05748308400507,
+      "duration": 8.173895833333333
+    },
+    {
+      "id": "preparing",
+      "role": "Diner",
+      "start": 121.06074095901567,
+      "end": 129.4080841249961,
+      "duration": 7.597208333333334
+    },
+    {
+      "id": "ready",
+      "role": "Vendor",
+      "start": 129.40894275001483,
+      "end": 139.00625712500187,
+      "duration": 8.847270833333333
+    },
+    {
+      "id": "readydiner",
+      "role": "Diner",
+      "start": 139.00721187499585,
+      "end": 145.5174330000009,
+      "duration": 5.7590208333333335
+    },
+    {
+      "id": "collect",
+      "role": "Vendor",
+      "start": 145.520335084002,
+      "end": 154.0738992500119,
+      "duration": 7.802375
+    },
+    {
+      "id": "history",
+      "role": "Diner",
+      "start": 156.08746333399904,
+      "end": 173.17234641700634,
+      "duration": 16.333666666666666
+    },
+    {
+      "id": "soldsetup",
+      "role": "Diner",
+      "start": 173.17460291701718,
+      "end": 183.76091004200862,
+      "duration": 9.835104166666667
+    },
+    {
+      "id": "soldexpect",
+      "role": "Diner",
+      "start": 183.76304308400722,
+      "end": 197.3554791250208,
+      "duration": 12.841104166666666
+    },
+    {
+      "id": "soldtoggle",
+      "role": "Vendor",
+      "start": 197.3598855000164,
+      "end": 206.27336895899498,
+      "duration": 8.162270833333332
+    },
+    {
+      "id": "soldrefuse",
+      "role": "Diner",
+      "start": 206.27617420902243,
+      "end": 218.91188641701592,
+      "duration": 11.8845
+    },
+    {
+      "id": "retained",
+      "role": "Diner",
+      "start": 218.91509162500734,
+      "end": 228.48563350000768,
+      "duration": 8.819291666666667
+    },
+    {
+      "id": "closedsetup",
+      "role": "Diner",
+      "start": 228.49722012502025,
+      "end": 236.77924516701023,
+      "duration": 7.5308125
+    },
+    {
+      "id": "closedexpect",
+      "role": "Diner",
+      "start": 236.78138291701907,
+      "end": 251.68550775002223,
+      "duration": 14.153020833333333
+    },
+    {
+      "id": "closedtoggle",
+      "role": "Vendor",
+      "start": 251.6869596670149,
+      "end": 259.5439399169991,
+      "duration": 7.105770833333334
+    },
+    {
+      "id": "closedrefuse",
+      "role": "Diner",
+      "start": 259.5472972500138,
+      "end": 272.0647467499948,
+      "duration": 11.767125
+    },
+    {
+      "id": "crud",
+      "role": "Vendor",
+      "start": 272.06575383400195,
+      "end": 288.497738917009,
+      "duration": 15.681229166666666
+    },
+    {
+      "id": "refund",
+      "role": "Vendor",
+      "start": 288.4987025420123,
+      "end": 299.8478907920071,
+      "duration": 10.598104166666667
+    },
+    {
+      "id": "noshow",
+      "role": "Vendor",
+      "start": 299.8485592090001,
+      "end": 312.4634311670088,
+      "duration": 11.863770833333334
+    },
+    {
+      "id": "evidence",
+      "role": "Evidence",
+      "start": 312.77877266702126,
+      "end": 337.5745909590041,
+      "duration": 24.044729166666666
+    },
+    {
+      "id": "performance",
+      "role": "Evidence",
+      "start": 337.5804646250035,
+      "end": 358.892916834011,
+      "duration": 20.561729166666666
+    },
+    {
+      "id": "close",
+      "role": "Diner",
+      "start": 358.8936129170179,
+      "end": 385.5095250000013,
+      "duration": 25.865229166666666
+    }
+  ]
+}

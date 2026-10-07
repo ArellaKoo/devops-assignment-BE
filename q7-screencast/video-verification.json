@@ -1,0 +1,19 @@
+{
+  "file": "screencast.mp4",
+  "sha256": "27795a5fcdd61bcdff4b72ecc6a7b7820ace7ac46979e55f4580855d419fec08",
+  "bytes": 7926270,
+  "decoded_last_video_timestamp_seconds": 385.541667,
+  "resolution": "1280x720",
+  "video_codec": "H.264",
+  "audio_codec": "AAC",
+  "audio_mean_volume_db": -16.1,
+  "full_audio_video_decode_exit": 0,
+  "live_ui_checks": "passed",
+  "queue_number": "Q-5142af2c9c1d41dbbcf3e9f9aebe2ef6",
+  "chapters": 30,
+  "captured_frames": 3053,
+  "narration": "macOS Samantha, computer generated",
+  "actions": "Playwright, actual running UI",
+  "editing": "All elapsed recording time retained; persona view switches labelled. Captions and narration composited.",
+  "external_playback_access": "not tested; unpublished local artifact"
+}

@@ -433,3 +433,39 @@ Codex reviewed the original Q5/Q6 requirements, the existing approved design and
 Verification: meaningful failing browser checks are retained in red.log, queue-red.log, removed-red.log and closed-red.log; failing unit cases are in cart-availability-red.log/cart-stall-red.log. The corrected supplementary browser review passed 24 checks and restored its guarded records. Original local diner/vendor/history QA scripts were adapted into portable guarded copies and rerun (26/37/15 passing checks); a stale technical-copy assertion failed in the first diner run and was replaced with visible failure feedback plus an assertion on actual emitted retry keys, with the failure log preserved. This is supplementary UI verification, not an implementation of Q4(c)'s designed H01–H11 functional suite.
 
 Final offline suite: 313 passed; functional suite: 10 passed twice without reset between (4.27/3.88 s); assessed real-API browser lifecycle: 1 passed twice without reset between (11.28/11.36 s); production build successful; 30 desktop/small-screen layouts had no horizontal overflow or uncaught page errors. Both actual demo refusals and the complete same-order lifecycle passed. All persona screenshots, route table, flow explanations, Q1 screen-gap notes, recording sequence and report drafts were refreshed. Diagnostic HTTP faults are explicitly labelled; no fabricated evidence, narrated video, push or submission is claimed. Existing historical disclosure gaps remain visible.
+
+## P18 — Q7(a): narrated live video production
+
+Exact user prompt:
+
+```text
+can you do a video demo for me covering evrrythung
+```
+
+Codex produced the local `q7-screencast/screencast.mp4` and its narration,
+captions, chapter list, capture/encoding sources and verification records.
+Browser actions use Playwright against the actual React/Flask/MongoDB application,
+with both roles signing in through separate browser sessions. The voice is
+computer-generated macOS Samantha, not the student's voice; opening/closing
+narration and a persistent on-screen label disclose both synthesized speech
+and automation. Expected outcomes are spoken in separate beats before both
+vendor-side changes. All elapsed capture intervals, polling and the deliberate
+simulated-payment failure/retry are retained. The final evidence slides summarize
+the earlier retained October 7 tests/load results, clearly labelled; no assessed
+suite or new load measurement was run for this video. No subagent was used.
+
+Fresh verification: 30 live chapters completed, all recorded UI assertions passed,
+both checkout refusals created no additional order, and the original guarded
+fixtures were restored exactly (2 vendors / 6 users / 5 items / 2 carts / 9 orders).
+Full MP4 audio/video decode exited zero: H.264/AAC, 1280×720, 6:26,
+7,926,270 bytes, audio mean −16.1 dB. Thirty rendered chapter previews were
+visually reviewed. Speech contains 1,009 words; separate captions use proportional
+word timing, not forced alignment. The first encoder attempt failed when copying
+protected macOS font metadata; the failure is preserved in
+`video-encoding-first-failure.log`. Copying font bytes instead fixed encoding,
+without editing or repeating the successful UI take. Both READMEs, report source
+and handover link the local artifact and disclose its production. The DOCX/PDF
+were regenerated after this disclosure. Student review, missing personal inputs
+and historical prompt exports, authorized publishing, outside-owner playback/access
+and Canvas submission remain pending. No voice imitation, invented test results,
+hidden UI errors, push or submission is claimed.

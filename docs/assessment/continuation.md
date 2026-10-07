@@ -299,3 +299,17 @@ Code commits: backend `08e5b7e`; frontend `a97047e`, frontend documentation `7e1
 At the user's request, Codex reviewed Q5/Q6 and corrected unreadable navigation, sign-in pending/return paths, failed-read recovery, known cart availability/trading-state visibility, payment-time controls, vendor synchronous guards and incoming queue polling. Cart DTO now includes the derived stall presentation state and treats inactive items as unavailable. No product dependency change or frontend unit/component suite was added.
 
 Actual final proof: unit 313 passed; supplementary browser 24/24; diner/vendor/history UI checks 26/37/15 passed; functional 10 passed ×2 (4.27/3.88 s), browser 1 passed ×2 (11.28/11.36 s), each pair without reset between; production build successful; 30 layouts, zero horizontal overflow/page errors; full demo passed with 26 authentic captures. Meaningful RED evidence and the adapted QA script's obsolete-copy failure are retained. Screenshots, route table, Q1 screen gaps, recording instructions and report exports were refreshed. See frontend-quality-review.md. No push/submission/recording was performed.
+# Narrated video follow-up — 7 October 2026
+
+The later user request “can you do a video demo for me covering evrrythung”
+authorizes local video production. The completed recording is
+`q7-screencast/screencast.mp4`: 6:26, 720p, 7.9 MB, with computer-generated
+narration and actual automated browser actions, disclosed on screen. It covers
+both sign-ins, the same order through collection, both announced refusals and
+retained carts, payment failure/retry, history, menu CRUD, refund and no-show.
+The full media decoder and live UI assertions passed, and all touched test fixtures
+were restored exactly. Production sources, captions, 30 chapter timestamps,
+verification JSON and the first encoder failure are retained under `q7-screencast/`.
+The app source/dependencies were unchanged. The report and both READMEs link the
+recording; publication and marker access remain pending. Earlier records describing
+narration as pending are historical and superseded by this follow-up.

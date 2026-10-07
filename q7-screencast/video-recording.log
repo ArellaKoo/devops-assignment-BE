@@ -1,0 +1,36 @@
+PREFLIGHT: 9 seed orders; running API matches guarded database
+   0.03s  Diner: intro
+  23.75s  Diner: signin
+  35.23s  Diner: empty
+  44.29s  Diner: menu
+  56.40s  Diner: cart
+  68.54s  Diner: paymentfail
+  84.13s  Diner: paid
+SAME ORDER: Q-5142af2c9c1d41dbbcf3e9f9aebe2ef6
+  96.17s  Diner: pending
+ 102.98s  Vendor: vendorlogin
+ 112.13s  Vendor: accept
+ 121.06s  Diner: preparing
+ 129.41s  Vendor: ready
+ 139.01s  Diner: readydiner
+ 145.52s  Vendor: collect
+ 156.09s  Diner: history
+ 173.17s  Diner: soldsetup
+ 183.76s  Diner: soldexpect
+ 197.36s  Vendor: soldtoggle
+ 206.28s  Diner: soldrefuse
+SOLD-OUT REFUSAL: cart retained, 10 total orders (9 seeds + 1 demo)
+ 218.92s  Diner: retained
+ 228.50s  Diner: closedsetup
+ 236.78s  Diner: closedexpect
+ 251.69s  Vendor: closedtoggle
+ 259.55s  Diner: closedrefuse
+CLOSED-STALL REFUSAL: cart retained, no additional order
+ 272.07s  Vendor: crud
+ 288.50s  Vendor: refund
+ 299.85s  Vendor: noshow
+ 312.78s  Evidence: evidence
+ 337.58s  Evidence: performance
+ 358.89s  Diner: close
+RECORDING: ALL LIVE UI CHECKS PASSED
+CLEANUP: original guarded fixtures restored exactly; development DB untouched
