@@ -469,3 +469,48 @@ were regenerated after this disclosure. Student review, missing personal inputs
 and historical prompt exports, authorized publishing, outside-owner playback/access
 and Canvas submission remain pending. No voice imitation, invented test results,
 hidden UI errors, push or submission is claimed.
+
+## P19 — GitHub publishing and authentication repair
+
+Exact user prompt:
+
+```json
+{
+  "prompt": "i want to push code but i encounter\n\n((.venv) ) (base) arellakoo@Arellas-MacBook-Air backend % git push --set-upstream origin setup/lab-adaptation        \nremote: Permission to ArellaKoo/devops-assignment-BE.git denied to Arella-Koo.\nfatal: unable to access 'https://github.com/ArellaKoo/devops-assignment-BE.git/': The requested URL returned error: 403\n\ncn you help me push"
+}
+```
+
+The user's browser-login response was “done”. Codex reproduced the 403,
+verified that the cached credential authenticated as `Arella-Koo`, and installed
+the official GitHub CLI v2.102.0 ARM64 binary under the ignored workspace tooling
+directory after release-archive SHA-256 verification. The user completed browser
+authentication as `ArellaKoo`. Repository-scoped credential helpers select this
+account, while the previous credential remains stored. Both repositories were
+pushed on `setup/lab-adaptation`; remote heads matched backend `4c26ee9` and
+frontend `d2a9a1c`, with zero ahead/behind and clean working directories. An
+anonymous full MP4 download returned 200 and matched the local video hash.
+No password/token contents were printed or committed; no force push, deletion,
+deployment or Canvas submission was performed. This later request supersedes
+the earlier boundary that left publishing unauthorised.
+
+## P20 — Align current documentation with default main
+
+Exact user prompt:
+
+```json
+{
+  "prompt": "okay i set both repo to have main branch and made it default. "
+}
+```
+
+Both local branches already tracked `origin/main`. Remote symbolic HEADs and
+main commit IDs confirmed that both default branches contained the complete
+published code. Codex updated current README and exported report hyperlinks to
+`main`, refreshed publication status and retained historical milestone records.
+Public repository pages and a full raw video download returned 200 without
+authentication; downloaded bytes matched the decoded MP4. Exact access evidence
+is `docs/assessment/published-main-access.json`. DOCX/PDF were regenerated and
+their main-branch hyperlinks checked. These are documentation/publication checks;
+the assessed suites were not rerun and no new load result is claimed. Student
+playback review, personal cover inputs, historical prompt gaps and submission
+remain pending.

@@ -15,5 +15,5 @@
   "narration": "macOS Samantha, computer generated",
   "actions": "Playwright, actual running UI",
   "editing": "All elapsed recording time retained; persona view switches labelled. Captions and narration composited.",
-  "external_playback_access": "not tested; unpublished local artifact"
+  "external_playback_access": "Public main raw file downloaded HTTP 200 without credentials; SHA-256 matches verified MP4. See docs/assessment/published-main-access.json. Student playback review remains pending."
 }

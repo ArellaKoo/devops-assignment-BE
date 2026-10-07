@@ -6,8 +6,9 @@ refused on screen. The [completed local MP4](screencast.mp4) is **6:26,
 1280×720, 7.9 MB**, with captions and computer-generated narration. It records
 automated actions in the actual running app, including both sign-ins, the
 same order through collection, both expected outcomes spoken before the
-violations, and the visible refusals. Review it before submission. Publication
-and marker playback/access remain pending.
+violations, and the visible refusals. Review it before submission. Both repositories are now published on default `main`; anonymous repository
+access and full video-download hash equality passed. Student playback review
+remains pending.
 
 ## What is here
 

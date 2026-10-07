@@ -1,0 +1,26 @@
+{
+  "checked_date_sgt": "2026-10-07",
+  "checks": [
+    {
+      "artifact": "backend",
+      "url": "https://github.com/ArellaKoo/devops-assignment-BE/tree/main",
+      "http_status": 200,
+      "authenticated": false
+    },
+    {
+      "artifact": "frontend",
+      "url": "https://github.com/ArellaKoo/devops-assignment-FE/tree/main",
+      "http_status": 200,
+      "authenticated": false
+    },
+    {
+      "artifact": "video",
+      "url": "https://raw.githubusercontent.com/ArellaKoo/devops-assignment-BE/refs/heads/main/q7-screencast/screencast.mp4",
+      "http_status": 200,
+      "authenticated": false,
+      "bytes": 7926270,
+      "sha256": "27795a5fcdd61bcdff4b72ecc6a7b7820ace7ac46979e55f4580855d419fec08"
+    }
+  ],
+  "limits": "Public repository pages and complete video download checked without credentials; video bytes match the already decoded local MP4. No claim of manual marker/browser playback or Canvas submission."
+}

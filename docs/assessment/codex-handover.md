@@ -47,7 +47,7 @@ The supplementary fault checks do not replace the assessed browser lifecycle. Th
 
 ## Local commits and isolation
 
-Both assignment repositories remain on `setup/lab-adaptation`, the existing user-selected working branch. Backend code fix: `08e5b7e`; frontend fix: `a97047e`; frontend handover documentation: `7e1a5f3`. Report/evidence commits follow these; inspect `git log -5 --oneline` for the final heads. No push, merge to a default branch, publication or Canvas submission has been performed.
+At this original pre-publication stage, both assignment repositories used `setup/lab-adaptation`. The current published branch is `main`, as recorded below. Backend code fix: `08e5b7e`; frontend fix: `a97047e`; frontend handover documentation: `7e1a5f3`. Report/evidence commits follow these; inspect `git log -5 --oneline` for the final heads. No push, merge to a default branch, publication or Canvas submission has been performed.
 
 Rulings: retained original load records rather than rewriting their historical field names; corrected their interpretation in a separate reproducible analysis. Generated DOCX and PDF from the same assembled content because LibreOffice was unavailable. Kept Q4(c) design-only as the assessment requires.
 
@@ -76,9 +76,9 @@ Exact output is in `clone-*.log`. After both browser runs, canonical seed data w
 ## Remaining human actions
 
 1. Fill PI number, name and actual submission date in report.md; regenerate the DOCX/PDF.
-2. Review the completed local MP4, which uses disclosed computer-generated narration and automated live UI actions. Choose it or a personally narrated replacement. Marker playback/access still needs checking after authorized publication; the local video is linked in the report and both READMEs.
+2. Review the completed local MP4, which uses disclosed computer-generated narration and automated live UI actions. Choose it or a personally narrated replacement. Public repository access and full video download have now been checked; confirm human playback before submission. The video is linked in the report and both READMEs.
 3. Export missing original AI/user/delegated prompt records from the actual conversation history. Existing gaps stay disclosed; no encrypted record or reconstructed prose is presented as an exact original prompt.
-4. Confirm these are the course-intended repositories, authorize/publish both final branches and video, verify marker/non-owner access, then submit by the stated assignment deadline. No submission status or grade is guaranteed.
+4. Confirm these are the course-intended repositories, review marker playback and submit by the stated assignment deadline. Both repositories and the video are published on `main`; anonymous access/download passed. No submission status or grade is guaranteed.
 
 The working-repository servers were started for verification on 127.0.0.1:5001 (skipq_system_test) and 127.0.0.1:5173. Development data was not cleared. Re-run the documented start commands if these processes have stopped.
 
@@ -91,3 +91,7 @@ The user's frontend quality request is recorded in P17. This review supersedes t
 The user requested a complete video demonstration (P18). `q7-screencast/screencast.mp4` is now a verified **6:26, 1280×720, 7,926,270-byte H.264/AAC MP4**, with burned-in captions and separate SRT. It records actual automated browser actions, with disclosed computer-generated Samantha speech. Thirty chapters cover both sign-ins, the same new order through collection, both expected outcomes spoken before vendor changes, both visible checkout refusals and retained carts, payment failure/retry, history snapshots, vendor CRUD, cancellation/refund and a seeded older Ready order becoming NoShow. The final evidence slides explicitly summarize earlier retained results. No assessed suite was rerun for this video.
 
 All live UI assertions passed. Full audio/video decoding exited zero; rendered previews from all 30 chapters were inspected. Both expectations precede the rule-breaking vendor actions in the actual timeline. No elapsed capture time, error or retry was removed. The first encoder attempt failed on macOS protected font metadata; that failure is retained, and copying font bytes fixed it without re-recording or trimming. Only this take’s guarded fixture changes and created documents were restored/removed; canonical counts are 2/6/5/2/9 and original fixture equality passed. Production sources, narration, timestamp ledger and verification are under `q7-screencast/`. Student review, personal cover inputs, missing historical prompt exports, publication/access and submission remain pending. Nothing was pushed or submitted.
+
+## Publication and default main branch — 7 October 2026
+
+The user authorized pushing the assignment repositories. The saved macOS credential authenticated as `Arella-Koo`, which GitHub refused; GitHub CLI browser login authenticated as `ArellaKoo`, and repository-scoped credential helpers now select that account without deleting the previous saved credential. Backend `4c26ee9` and frontend `d2a9a1c` were pushed. The user then set both `main` branches as default and aligned the local branches to `origin/main`; remote main heads were verified to contain those complete commits. Both public repository pages and the complete video download were checked without authentication, and the video SHA-256 matches the verified local MP4 (`published-main-access.json`). Current report/README links target `main`. Historical paragraphs above retain the original pre-publication state. No force push, remote branch deletion, deployment or Canvas submission was performed. Student video review, cover inputs, historical prompt gaps and submission remain pending.

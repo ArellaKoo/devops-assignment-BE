@@ -313,3 +313,7 @@ verification JSON and the first encoder failure are retained under `q7-screencas
 The app source/dependencies were unchanged. The report and both READMEs link the
 recording; publication and marker access remain pending. Earlier records describing
 narration as pending are historical and superseded by this follow-up.
+
+## Authorized publication and default main branch — 7 October 2026
+
+The user authorized the pushes, signed into GitHub CLI as `ArellaKoo`, and then set both repositories to default `main`. Backend `4c26ee9` and frontend `d2a9a1c` were verified on remote main; local branches already tracked origin/main. Current README/report hyperlinks were updated from the old setup branch. Anonymous public repository pages and full MP4 download returned 200; its hash matches the verified video. Current documentation/report exports now identify publication as complete, while personal inputs, historical disclosure gaps, student playback review and submission remain pending. No app source/dependency changes, force push or branch deletion were needed.

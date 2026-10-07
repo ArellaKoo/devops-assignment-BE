@@ -102,7 +102,7 @@ If a take is interrupted, check the current cart, order, item availability and t
 - `demo_script.py`, `demo-run-log.md` and screenshots are scripted verification,
   not the video. A script or silent video does not satisfy Q7(a). The later
   `screencast.mp4` is actual live UI footage with disclosed synthesized speech
-  and automated actions; student review and remote playback/access remain pending.
+  and automated actions; anonymous public download has passed; student playback review remains pending.
 - The demo script's screenshots (`demo-screenshots/`) are 1280×720
   headless-Chromium captures of the exact scripted steps; they are
   evidence that the script's expectations match the running app, and they

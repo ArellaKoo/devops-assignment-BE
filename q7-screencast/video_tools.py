@@ -164,7 +164,7 @@ def verify():
             "queue_number":timeline["queue"],"chapters":len(timeline["scenes"]),"captured_frames":len(timeline["frames"]),
             "narration":"macOS Samantha, computer generated","actions":"Playwright, actual running UI",
             "editing":"All elapsed recording time retained; persona view switches labelled. Captions and narration composited.",
-            "external_playback_access":"not tested; unpublished local artifact"}
+            "external_playback_access":"not tested by this local media verification command; see separate publication/access evidence"}
     (SOURCE/"video-verification.json").write_text(json.dumps(result,indent=2)+"\n")
     (WORK/"decode.log").write_text(log)
     print(json.dumps(result,indent=2))

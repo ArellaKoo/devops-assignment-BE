@@ -40,8 +40,8 @@ BACKEND = Path(__file__).resolve().parents[1]
 WORKSPACE = BACKEND.parent
 REPORT_DIR = BACKEND / "docs" / "report"
 BLUE = "174469"
-REPO_URL = "https://github.com/ArellaKoo/devops-assignment-BE/blob/setup/lab-adaptation/"
-FRONTEND_URL = "https://github.com/ArellaKoo/devops-assignment-FE/blob/setup/lab-adaptation/"
+REPO_URL = "https://github.com/ArellaKoo/devops-assignment-BE/blob/main/"
+FRONTEND_URL = "https://github.com/ArellaKoo/devops-assignment-FE/blob/main/"
 
 
 @dataclass

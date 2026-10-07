@@ -133,7 +133,7 @@ The application and independent verification work are complete. The submission d
 - [Narrated demonstration MP4](q7-screencast/screencast.mp4) — 6:26, 1280×720, 7.9 MB; automated live browser actions with explicitly disclosed computer-generated narration and captions.
 - [Video chapters](q7-screencast/video-chapters.md), [verification](q7-screencast/video-verification.json) and [production notes](q7-screencast/video-production.md)
 
-Still required: review the complete video and choose it or a personally narrated replacement; fill cover-page details; export missing original AI prompt records; publish with authorization, verify marker playback/access and submit. The local MP4 is verified; no push, external access check or submission is claimed.
+Still required: review the complete video and choose it or a personally narrated replacement; fill cover-page details; export missing original AI prompt records; review marker playback and submit. Both repositories are published on the default `main` branch; anonymous repository access and a full video download have passed, with the downloaded bytes matching the decoded local MP4. See [public access evidence](docs/assessment/published-main-access.json). Canvas submission remains pending.
 
 The historical load measurements are retained. Read the [timing interpretation correction](docs/report/q6-load-verdict.md) with them; `server_ms` in old files is driver-observed command duration. New runs use `command_ms`. Reproduce the paired analysis with `.venv/bin/python scripts/summarize_performance.py`.
 

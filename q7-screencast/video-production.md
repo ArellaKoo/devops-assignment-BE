@@ -81,3 +81,13 @@ An accessible video link still requires publishing the authorized branch and
 checking playback from outside the owner's account. Local encoding/decoding does
 not establish marker access. No push, hosting, or Canvas submission is authorized
 by this video request or performed by this workflow.
+
+## Subsequent publication
+
+A separate user instruction authorized pushing both repositories. Both are now
+published on default `main`; local branches track `origin/main`. Anonymous
+repository page requests and a complete raw video download returned HTTP 200.
+Downloaded video bytes match the decoded local MP4. See
+`../docs/assessment/published-main-access.json`. Student playback review and
+Canvas submission remain pending. Earlier scope notes describe the original
+video-production request, before this later publishing authorization.
