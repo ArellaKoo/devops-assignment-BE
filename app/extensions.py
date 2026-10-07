@@ -3,6 +3,8 @@
 from flask_cors import CORS
 from mongoengine import connect
 
+from app.query_timing import client_class
+
 cors = CORS()
 
 
@@ -14,6 +16,9 @@ def init_extensions(app) -> None:
         host=app.config["MONGODB_HOST"],
         connect=False,
         uuidRepresentation="standard",
+        # Q6(b) opt-in instrumentation: a pass-through client unless the
+        # SKIPQ_QUERY_TIMING flag is set in this process (see query_timing).
+        mongo_client_class=client_class(),
     )
     cors.init_app(
         app,

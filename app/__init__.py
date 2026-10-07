@@ -12,6 +12,7 @@ from app.controllers.order import diner_orders_bp, vendor_orders_bp
 from app.controllers.vendor import vendor_bp
 from app.errors import register_error_handlers
 from app.extensions import init_extensions
+from app.query_timing import install as install_query_timing
 
 
 def create_app(config: dict | None = None) -> Flask:
@@ -34,6 +35,7 @@ def create_app(config: dict | None = None) -> Flask:
 
     app.config["SECRET_KEY"] = app.config["TOKEN_SECRET"]
     init_extensions(app)
+    install_query_timing(app)
     register_error_handlers(app)
     app.register_blueprint(auth_bp)
     app.register_blueprint(diner_bp)

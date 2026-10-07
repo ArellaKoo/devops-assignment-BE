@@ -13,6 +13,7 @@ from app.models.cart import Cart
 from app.models.common import same_document
 from app.models.menu_item import MenuItem
 from app.models.vendor import Vendor
+from app.query_timing import timed_segment
 
 diner_bp = Blueprint("diner", __name__, url_prefix="/api/diner")
 
@@ -31,7 +32,8 @@ def stall_menu(stall_id):
     stall = Vendor.get(stall_id)
     if stall is None:
         raise NotFound("This stall does not exist. Pick one from the stall list.")
-    items = [item.to_dict() for item in MenuItem.list_for_vendor(stall)]
+    with timed_segment("menu_materialize") as items:
+        items.extend(item.to_dict() for item in MenuItem.list_for_vendor(stall))
     return jsonify(stall=stall.to_dict(), items=items)
 
 
