@@ -243,3 +243,31 @@ class TestClearForCheckout:
         result = cart.clear_items()
         assert result.items == []
         assert result.vendor is None
+
+
+@pytest.mark.parametrize('available,active,expected', [
+    (True, True, True), (False, True, False),
+    (True, False, False), (False, False, False),
+])
+def test_cart_read_exposes_only_published_available_lines(available, active, expected):
+    """GIVEN a live or removed menu line WHEN cart JSON is read THEN an inactive item is unavailable before the diner acts."""
+    diner = make_diner()
+    vendor = make_vendor()
+    item = make_item(vendor, available=available, active=active)
+    cart = make_cart(diner, vendor, [CartItem(menu_item=item, quantity=1)])
+    assert cart.to_dict()['items'][0]['is_available'] is expected
+
+
+@pytest.mark.parametrize('is_open', [True, False])
+def test_cart_read_exposes_current_stall_trading_state(is_open):
+    """GIVEN a cart at an open or closed stall WHEN its JSON is read THEN the diner can see trading state before changing or paying."""
+    diner = make_diner()
+    vendor = make_vendor(is_open=is_open)
+    cart = make_cart(diner, vendor, [CartItem(menu_item=make_item(vendor), quantity=1)])
+    assert cart.to_dict()['stall']['id'] == str(vendor.id)
+    assert cart.to_dict()['stall']['is_open'] is is_open
+
+
+def test_empty_cart_has_no_stall_state():
+    """GIVEN an empty cart WHEN JSON is read THEN no previous stall state is offered."""
+    assert make_cart(make_diner()).to_dict()['stall'] is None

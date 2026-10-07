@@ -187,7 +187,7 @@ class Cart(Document):
                     "name": menu_item.name if menu_item else None,
                     "price_cents": int(menu_item.price_cents) if menu_item else None,
                     "image_url": menu_item.image_url if menu_item else None,
-                    "is_available": bool(menu_item.is_available) if menu_item else False,
+                    "is_available": bool(menu_item.is_active and menu_item.is_available) if menu_item else False,
                     "quantity": int(line.quantity),
                     "line_cents": int(line.quantity) * int(menu_item.price_cents)
                     if menu_item
@@ -196,6 +196,7 @@ class Cart(Document):
             )
         return {
             "vendor": document_id(self.vendor),
+            "stall": self.vendor.to_dict() if self.vendor else None,
             "items": items,
             "total_cents": Cart.total_cents(self.items),
             "fingerprint": self.fingerprint(),

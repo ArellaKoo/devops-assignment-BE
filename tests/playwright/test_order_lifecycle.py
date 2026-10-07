@@ -92,7 +92,8 @@ def test_order_lifecycle_through_both_browser_personas(playwright, system_databa
         expect(lines.first.get_by_role("button", name=re.compile(r"^Remove .* from the cart$"))).to_be_visible()
         diner.get_by_role("link", name="Continue to checkout").click()
         expect(diner.get_by_role("heading", name="Checkout")).to_be_visible(timeout=10000)
-        expect(diner.locator(".card code").first).to_be_visible()  # server fingerprint
+        expect(diner.get_by_text("1 × Charcoal Chicken Rice", exact=True)).to_be_visible()
+        expect(diner.get_by_role("button", name="Pay $6.50", exact=True)).to_be_enabled()
         expect(diner.get_by_label("PayNow")).to_be_checked()
         expect(diner.locator("#simulate-failure")).not_to_be_checked()
 
