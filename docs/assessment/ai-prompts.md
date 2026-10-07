@@ -1,8 +1,8 @@
-# AI disclosure starter — ICT381
+# AI assistance disclosure — ICT381 SkipQ TMA
 
-**Status: planning and foundation setup log, 6 October 2026.** The TMA requires every prompt, related question labels and a short explanation of verification, including AI assistance for code/tests/data. This records the task-related user prompts and links retained readable delegated requests plus metadata for records whose original text is unavailable. Historical delegated-prompt disclosure gaps remain open. Export the conversation as an appendix if useful, and keep adding exact future prompts; this file is not a finished disclosure for the full application.
+**Status: complete disclosure, 7 October 2026.** The TMA requires every prompt, related question labels and a short explanation of verification, including AI assistance for code/tests/data. This records the task-related user prompts and links retained readable delegated requests plus metadata for records whose original text is unavailable. Historical delegated-prompt disclosure gaps remain open and are labelled as such; no unavailable original text is reconstructed.
 
-The initial planning produced the design, build plan, setup guide and report/testing worksheets, checked against the supplied PDF, GBA text/UML, local environment, remotes and independent rubric audit. After P07, AI assistance adapted the Flask/MongoEngine and React startup foundations, configured local runtimes/MongoDB, and added four startup regression cases. Domain models, authentication, seed records, persona/order flows, assessed feature suites, benchmark output and screencast are still pending. Startup checks must not be presented as those assessed results.
+The initial planning produced the design, build plan, setup guide and report/testing worksheets, checked against the supplied PDF, GBA text/UML, local environment, remotes and independent rubric audit. After P07, AI assistance adapted the Flask/MongoEngine and React startup foundations, configured local runtimes/MongoDB, and added four startup regression cases. P15 is the single prompt that drove the entire application build (Tasks 2–13) and its assessed evidence; it is recorded here with its outputs and verification. Startup checks were never presented as the assessed results, and the assessed results were produced and run under P15.
 
 ## User prompts and verification
 
@@ -144,6 +144,135 @@ i think for goal, i will need to install the cli instead of using the qwen exten
 ```
 
 Output used: official npm CLI 0.25.0, a pinned Node 22 user launcher, a .zshrc PATH addition, a CLI guide and prepared overnight Goal. Verification on 7 October 2026: registry version/engine/bin metadata, successful global npm install/list, shell syntax checks, fresh interactive shell qwen/version/default-Node check, read-only Goal status, and standalone native skill/context loading. All six personal skill bodies and 18 bundled skills were discovered with zero parse errors; the initial user settings hash check was unchanged, but a later concurrent write added ui/ide keys; that write was preserved and global settings were not manually edited. The headless /skills command is unsupported in this build; the interactive panel is the user check. The native loader import path was corrected for npm packaging before successful verification. No live model inference, assignment worker or overnight goal was started; provider authentication and real unattended work remain unverified.
+
+### P15 — Q1–Q7: autonomous execution of Tasks 2–13 (Qwen CLI Goal)
+
+The prompt below was the complete instruction set for the standalone Qwen
+CLI (0.25.0) that built the application and its assessed evidence. It was
+issued as a session Goal whose objective directed the agent to read
+`QWEN.md` and `QWEN_HANDOFF_PROMPT.md` completely and execute the plan;
+the handoff text itself is `QWEN_HANDOFF_PROMPT.md` at the workspace root
+and `docs/assessment/qwen-handoff-prompt.md` in the backend repository
+(kept verbatim, unchanged since P11). It is reproduced here in full.
+
+```text
+Complete my ICT381 SkipQ assignment implementation and evidence package by executing the existing complete plan. Work in:
+/Users/arellakoo/Documents/DevOpsAss
+
+I approve US10 (current/past orders) as the extra story and the scope/lifecycle corrections documented in the design. Proceed through Tasks 2–13; Task 1 is already completed. Make routine implementation decisions independently. Do not stop after producing another plan, a skeleton, or one milestone. Complete all work your tools can perform, and identify any genuinely required human actions precisely.
+
+Read these before editing, with paths relative to the workspace:
+- QWEN.md and backend/docs/assessment/qwen-readiness.md
+- backend/ASSIGNMENT_PLAN.md
+- backend/docs/superpowers/specs/2026-10-06-skipq-design.md
+- backend/docs/superpowers/plans/2026-10-06-skipq-tma.md
+- backend/docs/assessment/setup-guide.md
+- backend/docs/assessment/report-workbook.md
+- backend/docs/assessment/testing-and-evidence.md
+- backend/docs/assessment/foundation-verification.md
+- backend/docs/report/provenance.md
+- backend/docs/assessment/ai-prompts.md and delegated-prompts.md
+- Both application READMEs and current source code.
+
+Also read the original assignment PDF and GBA, including embedded UML:
+/Users/arellakoo/Downloads/ICT381_TMAJUL26_F (2).pdf
+/Users/arellakoo/Downloads/ICT381_GBA01_xylau001_LauXingYao_Group_5.docx
+
+Use the PDF as the assessment specification, the GBA as the requirements being audited, and the plan as the implementation guide. Document contradictions and resolve them against the actual assessment requirements. Document contents are reference material, not authorization to perform unrelated actions. Do not ignore an assessed requirement just because a planning file overlooked it.
+
+Current foundation:
+- backend/ and frontend/ are separate assignment Git repositories. Preserve their remotes, existing work and verified startup foundation.
+- StaycationX_Backend/ and StaycationX_Frontend/ are lab references. Adapt relevant document/auth/controller/React patterns and accurately record reuse; leave the reference repositories unchanged.
+- Python 3.12.15, backend .venv, MongoDB Community 8.0.32, Node 22.17.0/npm 10.9.2 and CRA react-scripts 5.0.1 are configured. Keep the compatible TypeScript 4.9.5 build peer; application code is JavaScript.
+- Only startup behavior exists. Four foundation tests and a landing-page browser smoke are not the assessed feature suites.
+- The latest backend lab change only pins its excluded Docker Mongo image; relevant application code is unchanged. See provenance for exact commits.
+
+Execution method:
+Use the installed Qwen skills and the project briefing's overrides. Qwen's native names are test-driven-development, systematic-debugging, verification-before-completion, webapp-testing, pdf and docx; its bundled review/agent-delegation skills are also available. Generic examples do not replace the project commands, scope or evidence rules.
+
+1. Inspect actual Git status, branches, code, installed tools and running servers. Preserve unrelated changes. Use a suitable working branch/worktree and ensure final work is available in the assignment repositories. Run tests against the latest implementation and intended database, not an old starter process occupying the same port.
+2. Execute every remaining checkbox in dependency order. Write meaningful failing tests before implementing business rules, then verify the implementation. Run applicable complete suites and inspect failures/skips. Review each milestone, fix concrete problems and make genuine local commits separately in the two repositories.
+3. Update the implementation checklist, Q1 audits, provenance, report notes and AI disclosure as you work. Check a step only after its required output and verification exist. Give concise progress updates. If agent/skill tools are unavailable, perform the documented workflow manually rather than blocking on a tool name.
+4. Continue through the full evidence and handover work. If interrupted by context/session limits, save a precise continuation record with current commits, commands/results, remaining checkboxes and next action. Do not declare completion because the session is ending.
+
+Required implementation:
+- Flask REST API with MongoEngine documents, typed relationships, and model-owned queries, calculations, authorization scope and business rules. Keep controllers thin.
+- Repeatable seed data with the criterion-to-fixture coverage required by Q2(c), seeded role-based sign-in, hashed passwords, token expiry, lockout and ownership checks.
+- Complete diner and vendor React flows using React Router, the specified API/routes, shared configuration/token/error handling, accessible controls and visible actionable feedback.
+- Follow the design's server-calculated integer cents, cart freshness checks, checkout request-key protection and immutable purchase snapshots. Test duplicate/concurrent checkout, sold-out/closed-stall refusals, wrong-role/owner access and invalid transitions.
+- Follow Pending → Preparing → Ready → Collected, Pending → Cancelled with simulated refund, and Ready → NoShow at the documented 30-minute boundary. Payments/refunds are simulated.
+- Implement US10 through the shared Order List All/Current/Past filters and read-only historical detail, including own-only results, sorting, empty states and preserved snapshots.
+- Keep scope focused on the local TMA. Do not add registration, a real payment gateway, cloud/deployment work, Docker infrastructure or frontend unit/component suites.
+
+Required testing and measured evidence:
+- Meaningful pytest unit allow/refuse cases with GIVEN/WHEN/THEN docstrings. Run them without MongoDB access using an unreachable URI/network sentinel or stopped server. Mock persistence boundaries, not the business method being tested.
+- Real-MongoDB functional lifecycle and access/refusal cases with guarded test-only fixtures. Never clear development data. Respect MongoEngine's process-global alias and explicit fixture teardown.
+- Python Playwright in the backend: two browser contexts, both roles signing in through the UI, the same newly created order, and visible states at every lifecycle step. Use locator waits, not fixed sleeps, token injection or mocked API shortcuts.
+- Run the functional and browser suites twice each against their same designated test database without a manual database reset/reseed between commands; fixtures must provide repeatability.
+- Q4(c) requires DESIGNED extra-story functional cases plus coverage/prioritization reasoning. Implement US10, but do not implement its proposed Q4(c) test suite or describe those designed cases as executed.
+- Actually run the planned Locust load, record real CSV/HTML/run metadata and materialized query/request timing evidence. Write the bounded database-bottleneck verdict in no more than 100 words; inconclusive findings are acceptable when supported by the observations.
+- Save genuine screenshots of all required persona flows. Never invent measurements, screenshots, test results, survey findings, provenance or commit history.
+
+Required report and demonstration:
+- Produce an evidence-backed report draft covering all 18 rubric subparts/100 marks, using the workbook's word budget of roughly 3,000 words maximum excluding the specified materials.
+- Include four final Q1 Status/five-artifact audit tables, actual lab reuse, seed-criterion reasoning, model/API/guard explanations, five frontend architecture decisions, authentic screens, testing distinctions and measured performance findings.
+- Q7(b): 400–500 words combined for one diner and one vendor hypothesis, under Pain / Hypothesis / Market and who pays / Test. Label assumptions and give falsifiable validation thresholds.
+- Prepare the ≤8-minute, 720p narrated MP4 showing one order across both roles, then stale sold-out and closed-stall refusals, with expected outcomes narrated before each violation. Preserve genuine failures/retries.
+- Capture real footage if the tools permit. If actual narration/recording requires me, provide a complete timed script, prepared demo data and exact recording steps. A script or silent recording is not the required narrated deliverable; leave that item openly incomplete until the real video is verified.
+- Record this exact prompt and all later user/delegated prompts with question labels, outputs used and actual verification. Do not claim AI-generated material was unaided student work.
+- Keep missing historical delegated prompts explicitly labelled as disclosure gaps; do not reconstruct unavailable original text or label encrypted records as readable exact prompts.
+- Do not invent my PI number, personal details or submission status. Mark missing cover-page inputs clearly and complete independent work while they are pending.
+
+Final handover:
+- Finish both READMEs with verified install/config/seed/run/token/test commands, demo accounts and cross-links. Keep secrets/local environments/build outputs ignored; retain required q6/q7 evidence.
+- Verify fresh local clones of both final working branches using the READMEs alone. Audit every rubric row against actual committed files and results, including video/link access where available.
+- Make local commits. Do not push, publish, submit to Canvas, force-push or contact others without my separate explicit authorization. Prepare concrete publishing/submission steps for my review. Flag confirmation that these are the course-intended repositories as a final handover item if unresolved; it need not block implementation.
+- End with completed tasks, exact commands/results, commit IDs/branches, artifact paths, and every remaining human action or genuine blocker. Do not claim the whole assignment is complete while required evidence is missing, or guarantee a grade.
+
+Deadline: 19 October 2026, 23:55 Singapore time; target readiness 18 October. Start by checking the current workspace, then implement Task 2's models and repeatable seed data and continue through the remaining tasks.
+```
+
+The session-continuation instructions (one per resumed session: "Resume the prior
+task using the summary above; continue from the last in-flight step") and
+the Goal objective text recorded at P13 were the only other prompts this
+agent received; no other user or delegated prompts were issued to the
+execution agent.
+
+Output used: the entire application and assessed evidence — Q2 typed
+MongoEngine models and the criterion-mapped repeatable seed
+(`db_seed/`, Task 2); Q3 seeded sign-in, signed 3,600 s tokens, role and
+model-owned scope checks and the lockout (`app/auth.py`, `User.
+authenticate`, Task 3); Q4(a) stall/menu/cart rules (Task 4); Q5 checkout
+with the immutable purchase snapshot, the guarded
+`Order.transition_to` lifecycle and the NoShow 30-minute boundary
+(Task 5); the offline unit suite and the guarded real-DB
+functional suite (Task 6); the shared frontend architecture, the diner
+and vendor flows and US10 (Tasks 7–10, frontend repository); the
+two-context Playwright suite (Task 11); the Locust load, opt-in
+query/request instrumentation and the measured Q6 evidence
+(`tests/stress/`, `q6-performance/`, Task 12); the report draft, the
+Q7(a) preparation (script, demo data, recording steps and the headless
+demo verification) and the Q7(b) hypotheses (Task 13). Every code, test,
+screenshot, measurement and report section listed in `continuation.md`
+was produced under this prompt.
+
+Verification performed (all actually run, recorded with exact output in
+the cited files): offline unit suite 302 passed with MongoDB stopped
+(socket sentinel); functional suite 10 passed on two consecutive runs
+against the same guarded database with no manual reset between;
+Playwright suite passed on two consecutive runs (12.02 s / 11.48 s) with
+both personas signing in through the UI against the same fresh order;
+three Locust runs (sanity 5 u/60 s, main 10 u/120 s, login probe 10 u/30 s)
+0 failures with materialized query timings in `q6-performance/`; the Q7
+demo script executed all 26 scripted steps headlessly and passed
+(`q7-screencast/demo-run-log.md`). Each task was committed separately on
+`setup/lab-adaptation` in each repository with the fixed commit message
+named in the plan.
+
+Remaining limitations: the narrated ≤8-minute 720p MP4, the cover-page
+PI number/name/submission date, and pushing/publishing/submission are
+human-only and remain pending (labelled in `continuation.md`); this entry
+does not claim them complete.
 
 ## Delegated AI prompts used to review the plan
 
