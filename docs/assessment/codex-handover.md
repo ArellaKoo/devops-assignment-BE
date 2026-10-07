@@ -55,7 +55,23 @@ Deferred minor: the existing MongoEngine UUID-representation deprecation warning
 
 ## Fresh-clone check
 
-A new check of the final committed code/report package is recorded below once it runs. The earlier Qwen fresh-clone rehearsal remains in `clean-checkout-rehearsal.md` with its original commit IDs and results; it is not relabelled as this continuation's work.
+Fresh local clones of backend `d4ebe42` and frontend `a8364f8` were created at `.local/codex-final-checkouts/20261007-120043/`. This package includes the final code fixes and assembled report. Subsequent changes only add this verification record and give the report a standalone cover; application code is unchanged.
+
+The clones used their own new Python environment, their own `npm ci`, their own `.env` files (a newly generated local secret, never logged), and both servers ran from the clones during browser verification. No working-tree venv, node_modules or config was borrowed. MongoDB and the Playwright Chromium cache were the existing local prerequisites.
+
+| Fresh-clone command/check | Actual result |
+|---|---|
+| Fresh venv + install both requirements files | Success |
+| `python -m pip check` | No broken requirements found |
+| `npm ci` on Node 22.17.0 | Success; legacy CRA deprecation/audit notices retained in the install log |
+| `npm run build` | Compiled successfully |
+| Unit suite | 306 passed in 6.06 s; network blocked by fixture sentinel |
+| Functional suite run 1 / run 2 | 10 passed in 4.63 s / 10 passed in 4.00 s; no reset between |
+| Guarded seed run 1 / run 2 | Stable 2 vendors / 6 users / 5 items / 2 carts / 9 orders |
+| Browser suite run 1 / run 2 | 1 passed in 15.39 s / 1 passed in 11.45 s; no reset between; existing UUID warning |
+| Artifact access | DOCX/PDF, performance CSVs and narration script present and readable |
+
+Exact output is in `clone-*.log`. After both browser runs, canonical seed data was restored and both servers were restarted from the working repositories for the user's demonstration. This was not a reset between verification runs. The original local development database was not cleared. The legacy CRA dependency notices were recorded; no forced dependency migration was performed because it would change the required lab build toolchain. The earlier Qwen fresh-clone rehearsal remains in `clean-checkout-rehearsal.md` with its original commit IDs and results; it is not relabelled as this continuation's work.
 
 ## Remaining human actions
 

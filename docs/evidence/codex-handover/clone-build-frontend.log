@@ -1,0 +1,30 @@
+UTC: 2026-10-07T04:01:22.445055+00:00
+CWD: /Users/arellakoo/Documents/DevOpsAss/.local/codex-final-checkouts/20261007-120043/frontend
+Command: npm run build
+
+> skipq-frontend@0.1.0 build
+> react-scripts build
+
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  62.49 kB  build/static/js/main.e44de6d4.js
+  31.84 kB  build/static/css/main.a9a44919.css
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+
+Exit code: 0

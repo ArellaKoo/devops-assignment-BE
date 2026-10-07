@@ -1,0 +1,13 @@
+UTC: 2026-10-07T04:02:23.835467+00:00
+CWD: /Users/arellakoo/Documents/DevOpsAss/.local/codex-final-checkouts/20261007-120043/backend
+Command: .venv/bin/python -m db_seed.seed
+Database: skipq_system_test
+Seeded database 'skipq_system_test':
+  vendors: 2
+  users: 6
+  menu_items: 5
+  carts: 2
+  orders: 9
+Re-running this script upserts the same records; unrelated data is not deleted. Demo account credentials are documented in README.md.
+
+Exit code: 0

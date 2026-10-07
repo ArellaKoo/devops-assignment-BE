@@ -1,0 +1,14 @@
+UTC: 2026-10-07T04:02:39.839765+00:00
+CWD: /Users/arellakoo/Documents/DevOpsAss/.local/codex-final-checkouts/20261007-120043/backend
+Command: .venv/bin/python -m pytest tests/playwright -q
+Both API and frontend run from fresh clones. Database: skipq_system_test
+.                                                                        [100%]
+=============================== warnings summary ===============================
+tests/playwright/test_order_lifecycle.py::test_order_lifecycle_through_both_browser_personas
+  /Users/arellakoo/Documents/DevOpsAss/.local/codex-final-checkouts/20261007-120043/backend/.venv/lib/python3.12/site-packages/mongoengine/connection.py:209: DeprecationWarning: No uuidRepresentation is specified! Falling back to 'pythonLegacy' which is the default for pymongo 3.x. For compatibility with other MongoDB drivers this should be specified as 'standard' or '{java,csharp}Legacy' to work with older drivers in those languages. This will be changed to 'unspecified' in a future release.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 1 warning in 15.39s
+
+Exit code: 0

@@ -417,3 +417,5 @@ i need more details. seems vague
 ```
 
 Verification for tooling prompts: settings were backed up and checked; the real model server refused max effort but accepted xhigh; finite request retry behavior was inspected in the installed CLI; a simulated supervisor disconnect/retry/completion run was checked; the viewer was syntax-checked; progress statements were qualified as saved evidence. Additional configuration JSON, the pasted failure/Terminal attachments and missing historical/delegated prompt originals still require export from the student’s conversation records.
+
+P16 fresh-checkout verification: local clones of backend d4ebe42/frontend a8364f8 installed cleanly into their own environments; pip check and frontend build passed; 306 unit cases passed; real-DB functional 10 passed twice; browser lifecycle 1 passed twice (15.39/11.45 s) with both servers running from the clones, no reset between runs. Original load evidence remained unchanged. DOCX/PDF exports were structurally checked and visually inspected; the cover was separated onto its own page after preview review. Exact fresh-run logs are retained under docs/evidence/codex-handover/.

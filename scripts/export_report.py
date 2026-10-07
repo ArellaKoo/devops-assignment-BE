@@ -225,6 +225,11 @@ def screenshot_appendix() -> list[Block]:
 
 def assemble() -> list[Block]:
     blocks = markdown_file(REPORT_DIR / "report.md")
+    first_answer = next(
+        i for i, block in enumerate(blocks)
+        if block.kind == "heading" and re.match(r"Q1\b", block.text)
+    )
+    blocks.insert(first_answer, Block("pagebreak"))
     blocks.extend(markdown_file(REPORT_DIR / "q1-audit.md", "Appendix A — Q1(a) four capability audits"))
     blocks.extend(markdown_file(REPORT_DIR / "provenance.md", "Appendix B — Q1(b) module provenance"))
     blocks.extend(markdown_file(REPORT_DIR / "seed-coverage.md", "Appendix C — Q2(c) criterion-by-criterion seed coverage"))

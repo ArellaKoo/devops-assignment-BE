@@ -1,30 +1,22 @@
-# ICT381 SkipQ assignment plan
+# ICT381 SkipQ assignment plan and current status
 
-**Deadline: 19 October 2026, 23:55 Singapore time.** Target completion is 18 October, leaving one day to resolve submission problems.
+**Deadline: 19 October 2026, 23:55 Singapore time.**
 
-Both repositories have been cloned and their origins checked:
+The application and independent verification work are complete locally on `setup/lab-adaptation`. Qwen completed the planned implementation, and Codex continued with code/report review, concrete fixes, fresh verification and assembled submission drafts on 7 October 2026. Task 13 remains partially complete because personal details, original prompt exports, narrated recording and publishing/submission need the student.
 
-- `backend/` → [devops-assignment-BE](https://github.com/ArellaKoo/devops-assignment-BE)
-- `frontend/` → [devops-assignment-FE](https://github.com/ArellaKoo/devops-assignment-FE)
+The two repositories are `backend/` ([devops-assignment-BE](https://github.com/ArellaKoo/devops-assignment-BE)) and `frontend/` ([devops-assignment-FE](https://github.com/ArellaKoo/devops-assignment-FE)). The app adapts the StaycationX labs using Flask, MongoEngine, local MongoDB and a separate React SPA. It covers diner ordering/tracking, vendor menu/trading/fulfillment, seeded role-based sign-in and US10 All/Current/Past orders. Payments are simulated, as scoped for the assignment.
 
-The user selected **adapt lab code**. Both repositories now contain startup foundations on `setup/lab-adaptation`: a Flask/MongoEngine backend and a React SPA adapted from the public StaycationX labs. Clean dependency installations, four startup regression cases, MongoDB connectivity, frontend production build and browser startup/navigation/API access have passed. Domain models, seed accounts, sign-in, diner/vendor flows, and assessed feature tests are still planned. Confirm these are the course-intended submission repositories before final handover.
+Current fresh-clone verification: **306 unit passed; functional 10 passed twice; browser lifecycle 1 passed twice; frontend production build passed.** Both suite pairs ran without a reset between their runs. Four additional frontend diagnostic checks and the complete two-persona demonstration rehearsal passed in the working repositories. Original Locust data records 395 successful menu requests; its measurement interpretation has been corrected without rewriting the raw evidence.
 
-The proposed app covers diner ordering/tracking, vendor menu/order/trading operation, seeded role-based sign-in, and **US10: current/past orders** as the extra story. Stack is Flask + MongoEngine + local MongoDB, with a separate React SPA. The TMA assesses local building/testing rather than deployment.
+Read these for the actual results and next actions:
 
-Read these in order:
+1. [Final continuation handover and remaining human actions](docs/assessment/codex-handover.md)
+2. [Editable Word report draft](docs/report/SkipQ_Report_Draft.docx) and [PDF preview](docs/report/SkipQ_Report_Draft.pdf)
+3. [Complete implementation plan and reconciled acceptance checklist](docs/superpowers/plans/2026-10-06-skipq-tma.md)
+4. [Approved design, models, API and routes](docs/superpowers/specs/2026-10-06-skipq-design.md)
+5. [Recording instructions](q7-screencast/recording-steps.md) and [narration script](q7-screencast/script.md)
+6. [AI disclosure and explicitly identified historical gaps](docs/assessment/ai-prompts.md)
 
-1. [Proposed design, scope corrections, models, API and routes](docs/superpowers/specs/2026-10-06-skipq-design.md)
-2. [Complete implementation plan: all 100 marks, 13 tasks, dates and verification](docs/superpowers/plans/2026-10-06-skipq-tma.md)
-3. [Local setup guide and observed environment](docs/assessment/setup-guide.md)
-4. [Four GBA audits, architecture reasoning and report word budget](docs/assessment/report-workbook.md)
-5. [Seed coverage, tests and evidence worksheet](docs/assessment/testing-and-evidence.md)
-6. [AI prompt disclosure starter](docs/assessment/ai-prompts.md)
-7. [Actual foundation verification and current limitations](docs/assessment/foundation-verification.md)
+Before submission, fill the cover details, export missing original prompt records, record and verify the narrated ≤8-minute 720p MP4, add its accessible link, publish the final repositories with authorization and verify marker access. The DOCX/PDF are drafts with these pending items visible. Nothing has been pushed or submitted, and no grade is guaranteed.
 
-Estimated work: roughly 45–55 focused hours. Prioritize functioning persona flows, model-owned rules, real repeatable tests, and specific evidence. Keep styling simple. Collect report notes, screenshots, prompt verification and commits throughout the build.
-
-The source choice is settled: [StaycationX_Backend](https://github.com/ArellaKoo/StaycationX_Backend) at `153ce9004ceb6fde84c35873b53b4957c76062a3` and [StaycationX_Frontend](https://github.com/ArellaKoo/StaycationX_Frontend) at `bc3367629ff31b920634dc3c046684f8c3877059`. The setup guide records the compatibility changes and commands. Next implementation task is typed models and repeatable seed data. US10 and the canonical lifecycle `Pending → Preparing → Ready → Collected` plus rejection/refund/no-show remain proposed business decisions for review. Seeded sign-in and simulated payment follow the TMA; no registration or real gateway is needed.
-
-Task 1 is verified and committed locally in both repositories. A fresh check of the user's synced lab sources found only an excluded Docker image pin in backend commit `7d509db`; the frontend and all backend application/dependency/test/seed files match the adaptation baselines. Local work has not been pushed or submitted.
-
-This plan maps every published marking requirement to a deliverable and verification step. It does not promise a grade or substitute for the working application and actual evidence.
+Adaptation sources: StaycationX_Backend at `153ce9004ceb6fde84c35873b53b4957c76062a3` and StaycationX_Frontend at `bc3367629ff31b920634dc3c046684f8c3877059`. Historical preparation and Qwen milestones remain in the [continuation record](docs/assessment/continuation.md).
