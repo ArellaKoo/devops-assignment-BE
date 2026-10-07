@@ -22,8 +22,7 @@ boundary; the named methods run for real.
   asserting on a mocked return value is not query verification. Asserting
   that a fake `list_for_diner` returns the rows the test told it to prove
   nothing about owner filtering, `status__in` semantics, or
-  newest-first ordering in MongoDB. Those behaviours are therefore not
-  claimed offline: the real-DB suite drives `list_for_diner` through
+  newest-first ordering in MongoDB. Those behaviours are not claimed offline; sorting is not independently established by the small functional fixtures: the real-DB suite drives `list_for_diner` through
   `GET /api/diner/orders?view=current|history` and checks the partition
   against documents that only the database wrote.
 - `Order.place_from_cart` is the same story: the offline cases exercise
@@ -39,8 +38,7 @@ boundary; the named methods run for real.
    functional tests never inject users: `User.create` writes a real hashed
    account, `POST /api/user/gettoken` must verify it and mint a signed
    3,600-second token, and every subsequent request carries that token
-   through `current_user()` → `require_role` → the model scope check. No
-   step of that chain exists in the unit suite — the unit route tests
+   through `current_user()` → `require_role` → the model scope check. The complete real-persistence chain cannot be established by the unit suite — the unit route tests
    patch `User.find_by_id` and cannot say anything about
    authentication against a stored hash, token round-trips through the
    JSON body, or the 401/403 boundary that only a real request exercises.
@@ -90,3 +88,7 @@ US10's history cases (the H01–H11 design table and the strategy/priority
 argument) are written as a design only in
 `docs/report/q4-extra-story-tests.md` (landed with Task 10); this build
 does not implement that suite, and nothing in Tasks 6–11 runs it.
+
+## Final review clarification
+
+The functional suite proves ownership/status filtering, stored purchase snapshots, guarded transitions and checkout concurrency. Its small order fixtures do not independently prove equal-time sorting or full newest-first ordering. Sorting was observed in the US10 browser checks; H09 remains a designed, unexecuted Q4(c) case. Current unit verification blocks socket access; MongoDB can remain running for other suites.

@@ -1,0 +1,153 @@
+FAIL network: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_visible" locator("[role=\"alert\"]") with timeout 3000ms
+  - waiting for locator("[role=\"alert\"]")
+
+Aria snapshot:
+- navigation:
+  - text: SkipQ Diner — diner.one@skipq.test
+  - link "Stalls":
+    - /url: /diner/stalls
+  - link "Cart":
+    - /url: /diner/cart
+  - link "My orders":
+    - /url: /diner/orders
+  - button "Sign out"
+- heading "Checkout" [level=2]
+- button "Refresh"
+- text: 1 × Charcoal Chicken Rice $6.50
+- separator
+- text: "Total:"
+- strong: $6.50
+- link "Edit cart":
+  - /url: /diner/cart
+- text: "Cart fingerprint:"
+- code: 53019c56af6292cf014373e46347b1e8e0eba59553099be6be0510a6509ce386
+- heading "Payment method (simulated)" [level=3]
+- radio "PayNow" [checked]
+- text: PayNow
+- radio "Card"
+- text: Card
+- radio "Cashless"
+- text: Cashless
+- checkbox "Simulate this payment failing (demo control)"
+- text: Simulate this payment failing (demo control)
+- button "Pay $6.50"
+FAIL server500: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_visible" locator("[role=\"alert\"]") with timeout 3000ms
+  - waiting for locator("[role=\"alert\"]")
+
+Aria snapshot:
+- navigation:
+  - text: SkipQ Diner — diner.one@skipq.test
+  - link "Stalls":
+    - /url: /diner/stalls
+  - link "Cart":
+    - /url: /diner/cart
+  - link "My orders":
+    - /url: /diner/orders
+  - button "Sign out"
+- heading "Checkout" [level=2]
+- button "Refresh"
+- text: 1 × Charcoal Chicken Rice $6.50
+- separator
+- text: "Total:"
+- strong: $6.50
+- link "Edit cart":
+  - /url: /diner/cart
+- text: "Cart fingerprint:"
+- code: 53019c56af6292cf014373e46347b1e8e0eba59553099be6be0510a6509ce386
+- heading "Payment method (simulated)" [level=3]
+- radio "PayNow" [checked]
+- text: PayNow
+- radio "Card"
+- text: Card
+- radio "Cashless"
+- text: Cashless
+- checkbox "Simulate this payment failing (demo control)"
+- text: Simulate this payment failing (demo control)
+- button "Pay $6.50"
+FAIL menu: Locator expected to be disabled
+Actual value: enabled 
+Call log:
+  - Expect "to_be_disabled" locator(".list-group-item").filter(has_text="Charcoal Chicken Rice").get_by_role("button") with timeout 3000ms
+  - waiting for locator(".list-group-item").filter(has_text="Charcoal Chicken Rice").get_by_role("button")
+    10 × locator resolved to <button type="button" class="btn btn-primary btn-sm">Add another (in cart: 1)</button>
+       - unexpected value "enabled"
+
+Aria snapshot:
+- 'button "Add another (in cart: 1)"'
+FAIL cart: Locator expected to be disabled
+Actual value: enabled 
+Call log:
+  - Expect "to_be_disabled" get_by_role("button", name="Increase quantity of Charcoal Chicken Rice", exact=True) with timeout 3000ms
+  - waiting for get_by_role("button", name="Increase quantity of Charcoal Chicken Rice", exact=True)
+    10 × locator resolved to <button type="button" class="btn btn-outline-primary btn-sm" aria-label="Increase quantity of Charcoal Chicken Rice">+</button>
+       - unexpected value "enabled"
+
+Aria snapshot:
+- button "Increase quantity of Charcoal Chicken Rice": +
+Exception in callback Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542
+handle: <Handle Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542>
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 543, in _done_callback
+    exc = future.exception()
+          ^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_page.py", line 310, in _on_route
+    handled = await route_handler.handle(route)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 442, in handle
+    return await self._handle_internal(route)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 484, in _handle_internal
+    return await handled_future
+           ^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+Exception in callback Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542
+handle: <Handle Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542>
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 543, in _done_callback
+    exc = future.exception()
+          ^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_page.py", line 310, in _on_route
+    handled = await route_handler.handle(route)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 442, in handle
+    return await self._handle_internal(route)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 484, in _handle_internal
+    return await handled_future
+           ^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+CLEANUP PASS: original diner cart restored; order count unchanged
+[
+  {
+    "check": "network",
+    "result": "FAIL",
+    "detail": "Locator expected to be visible\nActual value: None\nError: element(s) not found \nCall log:\n  - Expect \"to_be_visible\" locator(\"[role=\\\"alert\\\"]\") with timeout 3000ms\n  - waiting for locator(\"[role=\\\"alert\\\"]\")\n\nAria snapshot:\n- navigation:\n  - text: SkipQ Diner \u2014 diner.one@skipq.test\n  - link \"Stalls\":\n    - /url: /diner/stalls\n  - link \"Cart\":\n    - /url: /diner/cart\n  - link \"My orders\":\n    - /url: /diner/orders\n  - button \"Sign out\"\n- heading \"Checkout\" [level=2]\n- button \"Refresh\"\n- text: 1 \u00d7 Charcoal Chicken Rice $6.50\n- separator\n- text: \"Total:\"\n- strong: $6.50\n- link \"Edit cart\":\n  - /url: /diner/cart\n- text: \"Cart fingerprint:\"\n- code: 53019c56af6292cf014373e46347b1e8e0eba59553099be6be0510a6509ce386\n- heading \"Payment method (simulated)\" [level=3]\n- radio \"PayNow\" [checked]\n- text: PayNow\n- radio \"Card\"\n- text: Card\n- radio \"Cashless\"\n- text: Cashless\n- checkbox \"Simulate this payment failing (demo control)\"\n- text: Simulate this payment failing (demo control)\n- button \"Pay $6.50\""
+  },
+  {
+    "check": "server500",
+    "result": "FAIL",
+    "detail": "Locator expected to be visible\nActual value: None\nError: element(s) not found \nCall log:\n  - Expect \"to_be_visible\" locator(\"[role=\\\"alert\\\"]\") with timeout 3000ms\n  - waiting for locator(\"[role=\\\"alert\\\"]\")\n\nAria snapshot:\n- navigation:\n  - text: SkipQ Diner \u2014 diner.one@skipq.test\n  - link \"Stalls\":\n    - /url: /diner/stalls\n  - link \"Cart\":\n    - /url: /diner/cart\n  - link \"My orders\":\n    - /url: /diner/orders\n  - button \"Sign out\"\n- heading \"Checkout\" [level=2]\n- button \"Refresh\"\n- text: 1 \u00d7 Charcoal Chicken Rice $6.50\n- separator\n- text: \"Total:\"\n- strong: $6.50\n- link \"Edit cart\":\n  - /url: /diner/cart\n- text: \"Cart fingerprint:\"\n- code: 53019c56af6292cf014373e46347b1e8e0eba59553099be6be0510a6509ce386\n- heading \"Payment method (simulated)\" [level=3]\n- radio \"PayNow\" [checked]\n- text: PayNow\n- radio \"Card\"\n- text: Card\n- radio \"Cashless\"\n- text: Cashless\n- checkbox \"Simulate this payment failing (demo control)\"\n- text: Simulate this payment failing (demo control)\n- button \"Pay $6.50\""
+  },
+  {
+    "check": "menu",
+    "result": "FAIL",
+    "detail": "Locator expected to be disabled\nActual value: enabled \nCall log:\n  - Expect \"to_be_disabled\" locator(\".list-group-item\").filter(has_text=\"Charcoal Chicken Rice\").get_by_role(\"button\") with timeout 3000ms\n  - waiting for locator(\".list-group-item\").filter(has_text=\"Charcoal Chicken Rice\").get_by_role(\"button\")\n    10 \u00d7 locator resolved to <button type=\"button\" class=\"btn btn-primary btn-sm\">Add another (in cart: 1)</button>\n       - unexpected value \"enabled\"\n\nAria snapshot:\n- 'button \"Add another (in cart: 1)\"'"
+  },
+  {
+    "check": "cart",
+    "result": "FAIL",
+    "detail": "Locator expected to be disabled\nActual value: enabled \nCall log:\n  - Expect \"to_be_disabled\" get_by_role(\"button\", name=\"Increase quantity of Charcoal Chicken Rice\", exact=True) with timeout 3000ms\n  - waiting for get_by_role(\"button\", name=\"Increase quantity of Charcoal Chicken Rice\", exact=True)\n    10 \u00d7 locator resolved to <button type=\"button\" class=\"btn btn-outline-primary btn-sm\" aria-label=\"Increase quantity of Charcoal Chicken Rice\">+</button>\n       - unexpected value \"enabled\"\n\nAria snapshot:\n- button \"Increase quantity of Charcoal Chicken Rice\": +"
+  }
+]

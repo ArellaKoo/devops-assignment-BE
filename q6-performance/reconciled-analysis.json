@@ -1,0 +1,35 @@
+{
+  "source": "q6-performance/query-timing-main.jsonl",
+  "source_sha256": "149e89a2316d7b915684dde8296002045ff2964697efa73c552f74716c44569f",
+  "menu_requests": 395,
+  "failures": 0,
+  "finds_per_request": 3,
+  "timing_definition": "Historical server_ms is PyMongo duration_micros/1000: driver-observed command duration, including transport/driver overhead, not isolated MongoDB server execution time. New instrumentation calls it command_ms.",
+  "sum_of_three_command_durations_ms": {
+    "p50": 1.089,
+    "p95": 3.163,
+    "p99": 10.076,
+    "max": 33.975
+  },
+  "api_request_wall_ms": {
+    "p50": 2.769,
+    "p95": 8.229,
+    "p99": 21.533,
+    "max": 52.259
+  },
+  "menu_materialization_wall_ms": {
+    "p50": 0.733,
+    "p95": 2.01,
+    "p99": 5.465,
+    "max": 12.357
+  },
+  "paired_command_share_percent": {
+    "p50": 38.954,
+    "p95": 49.531,
+    "p99": 66.612,
+    "max": 76.207
+  },
+  "menu_requests_with_other_commands": 1,
+  "other_commands_total": 1,
+  "limits": "Small local seeded dataset, development server. No separate server profiler, no CPU attribution, no production scaling claim. Percentiles use linear interpolation; shares are paired per request."
+}

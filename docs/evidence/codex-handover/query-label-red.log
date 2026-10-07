@@ -1,0 +1,27 @@
+....F..........                                                          [100%]
+=================================== FAILURES ===================================
+_________________ test_tracker_counts_find_rows_and_wall_time __________________
+
+    def test_tracker_counts_find_rows_and_wall_time():
+        """GIVEN a find command pair WHEN it starts and succeeds THEN the tracker keeps collection, rows and a non-negative wall time."""
+        tracker = _CommandTracker()
+        tracker.command_started(_find_event(rows=5, duration_ms=1.25))
+        tracker.command_succeeded(_find_event(rows=5, duration_ms=1.25))
+        assert tracker.other_commands == 0
+        assert len(tracker.finds) == 1
+        entry = tracker.finds[0]
+        assert entry["command"] == "find"
+        assert entry["collection"] == "menu_items"
+        assert entry["database"] == "skipq_system_test"
+        assert entry["rows"] == 5
+        assert entry["wall_ms"] >= 0
+>       assert entry["command_ms"] == 1.25
+               ^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'command_ms'
+
+tests/unit/test_query_timing.py:111: KeyError
+=========================== short test summary info ============================
+FAILED tests/unit/test_query_timing.py::test_tracker_counts_find_rows_and_wall_time
+1 failed, 14 passed in 0.07s
+
+Exit code: 1

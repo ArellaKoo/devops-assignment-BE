@@ -16,21 +16,17 @@ user-administration or OneMap area exists, and no order screen is public.
 | `/diner/stalls` | `StallsPage` — open-stall discovery | diner |
 | `/diner/stalls/:stallId` | `MenuPage` — one stall's menu | diner |
 | `/diner/cart` | `CartPage` — cart, server total, fingerprint | diner |
-| `/diner/checkout` | `CheckoutPage` — placeholder until Task 8 | diner |
+| `/diner/checkout` | `CheckoutPage` — simulated payment, retry key and visible refusals | diner |
 | `/diner/orders` | `OrdersPage` — own order list | diner |
 | `/diner/orders/:orderId` | `OrderDetailPage` — own order detail | diner |
 | `/vendor/menu` | `VendorMenuPage` — own menu + trading state | vendor |
-| `/vendor/menu/new` | `MenuItemFormPage` — placeholder until Task 9 | vendor |
-| `/vendor/menu/:itemId/edit` | `MenuItemFormPage` — placeholder until Task 9 | vendor |
+| `/vendor/menu/new` | `MenuItemFormPage` — validated item creation/editing | vendor |
+| `/vendor/menu/:itemId/edit` | `MenuItemFormPage` — validated item creation/editing | vendor |
 | `/vendor/orders` | `VendorOrdersPage` — stall's paid queue | vendor |
 | `/vendor/orders/:orderId` | `VendorOrderDetailPage` — one paid order | vendor |
 | `*` | `NotFoundPage` — reachable catch-all | public |
 
-Task 7 delivers the shared architecture plus working stub screens (live
-reads where a screen's data contract already exists); Tasks 8–10 replace the
-stubs with the full diner flow, vendor trading/fulfillment, and the US10
-order-list views. The stubs deliberately keep stable structure (headings,
-list rows, buttons) so the Task 11 Playwright suite can target them.
+Tasks 7–10 implemented the shared modules and all diner/vendor screens. The current Order List includes All/Current/Past views; checkout and item forms are complete. Accessible headings, links and labels support the browser lifecycle suite.
 
 ## Five shared decisions
 

@@ -283,3 +283,11 @@ Updated after every milestone. Records completed work, verification results, com
 3. **Publish/submit**: push `setup/lab-adaptation` in both repositories (no push/publish/Canvas has been done — awaiting explicit instruction), confirm the repositories are the course-intended ones, verify marker access + video playback, and submit before **19 October 2026 23:55 SGT**.
 
 **Next action**: none for the agent — all independent work is complete and committed; the remaining items above are the student's. Live servers left running for the recording: the plain API on `127.0.0.1:5001` against `skipq_system_test` and the CRA dev server on `127.0.0.1:5173` (both restarted from the fresh rehearsal clones, whose code equals the committed code; restart them from the working repositories if preferred).
+
+## Codex continuation — final review and corrections (7 October 2026)
+
+The user asked Codex to continue after Qwen. Qwen’s final local work was retained; its Goal was paused on a separate completion-verifier HTTP 400. Fresh review identified and fixed malformed Unicode token handling, hidden checkout errors, overlapping cart/menu mutations, report assembly and evidence interpretation gaps. See `codex-handover.md` for the full findings, rulings, commands/results and remaining human actions.
+
+Fresh working-tree results: **306 unit passed; functional 10 passed ×2; browser 1 passed ×2 (12.97/11.12 s); supplementary frontend checks 4/4; production build successful; complete demo rehearsal passed.** The original performance evidence is retained with a reproducible corrected interpretation; it is not described as a new load run.
+
+Code commits: backend `08e5b7e`; frontend `a97047e`, frontend documentation `7e1a5f3`, `a8364f8`. DOCX/PDF report exports include the required tables and authentic screenshots; personal details, narrated video, missing historical prompts and publishing/submission remain pending. The old “all independent work complete” record above is superseded by this review, not deleted.

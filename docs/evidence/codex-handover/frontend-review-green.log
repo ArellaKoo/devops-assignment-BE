@@ -1,0 +1,23 @@
+PASS network
+PASS server500
+PASS menu
+PASS cart
+CLEANUP PASS: original diner cart restored; order count unchanged
+[
+  {
+    "check": "network",
+    "result": "PASS"
+  },
+  {
+    "check": "server500",
+    "result": "PASS"
+  },
+  {
+    "check": "menu",
+    "result": "PASS"
+  },
+  {
+    "check": "cart",
+    "result": "PASS"
+  }
+]

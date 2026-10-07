@@ -2,7 +2,7 @@
 
 Backend repository: [devops-assignment-BE](https://github.com/ArellaKoo/devops-assignment-BE). Frontend: [devops-assignment-FE](https://github.com/ArellaKoo/devops-assignment-FE).
 
-This is the Flask/MongoEngine backend for the ICT381 SkipQ TMA, adapted from StaycationX. It implements the SkipQ domain documents (users, stalls, menu items, carts, paid orders with embedded simulated payment), the repeatable demo seed, and — as the build continues — persona API routes and the assessed test suites. Read the [complete plan](ASSIGNMENT_PLAN.md), [workspace setup guide](docs/assessment/setup-guide.md), [verified startup checks](docs/assessment/foundation-verification.md) and [actual lab reuse](docs/report/provenance.md).
+This is the Flask/MongoEngine backend for the ICT381 SkipQ TMA, adapted from StaycationX. It implements the SkipQ domain documents (users, stalls, menu items, carts, paid orders with embedded simulated payment), the repeatable demo seed, persona API routes and the assessed test suites. Read the [complete plan](ASSIGNMENT_PLAN.md), [workspace setup guide](docs/assessment/setup-guide.md), [verified startup checks](docs/assessment/foundation-verification.md) and [actual lab reuse](docs/report/provenance.md).
 
 For Qwen Code, [QWEN.md](QWEN.md) supplies persistent project instructions; [the readiness record](docs/assessment/qwen-readiness.md) lists installed skills, verified helper tools and how to start the implementation handoff.
 
@@ -121,10 +121,32 @@ With the token from above, the diner and vendor persona routes are available:
 
 All of them require the Bearer token, refuse the wrong persona with 403, look up ids through the models (404 when missing or malformed), and scope every mutation to the actor's own records. Money is integer cents; the cart response carries the server-computed total and a checkout freshness fingerprint. Checkout stores one paid order per unique `(diner, checkout_key)` pair — a matching retry returns the stored order (200), a conflicting reuse is refused (409) — and the vendor's status changes go through the model's guarded lifecycle (terminal orders and the 30-minute no-show boundary included); the stall's paid queue stays processable while the stall is closed.
 
-## Remaining build
+## Report and final handover
 
-All assessed application work is in place: the unit, functional, browser and load suites; the diner (Tasks 8 and 10) and vendor (Task 9) screens; the measured `q6-performance/` load artifacts and the report evidence documents under `docs/report/`. Remaining in the [plan](docs/superpowers/plans/2026-10-06-skipq-tma.md): Task 13 — the final assembled report, the prepared `q7-screencast/` material (the **narrated** ≤8-minute 720p MP4 itself is recorded by the student, not the agent), and the clean-checkout handover. Add the narrated q7 recording link here when it exists.
+The application and independent verification work are complete. The submission draft includes the required tables, screenshots and disclosure appendices:
+
+- [Word report draft](docs/report/SkipQ_Report_Draft.docx)
+- [PDF report draft](docs/report/SkipQ_Report_Draft.pdf)
+- [Report source](docs/report/report.md)
+- [Final verification and remaining actions](docs/assessment/codex-handover.md)
+- [Narration script](q7-screencast/script.md) and [recording instructions](q7-screencast/recording-steps.md)
+
+Still required: the student's narrated ≤8-minute 720p MP4, cover-page details, missing original AI prompt records, publication/access checks and submission. No narrated recording, push or submission is claimed here. Add the actual recording link to both READMEs and the report when verified.
+
+The historical load measurements are retained. Read the [timing interpretation correction](docs/report/q6-load-verdict.md) with them; `server_ms` in old files is driver-observed command duration. New runs use `command_ms`. Reproduce the paired analysis with `.venv/bin/python scripts/summarize_performance.py`.
 
 ## Lab adaptation
 
 Factory/extension structure comes from the declared lab source. The legacy Flask-MongoEngine adapter is replaced with direct MongoEngine, configuration is externalized, CORS is limited to the configured frontend, and hotel/domain/HTML/session/Selenium/deployment code is excluded. See [provenance](docs/report/provenance.md) and [AI disclosure](docs/assessment/ai-prompts.md).
+
+## Optional report regeneration
+
+The committed DOCX/PDF drafts can be reviewed without document tools. To regenerate them after updating report sources, use a separate tooling environment:
+
+```bash
+python3.12 -m venv .local/report-tools
+.local/report-tools/bin/python -m pip install -r requirements-report.txt
+.local/report-tools/bin/python scripts/export_report.py
+```
+
+The exporter embeds the required appendix tables, authentic screenshots and AI disclosures. Inspect the generated document before submission; fill personal details and the recording link in `docs/report/report.md` and regenerate after they are supplied.

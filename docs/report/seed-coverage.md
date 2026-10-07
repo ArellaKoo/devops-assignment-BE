@@ -52,7 +52,7 @@ action is stated.
 | C1 US6 AC4: collected refresh | D1 reads O-C, and separately refreshes a newly collected order. | `200` shows Collected. The seeded record proves display; the transition action proves refresh sees a change. |
 | C2 US7 AC1: incoming paid order | V1 reads O-P, then refreshes after D1 places a fresh order. | `200` list/detail contains the order, queue number, item names and quantities; the new order appears. Failed payments never enter this list. |
 | C2 US7 AC2: accept | V1 accepts O-P. | `200`, Preparing. |
-| C2 US7 AC3: reject/refund | V1 rejects a separate Pending order (O-S2 or a fresh one). | `200`, Cancelled with payment Refunded; D1's read agrees. The refund is simulated. |
+| C2 US7 AC3: reject/refund | V1 rejects O-P or a fresh S1 Pending order; alternatively V2 rejects its own O-S2. | `200`, Cancelled with payment Refunded; D1's read agrees. The refund is simulated. |
 | C2 US7 AC4: ready | V1 marks O-PR Ready. | `200` with `ready_at`; D1 sees ready feedback. |
 | C2 US7 AC5: collected | V1 collects O-R. | `200`, Collected. The audit replaces this criterion's inconsistent "Completed" label with Collected, matching GBA Q4/Q5. |
 | C2 US7 AC6: NoShow | V1 acts on O-RO and tries the early action on O-R. | Overdue `200` NoShow/Paid; premature `409` with Ready unchanged. The exact 30-minute boundary uses an injected clock in unit tests rather than waiting. |

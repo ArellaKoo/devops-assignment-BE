@@ -49,22 +49,21 @@ Same password for both: `SkipQDemo2026!`.
   fine — say "it polls every three seconds" and let it happen; do not
   speed-ramp or cut, unless you then **explain the cut on screen** (the
   TMA accepts cuts of pure waiting only with an on-screen explanation).
-- **Size:** at 720p/H.264, 8 minutes is well under GitHub's 100 MB file
-  limit; check the file size when you finish. If it ever exceeded 100 MB,
+- **Size:** resolution alone does not determine file size. At approximately 1,000 kb/s video plus 96 kb/s audio, eight minutes is approximately 66 MB before container overhead. Check the actual file size when you finish. If it exceeds 100 MB,
   host it on an accessible service instead and link that — but verify the
   link plays from an account **without** owner privileges before relying
   on it.
 
 macOS options: QuickTime Player's screen recording (Cmd-Shift-5 → record
 selected portion, tick "microphone"), or OBS. Either is fine; the
-requirement is the content, not the tool.
+requirement is the content, not the tool. QuickTime typically creates MOV, so export/transcode to H.264 MP4; renaming the extension does not convert the file.
 
 ## 4. The take (follow `script.md`)
 
 One continuous take following the timed script:
 
 1. Intro on the sign-in screen (0:00).
-2. Diner: sign in, stalls, menu, add M1, cart, checkout, pay (0:20–1:30).
+2. Diner: sign in, open Cart and remove all seeded lines, return to stalls, menu, add M1, cart, checkout, pay (0:20–1:30).
 3. Diner: tracking, Pending (1:30).
 4. Vendor: sign in in the second context; the queue shows the diner's
    exact queue number; Accept → Preparing; cut to the diner's own
@@ -79,9 +78,7 @@ One continuous take following the timed script:
    closed stall (5:20–7:00).
 8. Close (7:00–7:20).
 
-If you drop the take, restart from the last phase boundary (A/B/C); the
-state is idempotent there. To reset completely, re-seed the guarded
-database (step 1.2).
+If a take is interrupted, check the current cart, order, item availability and trading state before proceeding. Phase boundaries are not automatically idempotent. For a complete reset, use the guarded drop-and-reseed procedure in `demo-data.md`; reseeding alone does not remove a previously created demo order.
 
 ## 5. After the take
 

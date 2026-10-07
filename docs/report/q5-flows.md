@@ -71,8 +71,7 @@ bug was found and fixed during Task 7's own screenshot review and is
 recorded there).
 
 **5-second target:** the design's status-update target is not claimed as
-measured — each state change was observed within one 3-second polling
-period in the runs above, but no timing measurement is asserted before the
+measured — state changes were observed through condition waits of up to 15 seconds in the runs above, but no timing measurement is asserted before the
 Task 12 evidence exists.
 
 ## The vendor flow as built (Task 9)

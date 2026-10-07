@@ -1,0 +1,54 @@
+FAIL cart: Locator expected to be disabled
+Actual value: enabled 
+Call log:
+  - Expect "to_be_disabled" get_by_role("button", name="Increase quantity of Charcoal Chicken Rice", exact=True) with timeout 3000ms
+  - waiting for get_by_role("button", name="Increase quantity of Charcoal Chicken Rice", exact=True)
+    10 × locator resolved to <button type="button" class="btn btn-outline-primary btn-sm" aria-label="Increase quantity of Charcoal Chicken Rice">+</button>
+       - unexpected value "enabled"
+
+Aria snapshot:
+- button "Increase quantity of Charcoal Chicken Rice": +
+Exception in callback Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542
+handle: <Handle Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542>
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 543, in _done_callback
+    exc = future.exception()
+          ^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_page.py", line 310, in _on_route
+    handled = await route_handler.handle(route)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 442, in handle
+    return await self._handle_internal(route)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 484, in _handle_internal
+    return await handled_future
+           ^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+Exception in callback Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542
+handle: <Handle Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542>
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 543, in _done_callback
+    exc = future.exception()
+          ^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_page.py", line 310, in _on_route
+    handled = await route_handler.handle(route)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 442, in handle
+    return await self._handle_internal(route)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 484, in _handle_internal
+    return await handled_future
+           ^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+CLEANUP PASS: original diner cart restored; order count unchanged
+[
+  {
+    "check": "cart",
+    "result": "FAIL",
+    "detail": "Locator expected to be disabled\nActual value: enabled \nCall log:\n  - Expect \"to_be_disabled\" get_by_role(\"button\", name=\"Increase quantity of Charcoal Chicken Rice\", exact=True) with timeout 3000ms\n  - waiting for get_by_role(\"button\", name=\"Increase quantity of Charcoal Chicken Rice\", exact=True)\n    10 \u00d7 locator resolved to <button type=\"button\" class=\"btn btn-outline-primary btn-sm\" aria-label=\"Increase quantity of Charcoal Chicken Rice\">+</button>\n       - unexpected value \"enabled\"\n\nAria snapshot:\n- button \"Increase quantity of Charcoal Chicken Rice\": +"
+  }
+]

@@ -1,6 +1,6 @@
 # AI assistance disclosure — ICT381 SkipQ TMA
 
-**Status: complete disclosure, 7 October 2026.** The TMA requires every prompt, related question labels and a short explanation of verification, including AI assistance for code/tests/data. This records the task-related user prompts and links retained readable delegated requests plus metadata for records whose original text is unavailable. Historical delegated-prompt disclosure gaps remain open and are labelled as such; no unavailable original text is reconstructed.
+**Status: recorded disclosure with explicit historical gaps, 7 October 2026.** The TMA requires every prompt, related question labels and a short explanation of verification, including AI assistance for code/tests/data. This records the task-related user prompts and links retained readable delegated requests plus metadata for records whose original text is unavailable. Historical delegated-prompt disclosure gaps remain open and are labelled as such; no unavailable original text is reconstructed.
 
 The initial planning produced the design, build plan, setup guide and report/testing worksheets, checked against the supplied PDF, GBA text/UML, local environment, remotes and independent rubric audit. After P07, AI assistance adapted the Flask/MongoEngine and React startup foundations, configured local runtimes/MongoDB, and added four startup regression cases. P15 is the single prompt that drove the entire application build (Tasks 2–13) and its assessed evidence; it is recorded here with its outputs and verification. Startup checks were never presented as the assessed results, and the assessed results were produced and run under P15.
 
@@ -233,16 +233,13 @@ Deadline: 19 October 2026, 23:55 Singapore time; target readiness 18 October. St
 ```
 
 The session-continuation instructions (one per resumed session: "Resume the prior
-task using the summary above; continue from the last in-flight step") and
-the Goal objective text recorded at P13 were the only other prompts this
-agent received; no other user or delegated prompts were issued to the
-execution agent.
+task using the summary above; continue from the last in-flight step") and the Goal objective text recorded at P13 are retained here. This does not establish an exhaustive record of later configuration, supervision or continuation conversations; known missing records remain disclosure gaps.
 
 Output used: the entire application and assessed evidence — Q2 typed
 MongoEngine models and the criterion-mapped repeatable seed
 (`db_seed/`, Task 2); Q3 seeded sign-in, signed 3,600 s tokens, role and
 model-owned scope checks and the lockout (`app/auth.py`, `User.
-authenticate`, Task 3); Q4(a) stall/menu/cart rules (Task 4); Q5 checkout
+authenticate`, Task 3); Q3 stall/menu/cart rules (Task 4); Q3 checkout
 with the immutable purchase snapshot, the guarded
 `Order.transition_to` lifecycle and the NoShow 30-minute boundary
 (Task 5); the offline unit suite and the guarded real-DB
@@ -257,8 +254,7 @@ screenshot, measurement and report section listed in `continuation.md`
 was produced under this prompt.
 
 Verification performed (all actually run, recorded with exact output in
-the cited files): offline unit suite 302 passed with MongoDB stopped
-(socket sentinel); functional suite 10 passed on two consecutive runs
+the cited files): offline unit suite 302 passed with socket access blocked; functional suite 10 passed on two consecutive runs
 against the same guarded database with no manual reset between;
 Playwright suite passed on two consecutive runs (12.02 s / 11.48 s) with
 both personas signing in through the UI against the same fresh order;
@@ -311,3 +307,113 @@ For each subsequent prompt, keep:
 - Corrections made and remaining limitations.
 
 Use your own account of understanding/verification in the final report. Do not replace an unrun command with “tested successfully.”
+
+## P16 — Q1–Q7: Codex continuation and final review (7 October 2026)
+
+Exact user instruction:
+
+```text
+could u continue where qwen agent has left off?
+```
+
+Output used: retained Qwen’s completed Tasks 1–13 and reviewed its final commits; corrected Unicode-token refusal, generic checkout feedback and pending cart/menu mutation guards; reconciled performance timing terminology and paired request statistics without rewriting original measurements; corrected GBA support classifications and final provenance/recording instructions; assembled a report with the required tables, authentic screenshots and disclosure appendices. Publishing, narration, personal cover details and submission remain pending.
+
+Verification: targeted regressions were observed failing before fixes, then passing; final commands and outputs are retained under `docs/evidence/codex-handover/`. Final results: 306 unit passed; functional 10 passed ×2; browser 1 passed ×2 (12.97/11.12 s); diagnostic checks 4/4; production build and full demo rehearsal passed. See `codex-handover.md` and the authentic logs. No historical Qwen run is relabelled as a Codex run.
+
+Exact delegated requests for this continuation (Q1–Q7 review and artifact work):
+
+```text
+READ ONLY final assessment/report audit. User authorized Codex to continue where Qwen left off. Workspace /Users/arellakoo/Documents/DevOpsAss current backend f6c5e50 frontend5bdecbb clean. Read actual assessment extracted .local/verification/tma-full.txt and GBA relevant or original PDFs via existing venv if needed, canonical plan/spec, report.md, q1..q7 artifacts, clean-checkout-rehearsal.md, continuation Task13. Identify concrete material missing/misleading report/evidence claims, word counts and deliverable location requirements; query_timing server_ms meaning likely claim error. Do NOT edit/run tests or alter app/database; send actionable findings with filelines. No web unless necessary. Do not spawn further agents.
+```
+
+```text
+READ ONLY fresh code review for authorized continuation/final handover. Inspect backend app models/auth/controllers/tests and frontendsrc against approved spec/plan. Focus material defects in checkout/concurrency/guards/security as software, not minor polish. Code exists fully, current BEf6c5e50 FE5bdecbb. Do not edit/run tests/write files or mutate DB. Return highestconfidence important findings fileline + reproduction idea; avoid speculative redesign. Look at integration existing fixtures/suites for real meaningful coverage. No subagents.
+```
+
+```text
+Implement authorized frontend fixes ONLY frontend/src/pages/diner/{CheckoutPage,MenuPage,CartPage}.jsx for findings: visible generic checkout errors and guard in-flight cart/menu mutations so clicks not lose updates. Do NOT edit backend/report/docs commits. Use failing then passing meaningful Python Playwright regression script saved workspace .local/verification/frontend-review-regressions.py; no FEunit/component suite, no mocking assessed lifecycle suite. Script may simulate transport faults/delays as diagnostic regression not assessed lifecycle. Avoid changing DB net records beyond guarded skipq_system_test demo actor; preserve/restoresafe. Existing API/frontend runningfrom/tmp/skipq-rehearsal clones, so test new frontend via its own temp devserver port5174 and API5001 env+matchingCORS? Can stop old frontend5173 after ensureQwenpaused? Better root will restart frontend root5173 soon to verifyworkingtree, coordinate sendwhen ready. First write failing regressions then sendneedrun. Report exact results/changes no commits until rootfinal.
+```
+
+```text
+New user authorized CodexcontinuewhereQwenleftoff. Implement bounded auth fix ONLY backend/app/auth.py + backend/tests/unit/test_auth_rules.py. verify_token catchesBadSignature but nonASCII Bearer'é'raisesUnicodeEncodeError->500. Add failing meaningful unit verifier/route test enforcing401authentication_required fornonASCII tokens and noaccountlookup, runREDthenminimalfixthenGREENselectedtests. Readrelevantfiles/briefing; backend.venv Python; noDB/unitoffline. CurrentBEf6c5e50Qwenpausedgoalverifier400. DoNOTeditotherfiles/docs/gitcommits. Sendexactresults. No subagents.
+```
+
+```text
+Please finish audit concise then nexttask: prepare reusable Python exporter backend/scripts/export_report.py to assemble actual submission DOCX/PDF (or DOCX + renderPDF via LibreOffice availablecheck) from report.md, Q1audit tables, provenance peractualmodulemapping,Q2seedtable,Q4cdesignedtable,Q5route/crosscuttingtables and53persona screenshotsplusloginifavailable; appendices tables/screens excludedwordlimit. Use python-docx via workspace.local/qwen-tools/.venv notapprequirements, no neednewdependenciesunlessminimal. Read ~/.qwen/skills/docx/SKILL.md ifhelps. Do NOT edit canonical report.md or appendixdocs (rootwill correct). Need exporter parserealMarkdown tableslinksstylescaptions/images, actual figures in DOCX not merelypaths. Can makegeneratedfile backend/docs/report/SkipQ_Report_Draft.docx and PDFifavailable. Iflarge screenshotall64 aim2perpage captionreadable. We will regenerateafterrootedits. Scopeonlyexporter/generated artifacts. No commits. Send findingssummary.
+```
+
+Delegation verification: root inspected the diffs, reran the final suites and checked generated artifacts. The frontend diagnostic’s original cart route glob was incorrect; it was corrected and the cart case was observed failing against the old implementation before the final passing run. A concurrent full-unit run caught the timing-field migration mid-edit; the final suite is the authoritative result. These are recorded as genuine iterations, not hidden or reported as successful runs.
+
+## Additional known user prompts — setup, supervision and review
+
+These exact prompts from this conversation concern the project’s tooling or explanations (Q1–Q7 support). Outputs were CLI configuration, retry guidance, supervisor/viewer scripts and read-only progress explanations. They do not constitute application-test evidence. The two progress/review delegations and coordination messages not reproduced here remain a disclosed transcript-export gap; do not call this appendix exhaustive until the original records are supplied.
+
+```text
+aint u suppose to compare with my current setting.json and update it accordingly? endpoint should not change and model as well
+```
+
+```text
+my model suppose to accept effort, wwhy is qwen telling me it doesnt? i want to set effort to max
+```
+
+```text
+is it CAUSED BY TAILSCALE?
+```
+
+```text
+IS THERE ANYWAY TO MAKE MY QWENCLI AUTO RETRY
+```
+
+```text
+THE RETRIES IS HOW MANY SECOND INTERVAL
+```
+
+```text
+SO HOW MUCH TIME FOR IT TO RECOVER
+```
+
+```text
+MAKE IT LOJNGER SO I CAN HAVE MORE BUFFER WAITING TIME
+```
+
+```text
+seperate recovery? limit? what is that
+```
+
+```text
+what cn guarantee assumig the connnection will deeinintely recover
+```
+
+```text
+how can we do that
+```
+
+```text
+ will it be in yolo mode and the supervisior is codex?
+```
+
+```text
+please change to yolo'
+```
+
+```text
+so how do i know it is running? i wont be able to see it running right
+```
+
+```text
+i want to se it running like thinking and all
+```
+
+```text
+Can you help me to check whatvisbthebprogress of thebproject? my qwen agent isncurrently atill working on it, so do notnmake anynchanges to it. but ibwant a progress list to know how nychbhave been completed and whats left to be done
+```
+
+```json
+{"prompt": "give me a summary to explin to somone what this whole thing is about. so they can understand what you have done. use simple way to explain "}
+```
+
+```text
+i need more details. seems vague
+```
+
+Verification for tooling prompts: settings were backed up and checked; the real model server refused max effort but accepted xhigh; finite request retry behavior was inspected in the installed CLI; a simulated supervisor disconnect/retry/completion run was checked; the viewer was syntax-checked; progress statements were qualified as saved evidence. Additional configuration JSON, the pasted failure/Terminal attachments and missing historical/delegated prompt originals still require export from the student’s conversation records.

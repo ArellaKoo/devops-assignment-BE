@@ -30,7 +30,7 @@ users 6 · vendors 2 · menu_items 5 · carts 2 · orders 9. The polled stall
 `SKIPQ_QUERY_TIMING=1` + `SKIPQ_QUERY_TIMING_FILE`): one JSONL line per HTTP
 request (`type=request`: path, status, request wall ms, the find commands
 that request's thread issued with collection, rows, client-observed wall ms
-and server-reported ms) and one line per materialised menu list
+and driver-observed command ms) and one line per materialised menu list
 (`type=segment`, label `menu_materialize`). The find accounting comes from a
 PyMongo 4 `CommandListener` installed at `MongoClient` construction via
 MongoEngine's `mongo_client_class` — no post-hoc hooks, no added queries.
@@ -119,3 +119,9 @@ CSV snapshot: sanity +1 menu/+1 sign-in (resolve), main +1 sign-in
 `query-timing-sanity.jsonl`, `query-timing-main.jsonl`,
 `query-timing-login.jsonl`; `tests/stress/locustfile.py`;
 `run-metadata.md`.
+
+## 7 October final review: timing interpretation correction
+
+The original CSV/HTML/JSONL artifacts above are preserved. The legacy `server_ms` field is `CommandSucceededEvent.duration_micros / 1000`, which is **driver-observed command duration**, including transport/driver overhead. It is not MongoDB profiler execution time. New instrumentation names it `command_ms`. The historical tables labelled server-ms must be read with this correction.
+
+Reproduction: `.venv/bin/python scripts/summarize_performance.py`. See `reconciled-analysis.json` (source hash retained). Across 395 menu requests, the **sum of three command durations per request** is p50 1.089 ms / p95 3.163 ms; matched API wall time p50 2.769 ms / p95 8.229 ms; materialisation p95 2.010 ms. Paired command/API share is median 38.954%, so a less-than-10% database-share claim is unsupported. Percentiles use linear interpolation. One menu request has one other command, while 394 have zero. No profile was taken to separate MongoDB execution, driver work, HTTP, password hashing or serialization; the previous attribution of latency to specific layers is withdrawn.

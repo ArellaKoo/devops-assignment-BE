@@ -24,12 +24,12 @@ this script for that reason — do not skip them.
 
 ## 0:20–0:50 — Diner: stalls and menu
 
-> "I'm signed in as a diner. This is the stall list — only open stalls show
+> "I'm signed in as a diner. I first open Cart and remove the seeded lines so this demonstration starts empty. Then I return to Browse open stalls. This is the stall list — only open stalls show
 > up here. Charcoal Grill is open. I open its menu. Pineapple Tart is
 > already sold out — notice it's greyed and its Add control is disabled,
 > before I can even try."
 
-*(Open the stall, show the menu.)*
+*(Open Cart, remove every seeded line and confirm “Your cart is empty.” Return to Browse open stalls, open Charcoal Grill and show the menu.)*
 
 ## 0:50–1:30 — Diner: add, cart, checkout, paid
 
