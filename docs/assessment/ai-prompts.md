@@ -419,3 +419,17 @@ i need more details. seems vague
 Verification for tooling prompts: settings were backed up and checked; the real model server refused max effort but accepted xhigh; finite request retry behavior was inspected in the installed CLI; a simulated supervisor disconnect/retry/completion run was checked; the viewer was syntax-checked; progress statements were qualified as saved evidence. Additional configuration JSON, the pasted failure/Terminal attachments and missing historical/delegated prompt originals still require export from the student’s conversation records.
 
 P16 fresh-checkout verification: local clones of backend d4ebe42/frontend a8364f8 installed cleanly into their own environments; pip check and frontend build passed; 306 unit cases passed; real-DB functional 10 passed twice; browser lifecycle 1 passed twice (15.39/11.45 s) with both servers running from the clones, no reset between runs. Original load evidence remained unchanged. DOCX/PDF exports were structurally checked and visually inspected; the cover was separated onto its own page after preview review. Exact fresh-run logs are retained under docs/evidence/codex-handover/.
+
+## P17 — Frontend assessment quality review (Q1, Q2–Q6; Q7 preparation)
+
+Exact user prompt:
+
+```text
+can you help me to ensure the frontend is up tonstandard so i will not lose point due to it
+```
+
+Codex reviewed the original Q5/Q6 requirements, the existing approved design and all frontend source, reproduced observable defects through the running browser, and directly implemented the corrections without delegating to another agent. Outputs: readable navigation, public entry/return-path handling, guarded sign-in/vendor actions, shared failed-read recovery, known unavailable/closed cart and checkout state, payment-time controls, incoming-order queue polling, clearer Ready guidance and mobile wrapping. Cart JSON retains its existing vendor ID and adds derived stall presentation data; inactive items are unavailable. Product dependencies were unchanged.
+
+Verification: meaningful failing browser checks are retained in red.log, queue-red.log, removed-red.log and closed-red.log; failing unit cases are in cart-availability-red.log/cart-stall-red.log. The corrected supplementary browser review passed 24 checks and restored its guarded records. Original local diner/vendor/history QA scripts were adapted into portable guarded copies and rerun (26/37/15 passing checks); a stale technical-copy assertion failed in the first diner run and was replaced with visible failure feedback plus an assertion on actual emitted retry keys, with the failure log preserved. This is supplementary UI verification, not an implementation of Q4(c)'s designed H01–H11 functional suite.
+
+Final offline suite: 313 passed; functional suite: 10 passed twice without reset between (4.27/3.88 s); assessed real-API browser lifecycle: 1 passed twice without reset between (11.28/11.36 s); production build successful; 30 desktop/small-screen layouts had no horizontal overflow or uncaught page errors. Both actual demo refusals and the complete same-order lifecycle passed. All persona screenshots, route table, flow explanations, Q1 screen-gap notes, recording sequence and report drafts were refreshed. Diagnostic HTTP faults are explicitly labelled; no fabricated evidence, narrated video, push or submission is claimed. Existing historical disclosure gaps remain visible.

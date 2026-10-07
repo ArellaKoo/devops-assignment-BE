@@ -1,0 +1,5 @@
+Command: /Users/arellakoo/Documents/DevOpsAss/backend/.venv/bin/python -m pytest tests/functional -q
+..........                                                               [100%]
+10 passed in 3.88s
+
+Exit code: 0

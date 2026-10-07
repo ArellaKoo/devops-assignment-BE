@@ -1,0 +1,37 @@
+Command: /Users/arellakoo/Documents/DevOpsAss/backend/.venv/bin/python q7-screencast/demo_script.py
+preflight: servers up, seed state verified (9 seed orders, 0 run orders)
+Phase A: diner places an order, vendor moves it to Collected
+  [shot] demo-01-diner-empty-cart
+  [shot] demo-02-diner-stalls
+  [shot] demo-03-diner-menu
+  [shot] demo-04-diner-added-m1
+  [shot] demo-05-diner-cart
+  [shot] demo-06-diner-paid
+  paid: Q-216f29b0271641d8bc5ca806cdb4321a
+  [shot] demo-07-diner-tracking-pending
+  [shot] demo-08-vendor-queue-pending
+  [shot] demo-09-vendor-preparing
+  [shot] demo-10-diner-preparing
+  [shot] demo-11-vendor-ready
+  [shot] demo-12-diner-ready-banner
+  [shot] demo-13-vendor-collected
+  [shot] demo-14-diner-collected
+  [shot] demo-15-diner-past-filter
+Phase B: sold-out line is refused at checkout, cart retained
+  [shot] demo-16-diner-added-mango-sago
+  [shot] demo-17-diner-cart-mango-sago
+  [shot] demo-18-vendor-marked-sold-out
+  [shot] demo-19-diner-checkout-before-pay
+  [shot] demo-20-diner-checkout-refused-sold-out
+  [shot] demo-21-diner-cart-retained
+  refused checkout stored no order (run orders: exactly the phase-A one)
+Phase C: closed stall is refused at checkout, cart retained
+  [shot] demo-22-diner-added-again
+  [shot] demo-23-diner-cart-chicken
+  [shot] demo-24-vendor-stall-closed
+  [shot] demo-25-diner-checkout-before-pay-closed
+  [shot] demo-26-diner-checkout-refused-closed
+cleanup
+DEMO SCRIPT: ALL STEPS PASSED
+
+Exit code: 0

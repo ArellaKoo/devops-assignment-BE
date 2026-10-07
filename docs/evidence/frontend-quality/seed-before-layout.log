@@ -1,0 +1,10 @@
+Command: /Users/arellakoo/Documents/DevOpsAss/backend/.venv/bin/python -m db_seed.seed
+Seeded database 'skipq_system_test':
+  vendors: 2
+  users: 6
+  menu_items: 5
+  carts: 2
+  orders: 9
+Re-running this script upserts the same records; unrelated data is not deleted. Demo account credentials are documented in README.md.
+
+Exit code: 0

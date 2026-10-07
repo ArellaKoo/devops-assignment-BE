@@ -1,0 +1,232 @@
+FAIL root_entry: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_visible" get_by_role("heading", name="SkipQ sign-in", exact=True) with timeout 2500ms
+  - waiting for get_by_role("heading", name="SkipQ sign-in", exact=True)
+
+Aria snapshot:
+- heading "Page not found" [level=1]
+- paragraph: That address does not exist in SkipQ.
+- link "Go to sign-in":
+  - /url: /login
+FAIL nav_diner: Unreadable navigation: Stalls contrast 1.00:1
+FAIL nav_vendor: Unreadable navigation: Menu contrast 1.00:1
+FAIL pending_login: Locator expected to be disabled
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_disabled" get_by_role("button", name="Signing in…", exact=True) with timeout 2500ms
+  - waiting for get_by_role("button", name="Signing in…", exact=True)
+
+Aria snapshot:
+- heading "SkipQ sign-in" [level=1]
+- text: Email
+- textbox "Email": diner.one@skipq.test
+- text: Password
+- textbox "Password": SkipQDemo2026!
+- button "Sign in"
+- strong: Demo accounts
+- text: (seeded; shared local password
+- code: SkipQDemo2026!
+- text: "):"
+- list:
+  - listitem:
+    - text: Diner —
+    - code: diner.one@skipq.test
+    - text: (has current and past orders)
+  - listitem:
+    - text: Diner —
+    - code: diner.two@skipq.test
+  - listitem:
+    - text: Diner —
+    - code: diner.empty@skipq.test
+    - text: (no orders)
+  - listitem:
+    - text: Vendor —
+    - code: vendor.one@skipq.test
+    - text: (Charcoal Grill)
+  - listitem:
+    - text: Vendor —
+    - code: vendor.two@skipq.test
+    - text: (Noodle Bar)
+FAIL return_path: Page URL expected to be 'http://127.0.0.1:5173/diner/orders'
+Actual value: http://127.0.0.1:5173/diner/stalls 
+Call log:
+  - Expect "to_have_url" with timeout 2500ms
+    3 × locator resolved to <html lang="en">…</html>
+      - unexpected value "http://127.0.0.1:5173/login"
+    6 × locator resolved to <html lang="en">…</html>
+      - unexpected value "http://127.0.0.1:5173/diner/stalls"
+
+Aria snapshot:
+- navigation:
+  - text: SkipQ Diner — diner.one@skipq.test
+  - link "Stalls":
+    - /url: /diner/stalls
+  - link "Cart":
+    - /url: /diner/cart
+  - link "My orders":
+    - /url: /diner/orders
+  - button "Sign out"
+- heading "Stalls" [level=2]
+- button "Refresh"
+- list:
+  - listitem:
+    - link "Charcoal Grill":
+      - /url: /diner/stalls/6ac562a9490d11223a50d540
+    - text: Open
+    - link "View menu":
+      - /url: /diner/stalls/6ac562a9490d11223a50d540
+FAIL failed_load: Locator expected to have count '0'
+Actual value: 1 
+Call log:
+  - Expect "to_have_count" get_by_text("Loading your cart…", exact=True) with timeout 2500ms
+  - waiting for get_by_text("Loading your cart…", exact=True)
+    9 × locator resolved to 1 element
+      - unexpected value "1"
+
+FAIL cart_sold_out: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_visible" get_by_text("Sold out", exact=True).first with timeout 2500ms
+  - waiting for get_by_text("Sold out", exact=True).first
+
+Aria snapshot:
+- navigation:
+  - text: SkipQ Diner — diner.one@skipq.test
+  - link "Stalls":
+    - /url: /diner/stalls
+  - link "Cart":
+    - /url: /diner/cart
+  - link "My orders":
+    - /url: /diner/orders
+  - button "Sign out"
+- heading "Your cart" [level=2]
+- button "Refresh"
+- list:
+  - listitem:
+    - strong: Charcoal Chicken Rice
+    - text: $6.50 each
+    - group "Quantity for Charcoal Chicken Rice":
+      - button "Decrease quantity of Charcoal Chicken Rice": −
+      - text: "1"
+      - button "Increase quantity of Charcoal Chicken Rice": +
+    - text: $6.50
+    - button "Remove Charcoal Chicken Rice from the cart": Remove
+- text: "Total:"
+- strong: $6.50
+- link "Continue to checkout":
+  - /url: /diner/checkout
+- text: "Cart fingerprint (server-computed at checkout):"
+- code: 53019c56af6292cf014373e46347b1e8e0eba59553099be6be0510a6509ce386
+FAIL checkout_sold_out: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_visible" get_by_text("Sold out", exact=True).first with timeout 2500ms
+  - waiting for get_by_text("Sold out", exact=True).first
+
+Aria snapshot:
+- navigation:
+  - text: SkipQ Diner — diner.one@skipq.test
+  - link "Stalls":
+    - /url: /diner/stalls
+  - link "Cart":
+    - /url: /diner/cart
+  - link "My orders":
+    - /url: /diner/orders
+  - button "Sign out"
+- heading "Checkout" [level=2]
+- button "Refresh"
+- text: 1 × Charcoal Chicken Rice $6.50
+- separator
+- text: "Total:"
+- strong: $6.50
+- link "Edit cart":
+  - /url: /diner/cart
+- text: "Cart fingerprint:"
+- code: 53019c56af6292cf014373e46347b1e8e0eba59553099be6be0510a6509ce386
+- heading "Payment method (simulated)" [level=3]
+- radio "PayNow" [checked]
+- text: PayNow
+- radio "Card"
+- text: Card
+- radio "Cashless"
+- text: Cashless
+- checkbox "Simulate this payment failing (demo control)"
+- text: Simulate this payment failing (demo control)
+- button "Pay $6.50"
+FAIL pending_checkout: Locator expected to be disabled
+Actual value: enabled 
+Call log:
+  - Expect "to_be_disabled" get_by_label("Card", exact=True) with timeout 2500ms
+  - waiting for get_by_label("Card", exact=True)
+    9 × locator resolved to <input type="radio" id="pay-Card" name="payment-method" class="form-check-input"/>
+      - unexpected value "enabled"
+
+Aria snapshot:
+- radio "Card"
+Task was destroyed but it is pending!
+task: <Task pending name='Task-36' coro=<Page._on_route() running at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:310> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[Connection.dispatch.<locals>._done_callback() at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542]>
+Task was destroyed but it is pending!
+task: <Task pending name='Task-37' coro=<Page._on_route() running at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:310> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[Connection.dispatch.<locals>._done_callback() at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542]>
+FAIL pending_vendor: Overlapping vendor requests: 2
+PASS incoming_queue
+PASS mobile_cart
+Exception in callback Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542
+handle: <Handle Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542>
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 543, in _done_callback
+    exc = future.exception()
+          ^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_page.py", line 310, in _on_route
+    handled = await route_handler.handle(route)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 442, in handle
+    return await self._handle_internal(route)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 484, in _handle_internal
+    return await handled_future
+           ^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+Exception in callback Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542
+handle: <Handle Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542>
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 543, in _done_callback
+    exc = future.exception()
+          ^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_page.py", line 310, in _on_route
+    handled = await route_handler.handle(route)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 442, in handle
+    return await self._handle_internal(route)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 484, in _handle_internal
+    return await handled_future
+           ^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+Exception in callback Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542
+handle: <Handle Connection.dispatch.<locals>._done_callback(<Task cancell..._page.py:296>>) at /Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:542>
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 543, in _done_callback
+    exc = future.exception()
+          ^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_page.py", line 310, in _on_route
+    handled = await route_handler.handle(route)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 442, in handle
+    return await self._handle_internal(route)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arellakoo/Documents/DevOpsAss/backend/.venv/lib/python3.12/site-packages/playwright/_impl/_helper.py", line 484, in _handle_internal
+    return await handled_future
+           ^^^^^^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+CLEANUP PASS: original cart/item restored; order records unchanged

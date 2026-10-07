@@ -1,0 +1,6 @@
+Command: /Users/arellakoo/Documents/DevOpsAss/backend/.venv/bin/python docs/evidence/frontend-quality/review.py --only failed_load|pending_login
+PASS pending_login
+PASS failed_load
+CLEANUP PASS: original cart/item restored; order records unchanged
+
+Exit code: 0

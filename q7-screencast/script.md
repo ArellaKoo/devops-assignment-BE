@@ -76,21 +76,20 @@ screen → diner's Order List, Past filter.)*
 ## 3:30–4:30 — Violation 1: sold-out line, refusal expected
 
 > "Now the first refusal. Back on the diner side: I open the menu again and
-> add a Mango Sago. My cart now has one item, two fifty.
+> add a Mango Sago. My cart now has one item, two fifty. I open checkout while it is still available.
 > **Before I pay:** the vendor is about to mark that exact item sold out.
 > The expected outcome — and this is what the design promises — is that my
 > checkout is *visibly refused* because the line I'm paying for is no longer
 > available, that my cart is *retained* so I can review it, and that *no new
 > order is stored*. Let's see if that's what happens."
 
-*(Diner adds M2. Vendor marks M2 Sold out.)*
+*(Diner adds M2, opens checkout and waits for Pay $2.50 to be enabled. Then vendor marks M2 Sold out. Keep the existing checkout screen open.)*
 
 ## 4:30–5:20 — Violation 1: the refusal
 
-> "I go to checkout and press Pay two fifty. And there it is: 'Checkout
+> "On the checkout screen I already opened, I press Pay two fifty. And there it is: 'Checkout
 > refused — Mango Sago is no longer available. Remove it from your cart to
-> check out.' The message names the item, I still have my checkout key for
-> this attempt, and the cart is retained — I review it and the line is
+> check out.' The message names the item, and the cart is retained — I review it and the line is
 > still there. The script also checked the API after this step: exactly one
 > order exists — the one from phase one. This refused checkout stored
 > nothing."
@@ -99,21 +98,20 @@ screen → diner's Order List, Past filter.)*
 
 ## 5:20–6:10 — Violation 2: closed stall, refusal expected
 
-> "Second refusal. Still on the diner side, I add a Charcoal Chicken Rice,
-> so the cart is now nine dollars.
+> "Second refusal. Still on the diner side, I remove the sold-out Mango Sago
+> and add a Charcoal Chicken Rice. The cart is now six fifty. I open checkout.
 > **Before I pay:** the vendor is about to close the whole stall. Expected
 > outcome: checkout is *visibly refused* because the stall is closed — the
 > paid queue stays accessible to the vendor, but no new order may be
 > created. Let's see."
 
-*(Diner adds M1 → cart two lines $9.00. Vendor flips the trading-state
-switch.)*
+*(Diner removes M2, adds M1, opens checkout and waits for Pay $6.50 to be enabled. Then vendor flips the trading-state switch. Keep checkout open.)*
 
 ## 6:10–7:00 — Violation 2: the refusal
 
 > "The stall now shows Closed, with its banner: new orders refused at
-> checkout, every paid order below stays accessible. I go to checkout and
-> press Pay nine dollars. Refused again — 'Charcoal Grill is currently
+> checkout, every paid order below stays accessible. On the checkout screen I already opened, I
+> press Pay six fifty. Refused again — 'Charcoal Grill is currently
 > closed. Try again once the stall opens.' Same behaviour as before: a clear
 > message, the cart retained, no order stored."
 

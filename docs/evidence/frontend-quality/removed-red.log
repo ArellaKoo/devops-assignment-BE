@@ -1,0 +1,71 @@
+FAIL cart_removed: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_visible" get_by_text("Sold out", exact=True).first with timeout 2500ms
+  - waiting for get_by_text("Sold out", exact=True).first
+
+Aria snapshot:
+- navigation "Diner navigation":
+  - text: SkipQ Diner — diner.one@skipq.test
+  - link "Stalls":
+    - /url: /diner/stalls
+  - link "Cart":
+    - /url: /diner/cart
+  - link "My orders":
+    - /url: /diner/orders
+  - button "Sign out"
+- main:
+  - heading "Your cart" [level=2]
+  - button "Refresh"
+  - list:
+    - listitem:
+      - strong: Charcoal Chicken Rice
+      - text: $6.50 each
+      - group "Quantity for Charcoal Chicken Rice":
+        - button "Decrease quantity of Charcoal Chicken Rice": −
+        - text: "1"
+        - button "Increase quantity of Charcoal Chicken Rice": +
+      - text: $6.50
+      - button "Remove Charcoal Chicken Rice from the cart": Remove
+  - text: "Total:"
+  - strong: $6.50
+  - link "Continue to checkout":
+    - /url: /diner/checkout
+FAIL checkout_removed: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_visible" get_by_text("Sold out", exact=True).first with timeout 2500ms
+  - waiting for get_by_text("Sold out", exact=True).first
+
+Aria snapshot:
+- navigation "Diner navigation":
+  - text: SkipQ Diner — diner.one@skipq.test
+  - link "Stalls":
+    - /url: /diner/stalls
+  - link "Cart":
+    - /url: /diner/cart
+  - link "My orders":
+    - /url: /diner/orders
+  - button "Sign out"
+- main:
+  - heading "Checkout" [level=2]
+  - button "Refresh"
+  - text: 1 × Charcoal Chicken Rice $6.50
+  - separator
+  - text: "Total:"
+  - strong: $6.50
+  - link "Edit cart":
+    - /url: /diner/cart
+  - heading "Payment method (simulated)" [level=3]
+  - radio "PayNow" [checked]
+  - text: PayNow
+  - radio "Card"
+  - text: Card
+  - radio "Cashless"
+  - text: Cashless
+  - checkbox "Simulate this payment failing (demo control)"
+  - text: Simulate this payment failing (demo control)
+  - button "Pay $6.50"
+CLEANUP PASS: original cart/item restored; order records unchanged

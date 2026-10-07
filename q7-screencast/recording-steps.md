@@ -71,10 +71,10 @@ One continuous take following the timed script:
 5. Vendor: Mark ready → the diner's Ready banner; Mark collected →
    terminal on both screens; diner's Order List Past filter (2:30–3:30).
 6. **Violation 1** — say the expected outcome first (the "Before I pay"
-   marker), add M2, vendor marks it sold out, the diner's Pay $2.50 is
+   marker), add M2 and open checkout while available, then vendor marks it sold out. On the existing checkout screen the diner's Pay $2.50 is
    refused naming M2, cart retained, no order stored (3:30–5:20).
-7. **Violation 2** — say the expected outcome first, add M1 (cart $9.00),
-   vendor closes the stall, the diner's Pay $9.00 is refused naming the
+7. **Violation 2** — say the expected outcome first, remove the sold-out M2, add M1 (cart $6.50) and open checkout. Then
+   vendor closes the stall; on the existing checkout screen the diner's Pay $6.50 is refused naming the
    closed stall (5:20–7:00).
 8. Close (7:00–7:20).
 
@@ -103,3 +103,5 @@ If a take is interrupted, check the current cart, order, item availability and t
   evidence that the script's expectations match the running app, and they
   double as a reference for what each moment of the recording should look
   like.
+
+Known sold-out/removed cart lines are visibly blocked before payment. For the prescribed sold-out API refusal, keep checkout open from before the vendor changes availability; this demonstrates a genuine stale screen. Reopening or refreshing checkout after the change correctly disables Pay.

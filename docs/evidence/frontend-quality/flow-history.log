@@ -1,0 +1,35 @@
+Supplementary current-flow check against guarded skipq_system_test; real API/UI.
+Seeded database 'skipq_system_test':
+  vendors: 2
+  users: 6
+  menu_items: 5
+  carts: 2
+  orders: 9
+Re-running this script upserts the same records; unrelated data is not deleted. Demo account credentials are documented in README.md.
+PASS: seed state located (D1 owns 8 orders across both stalls; D2's 0008 separate)
+PASS: All lists all 8 own orders (every status) and never another diner's order
+PASS: All lists newest-first (0009 before 0003)
+PASS: Current shows only the 5 Pending/Preparing/Ready orders, no terminal ones
+PASS: Current keeps polling while visible (2+ requests in 8 s)
+PASS: Past shows exactly the 3 terminal orders, newest-first
+PASS: Past does not poll (exactly 1 request in 8 s)
+PASS: a past order's detail is read-only and keeps its stale name/price snapshot
+PASS: a past cancelled order's detail still shows the refunded amount
+PASS: an in-progress order keeps its snapshot total after the menu item is repriced
+PASS: Refresh re-requests the selected (All) view
+PASS: a diner with no orders gets the friendly All-view empty state
+PASS: the same diner gets the Current-view empty state
+PASS: and the Past-view empty state
+Seeded database 'skipq_system_test':
+  vendors: 2
+  users: 6
+  menu_items: 5
+  carts: 2
+  orders: 9
+Re-running this script upserts the same records; unrelated data is not deleted. Demo account credentials are documented in README.md.
+invariant: True False 650 True True 9 2 2
+PASS: final reseed restores seed state (S1 open, S2 closed, M1 650c, 9 seed orders, 2 carts, C1 2 lines)
+
+SUMMARY: ALL PASSED
+
+Exit code: 0

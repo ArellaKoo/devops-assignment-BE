@@ -12,10 +12,11 @@ user-administration or OneMap area exists, and no order screen is public.
 
 | Route | Screen | Access |
 |---|---|---|
+| `/` | Redirect to `/login`, which routes a signed-in persona to their home | public |
 | `/login` | `LoginPage` — seeded-account sign-in with the backend's refusal text | public |
 | `/diner/stalls` | `StallsPage` — open-stall discovery | diner |
 | `/diner/stalls/:stallId` | `MenuPage` — one stall's menu | diner |
-| `/diner/cart` | `CartPage` — cart, server total, fingerprint | diner |
+| `/diner/cart` | `CartPage` — cart, availability and server total | diner |
 | `/diner/checkout` | `CheckoutPage` — simulated payment, retry key and visible refusals | diner |
 | `/diner/orders` | `OrdersPage` — own order list | diner |
 | `/diner/orders/:orderId` | `OrderDetailPage` — own order detail | diner |
@@ -55,7 +56,7 @@ weighed against, why it was chosen, and what it does not provide.
 
 | | |
 |---|---|
-| **Module** | `src/context/FeedbackContext.jsx` (a queue of `show(message, kind)` / `dismiss(id)`) and `src/components/FeedbackBanner.jsx`, rendered inside both persona layouts and the login screen. |
+| **Module** | `src/context/FeedbackContext.jsx` (a queue of `show(message, kind)` / `dismiss(id)`) and `src/components/FeedbackBanner.jsx`, rendered inside both persona layouts and the login screen; `src/components/LoadState.jsx` offers retry after a failed read instead of leaving a loading placeholder. |
 | **Alternative weighed** | Per-component local alert state, or `window.alert`. |
 | **Why** | The context sits above the router, so a refusal raised on one screen survives a client-side redirect and still lands where the user is; the banner inside each layout means every protected screen gets the same display. `window.alert` blocks the page and cannot be restyled; local state would vanish on navigation and duplicate the banner markup in every page. |
 | **What it does not provide** | Not a global toast system: no per-message expiry timer, no stacking limit beyond the list, no deduplication of identical back-to-back refusals, no translations or event tracking. |

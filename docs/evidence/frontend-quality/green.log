@@ -1,0 +1,25 @@
+PASS root_entry
+PASS nav_diner
+PASS nav_vendor
+PASS pending_login
+PASS return_path
+PASS failed_load
+PASS cart_sold_out
+PASS checkout_sold_out
+PASS cart_removed
+PASS checkout_removed
+PASS cart_closed
+PASS checkout_closed
+PASS pending_checkout
+PASS pending_vendor
+PASS incoming_queue
+PASS mobile_cart
+PASS read_stalls
+PASS read_menu
+PASS read_checkout
+PASS read_diner_orders
+PASS read_diner_detail
+PASS read_vendor_menu
+PASS read_vendor_orders
+PASS read_vendor_detail
+CLEANUP PASS: original cart/item restored; order records unchanged

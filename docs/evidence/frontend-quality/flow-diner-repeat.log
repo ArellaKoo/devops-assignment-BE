@@ -1,0 +1,44 @@
+Seeded database 'skipq_system_test':
+  vendors: 2
+  users: 6
+  menu_items: 5
+  carts: 2
+  orders: 9
+Re-running this script upserts the same records; unrelated data is not deleted. Demo account credentials are documented in README.md.
+PASS: seed state located (S1, S2, M1, M2, M5)
+PASS: diner login lands on the open-stall list
+PASS: seeded sold-out item shows a disabled 'Sold out' control
+PASS: polling observes the new sold-out state and toasts it
+PASS: menu add increments the existing line (server total $22.00)
+PASS: cart decrement returns the total to $15.50
+PASS: cart increment updates the server total to $18.00
+PASS: cart removal drops the line and the total to $13.00
+PASS: checkout shows the server total and an enabled payment action
+PASS: a price change under the open checkout page is refused (stale-cart screen)
+PASS: refresh-and-retry stores the order with the fresh fingerprint
+PASS: the stored order is Pending, Paid, $14.50 with the 2x M1 snapshot
+PASS: tracking page shows the queue number and Pending status
+PASS: polling picks up Preparing without a manual refresh
+PASS: the Ready-for-collection banner appears when tracking observes Ready
+PASS: terminal Collected state is shown (polling now stops)
+PASS: failed simulation is refused with the retained-key notice
+PASS: retry with the retained checkout key stores exactly one order
+PASS: only one $2.50 order exists (the failed attempt persisted nothing)
+PASS: double-click on the Pay control stored exactly one order
+PASS: a line that sold out before payment is refused at checkout
+PASS: removing the sold-out line leaves a payable cart
+PASS: the remaining line pays out after the sold-out line is removed
+PASS: adding from a second stall is refused while the cart holds the first
+PASS: a forged token's 401 clears the session and presents sign-in
+cleanup: OK
+Seeded database 'skipq_system_test':
+  vendors: 2
+  users: 6
+  menu_items: 5
+  carts: 2
+  orders: 9
+Re-running this script upserts the same records; unrelated data is not deleted. Demo account credentials are documented in README.md.
+invariant: True False 650 True True 9 2 2
+PASS: final reseed restores seed state (S1 open, S2 closed, M1 650c, 9 seed orders, 2 carts, C1 2 lines)
+
+SUMMARY: ALL PASSED

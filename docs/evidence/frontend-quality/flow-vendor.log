@@ -1,0 +1,58 @@
+Supplementary current-flow check against guarded skipq_system_test; real API/UI.
+Seeded database 'skipq_system_test':
+  vendors: 2
+  users: 6
+  menu_items: 5
+  carts: 2
+  orders: 9
+Re-running this script upserts the same records; unrelated data is not deleted. Demo account credentials are documented in README.md.
+PASS: seed state located (S1 open, M1, M2, seed orders 0001-0007 + 0009)
+PASS: vendor menu lists 3 active items, hides the soft-deleted one, badges sold-out
+PASS: closing the stall flips the badge and raises the closure banner
+PASS: a diner cart add is refused 409 stall_closed while the stall is closed
+PASS: the diner's closed-stall view disables every Add control
+PASS: reopening the stall re-enables the diner's Add control
+PASS: the create form shows the backend's own 400 price message
+PASS: a valid item is created and listed with its price
+PASS: the edit form pre-fills, saves, and the menu shows the new name/price
+PASS: marking a seeded item sold out updates the row and reports it
+PASS: restocking clears the sold-out badge
+PASS: removal disappears from the vendor list and the diner's menu
+PASS: the queue lists the stall's 8 paid orders, newest first, no other-stall order
+PASS: a Pending order offers only Accept and Reject
+PASS: a Preparing order offers only Mark ready — no accept/reject/collected/no-show
+PASS: a Ready order inside the 30-minute window offers only Mark collected
+PASS: a Ready order past 30 minutes offers exactly Collected and NoShow
+PASS: a Cancelled order is read-only and shows the refund
+PASS: a NoShow order is read-only and keeps its payment paid
+PASS: a Collected order is read-only and keeps its stale name/price snapshot
+PASS: another stall's order shows the 403 screen, not its data
+PASS: NoShow before 30 minutes is refused 409 no_show_too_early
+PASS: a closed stall keeps its whole paid queue accessible
+PASS: the diner's seeded cart pays out ($15.50) with a fresh queue number
+PASS: the new order is Pending, Paid, $15.50, 2x M1 + 1x M2 snapshots
+PASS: the vendor's queue surfaces the new order and Accept moves it to Preparing
+PASS: the diner's tracking observes Preparing via polling
+PASS: Mark ready is mirrored on the diner's tracking screen as the Ready banner
+PASS: Mark collected ends the order read-only on the vendor side
+PASS: the diner's tracking shows the terminal Collected notice
+PASS: the stored order is Collected with its payment still Paid
+PASS: Rejecting a Pending order marks it Cancelled with the refund
+PASS: the diner sees the cancellation with the refunded amount
+PASS: Mark no-show is accepted past the 30-minute window
+PASS: the diner sees the no-show notice with the payment staying paid
+PASS: a diner account is routed out of the vendor area to their own home
+cleanup: OK
+Seeded database 'skipq_system_test':
+  vendors: 2
+  users: 6
+  menu_items: 5
+  carts: 2
+  orders: 9
+Re-running this script upserts the same records; unrelated data is not deleted. Demo account credentials are documented in README.md.
+invariant: True False 650 True True 9 2 2
+PASS: final reseed restores seed state (S1 open, S2 closed, M1 650c, 9 seed orders, 2 carts, C1 2 lines)
+
+SUMMARY: ALL PASSED
+
+Exit code: 0

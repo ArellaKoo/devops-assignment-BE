@@ -92,3 +92,5 @@ does not implement that suite, and nothing in Tasks 6–11 runs it.
 ## Final review clarification
 
 The functional suite proves ownership/status filtering, stored purchase snapshots, guarded transitions and checkout concurrency. Its small order fixtures do not independently prove equal-time sorting or full newest-first ordering. Sorting was observed in the US10 browser checks; H09 remains a designed, unexecuted Q4(c) case. Current unit verification blocks socket access; MongoDB can remain running for other suites.
+
+Frontend quality follow-up: the default offline suite now passes **313 cases**, including seven additional cart DTO cases for unavailable/removed items and trading-state visibility. Functional and assessed browser pairs were rerun successfully; exact current logs are in docs/evidence/frontend-quality/. Q4(c) remains design-only.

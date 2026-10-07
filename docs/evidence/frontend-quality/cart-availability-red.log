@@ -1,0 +1,23 @@
+..F.                                                                     [100%]
+=================================== FAILURES ===================================
+___ test_cart_read_exposes_only_published_available_lines[True-False-False] ____
+
+available = True, active = False, expected = False
+
+    @pytest.mark.parametrize('available,active,expected', [
+        (True, True, True), (False, True, False),
+        (True, False, False), (False, False, False),
+    ])
+    def test_cart_read_exposes_only_published_available_lines(available, active, expected):
+        """GIVEN a live or removed menu line WHEN cart JSON is read THEN an inactive item is unavailable before the diner acts."""
+        diner = make_diner()
+        vendor = make_vendor()
+        item = make_item(vendor, available=available, active=active)
+        cart = make_cart(diner, vendor, [CartItem(menu_item=item, quantity=1)])
+>       assert cart.to_dict()['items'][0]['is_available'] is expected
+E       assert True is False
+
+tests/unit/test_cart.py:258: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_cart.py::test_cart_read_exposes_only_published_available_lines[True-False-False]
+1 failed, 3 passed, 28 deselected in 0.07s

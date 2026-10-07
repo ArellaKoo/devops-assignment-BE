@@ -22,9 +22,9 @@ protected diner layout from Task 7.
    displays the backend's own message on this screen.
 3. **Cart** — per-line quantity stepper (PATCH; decrement to zero removes
    the line server-side) and Remove (DELETE); the server-computed total and
-   the read-only server checkout fingerprint. Loads on entry, after every
+   visible unavailable-line badges and the current stall trading-state banner; increases and checkout are blocked for known unavailable lines or a closed stall, while removal stays available. Loads on entry, after every
    mutation and on Refresh — not an auto-polling view.
-4. **Checkout** — read-only cart summary with total and fingerprint;
+4. **Checkout** — read-only cart summary with total and known availability;
    PayNow/Card/Cashless selection; a demo-only "simulate this payment
    failing" control. One checkout key is minted when the page loads and is
    **retained across retries** of the same attempt; the synchronous
@@ -100,8 +100,7 @@ protected vendor layout from Task 7.
    removed.
 3. **Paid queue** — the stall's stored orders, newest first, with queue
    number, status badge, item count, total and placed time. It polls every
-   3 s while any order is still active (a second account on the shared
-   stall can move one) and stops once every order is terminal; explicit
+   3 s while the queue is mounted, including an empty or wholly terminal queue so new orders appear; explicit
    Refresh always works. While the stall is closed it carries the closure
    banner but every order and Manage control stays available — the queue
    is a fulfillment obligation, not a trading surface.
@@ -213,8 +212,8 @@ captures of the running app on `127.0.0.1:5173` against the dev API):
 | task8-02-menu-sold-out.png | Seeded sold-out Pineapple Tart greyed with the disabled "Sold out" control |
 | task8-03-sold-out-toast.png | Toast for the newly observed sold-out change, menu still listing the item |
 | task8-04-menu-after-add.png | "Add another (in cart: 2)" increment confirmed; cart total card $22.00 |
-| task8-05-cart-edited.png | Cart after stepper/removal edits: 2× M1, total $13.00, fingerprint shown |
-| task8-06-checkout.png | Checkout summary, 64-char server fingerprint, PayNow selected |
+| task8-05-cart-edited.png | Cart after stepper/removal edits: 2× M1, total $13.00, server-computed total |
+| task8-06-checkout.png | Checkout summary, payable total, PayNow selected; fingerprint remains internal |
 | task8-07-checkout-stale-refused.png | Stale-cart refusal ("Your cart total changed since it was loaded…") with Review / Refresh-and-retry and the retained-key notice |
 | task8-08-checkout-success.png | Payment successful: queue number, order id, Pending, PayNow Paid, $14.50 |
 | task8-09-tracking-pending.png | Tracking page: queue number, Pending badge, snapshot lines, payment state |
@@ -272,3 +271,7 @@ Task 10 (US10 order-list filters):
 | task10-06-current-snapshot-after-reprice.png | An in-progress order keeping its $13.00 snapshot total after the menu item was live-repriced |
 | task10-07-empty-diner-all.png | An order-free diner: "You have no orders yet." with the Browse open stalls link |
 | task10-08-empty-diner-past.png | The same diner on Past: "No past orders yet." |
+
+## Frontend quality follow-up
+
+The 7 October follow-up refreshed all task8/task9/task10/task11 images and corrected navigation contrast, pending/read-recovery state and known unavailable/closed cart state. The current 26/37/15-check diner/vendor/history walkthroughs and the 24-check diagnostic review are recorded in docs/evidence/frontend-quality/. The assessed real API/browser lifecycle passed twice (11.28/11.36 s); the complete updated demonstration passed both stale-screen refusals. Fingerprints remain internal request data, not a required product display. Historical results above retain their original context.

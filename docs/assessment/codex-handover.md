@@ -39,7 +39,7 @@ The supplementary fault checks do not replace the assessed browser lifecycle. Th
 
 - `docs/report/SkipQ_Report_Draft.docx` — editable assembled draft.
 - `docs/report/SkipQ_Report_Draft.pdf` — assembled preview; generated directly from the same source with ReportLab, not a claim about Microsoft Word's exact pagination.
-- `docs/report/report.md` — narrative source, approximately 2,982 words; Q7(b) 471 words; Q6 verdict 88 words (appendices/tables/figures excluded).
+- `docs/report/report.md` — narrative source, approximately 2,700 whitespace-separated narrative words; Q7(b) 472 words; Q6 verdict 88 words (appendices/tables/figures excluded).
 - `scripts/export_report.py` + `requirements-report.txt` — reproducible export using separate tooling dependencies.
 - `q6-performance/reconciled-analysis.json` + `scripts/summarize_performance.py` — corrected analysis; original raw evidence untouched.
 - `q7-screencast/script.md`, `recording-steps.md`, `demo-data.md` — human recording preparation.
@@ -81,3 +81,7 @@ Exact output is in `clone-*.log`. After both browser runs, canonical seed data w
 4. Confirm these are the course-intended repositories, authorize/publish both final branches and video, verify marker/non-owner access, then submit by the stated assignment deadline. No submission status or grade is guaranteed.
 
 The working-repository servers were started for verification on 127.0.0.1:5001 (skipq_system_test) and 127.0.0.1:5173. Development data was not cleared. Re-run the documented start commands if these processes have stopped.
+
+## Subsequent frontend assessment review
+
+The user's frontend quality request is recorded in P17. This review supersedes the earlier final counts above: **313 unit passed; 24 targeted browser checks passed; functional 10 passed twice; assessed browser 1 passed twice; production build and full demo rehearsal passed.** Thirty layouts at 1280/375/320 pixels showed no horizontal overflow or uncaught page errors. Known closed/unavailable cart state, navigation, request guards, read recovery and incoming-queue polling were corrected; the report screenshots and recording sequence were refreshed. See `frontend-quality-review.md` and `docs/evidence/frontend-quality/` for exact proof and measurement limits. This stage changes no product dependency or installation prerequisite; the earlier independent clean-clone installation evidence remains historical, and current app behaviour was verified from the working repositories. Human actions and publishing boundaries remain unchanged.

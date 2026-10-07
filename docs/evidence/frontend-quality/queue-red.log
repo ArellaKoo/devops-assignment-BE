@@ -1,0 +1,19 @@
+FAIL incoming_queue: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_be_visible" locator(".list-group-item").first with timeout 6500ms
+  - waiting for locator(".list-group-item").first
+
+Aria snapshot:
+- navigation:
+  - text: SkipQ Vendor — vendor.one@skipq.test
+  - link "Menu":
+    - /url: /vendor/menu
+  - link "Orders":
+    - /url: /vendor/orders
+  - button "Sign out"
+- heading "Orders" [level=2]
+- button "Refresh"
+- paragraph: No paid orders for this stall yet.
+CLEANUP PASS: original cart/item restored; order records unchanged

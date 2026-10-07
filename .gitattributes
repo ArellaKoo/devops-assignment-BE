@@ -1,3 +1,4 @@
 *.pdf binary
 *.docx binary
 *.png binary
+docs/evidence/frontend-quality/*.log -whitespace

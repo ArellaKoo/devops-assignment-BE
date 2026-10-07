@@ -37,7 +37,7 @@ All of this comes from the backend seed (`db_seed/seed.py` +
 | Change | Who | Restored afterwards? |
 |---|---|---|
 | 1 new paid order (1× M1, $6.50) taken to Collected | the demo | yes — the script's cleanup deletes the run's own order only |
-| D1's cart: emptied, then 1× M2, then +1× M1 | the demo | yes — the script clears D1's cart |
+| D1's cart: emptied, then 1× M2, remove sold-out M2, then 1× M1 | the demo | yes — the script clears D1's cart |
 | M2 marked sold out, then restored to available | vendor step | yes |
 | S1 closed, then restored to open | vendor step | yes |
 
